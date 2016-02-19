@@ -317,7 +317,7 @@ a:hover {
 .contact-form .form-control {
     -webkit-box-shadow: none;
     box-shadow: none;
-    padding: 20px 15px;
+    padding: 8px 15px;
 }
 .form-control {
     height: 45px;

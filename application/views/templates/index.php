@@ -7,15 +7,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>AppPonsive | Portfolio Landing Page</title>
-    <meta name="description" content="">
+    <title>IAP Training Portal | Thapar University</title>
+    <meta name="description" content="industrial training portal of Thapar University">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Google fonts - which you want to use - (rest you can just remove) -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-
+    <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/tu_icon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
@@ -62,11 +62,11 @@
                         </li>
                         <li><a class="page-scroll" href="#top">Home</a>
                         </li>
-                        <li><a class="page-scroll" href="#services">Services</a>
+                        <li><a class="page-scroll" href="#student-login">Student Login</a>
                         </li>
-                        <li><a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <li><a class="page-scroll" href="#faculty-login">Faculty Login</a>
                         </li>
-                        <li><a class="page-scroll" href="#testimonial">Testimonial</a>
+                        <li><a class="page-scroll" href="#mentor-login">Mentor Login</a>
                         </li>
                         <li><a class="page-scroll" href="#contact">Contact</a>
                         </li>
@@ -89,17 +89,17 @@
                     <!-- HOME CONTENT -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="home-content wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0s">
-                            <h1>We Create Solutions</h1>
-                            <p>We are a <strong>Creative Team</strong>. We find the problems, Create Solutions. Design & Development is our Passion.</p>
-                            <a class="button home" href="#">Get Started</a>
+                            <h1>Thapar University</h1>
+                            <p>Industrial Training Panel for <strong>Thapar University</strong></p>
+                            <a class="button home" href="#">Student Login</a>
                         </div>
                     </div>
                     <!-- END HOME CONTENT -->
 
                     <!-- HOME FEATURE IMAGE -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="home-feature pull-right center-block wow bounceIn" data-wow-duration="1s" data-wow-delay="1s">
-                            <img class="img-responsive" src="<?php echo base_url();?>assets/img/app.png" alt="">
+                        <div class="home-feature pull-right center-block wow" data-wow-duration="1s" data-wow-delay="1s">
+                            <img class="img-responsive" src="<?php echo base_url();?>assets/img/banner.png" alt="">
                         </div>
                     </div>
                     <!-- END HOME FEATURE IMAGE -->
@@ -110,291 +110,89 @@
     </div>
     <!-- END HOME -->
 
-    <!-- SERVICES -->
-    <section id="services" class="section text-center">
+    
+
+    
+
+
+
+<!-- Student Login -->
+    <section id="student-login" class="section text-center">
         <div class="container">
-            <h2 class="section-title wow fadeIn">Services</h2>
+            <h2 class="section-title">Student Login</h2>
             <div class="row">
 
-                <!-- SINGLE SERVICE -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-service text-center wow fadeInRight" data-wow-duration="1s" data-wow-delay="0s">
-                        <div class="service-content text-left">
-                            <i class="fa fa-desktop fa-3x"></i>
-                            <h3>Web Design</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet odit amet repellendus, eum ipsum laboriosam.</p>
-                            <a href="#">Learn More</a>
+                <!-- CONTACT FORM -->
+                <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
+                    <form action="#" method="post" class="contact-form  wow fadeInLeft">
+                        <div class="form-group">
+                            <label for="registration">Registration ID</label>
+                            <input type="email" name="registration" id="registration" required class="form-control" placeholder="Registration ID">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <input type="password" required class="form-control" placeholder="Password">
+                        </div>
+                        <button type="submit" class="pull-left send-button button">Login</button>
+                    </form>
                 </div>
-                <!-- END SINGLE SERVICE -->
-
-                <!-- SINGLE SERVICE -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-service text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div class="service-title">
-                            <i class="fa fa-mobile-phone fa-3x"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Mobile Design</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet odit amet repellendus, eum ipsum laboriosam.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE SERVICE -->
-
-                <!-- SINGLE SERVICE -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-service text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay=".6s">
-                        <div class="service-title">
-                            <i class="fa fa-code fa-3x"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Code</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet odit amet repellendus, eum ipsum laboriosam.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE SERVICE -->
-
-                <!-- SINGLE SERVICE -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-service text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay=".9s">
-                        <div class="service-title">
-                            <i class="fa fa-shopping-cart fa-3x"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Ecommerce</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet odit amet repellendus, eum ipsum laboriosam.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE SERVICE -->
-
-                <!-- SINGLE SERVICE -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-service text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.2s">
-                        <div class="service-title">
-                            <i class="fa fa-cog fa-3x"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>CMS</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet odit amet repellendus, eum ipsum laboriosam.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE SERVICE -->
-
-                <!-- SINGLE SERVICE -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-service text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.5s">
-                        <div class="service-title">
-                            <i class="fa fa-rocket fa-3x"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Web Application</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet odit amet repellendus, eum ipsum laboriosam.</p>
-                            <a href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE SERVICE -->
-
+                <!-- END CONTACT FORM -->
             </div>
-            <!--.row-->
         </div>
-        <!--/.container -->
     </section>
-    <!-- END SERVICES -->
+    <!-- END STUDENT LOGIN -->
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="section text-center">
+
+    <!-- Faculty Login -->
+    <section id="faculty-login" class="section text-center">
         <div class="container">
-            <h2 class="section-title wow fadeIn">Portfolio</h2>
-            <div class="portfolio-filter text-center wow fadeInLeft" data-wow-duration="1s">
-                <a href="#">Mobile</a>
-                <a href="#">Web Design</a>
-                <a href="#">Branding</a>
-                <a href="#">Photography</a>
-            </div>
+            <h2 class="section-title">Faculty Login</h2>
             <div class="row">
-                <div class="portfolio-gallery wow pulse">
 
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/01.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/01.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/02.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/02.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/03.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/03.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/04.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/04.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/05.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/05.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/06.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/06.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/07.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/07.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-                    <!-- SINGLE PORTFOLIO -->
-                    <div class="single-portfolio">
-                        <a href="img/portfolio/08.png" class="prettyPhoto" title="Single Portfolio">
-                            <img src="<?php echo base_url();?>assets/img/portfolio/08.png" alt="" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <!-- END SINGLE PORTFOLIO -->
-
-
+                <!-- CONTACT FORM -->
+                <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
+                    <form action="#" method="post" class="contact-form  wow fadeInLeft">
+                        <div class="form-group">
+                            <label for="registration">Registration ID</label>
+                            <input type="email" name="registration" id="registration" required class="form-control" placeholder="Registration ID">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" required class="form-control" placeholder="Password">
+                        </div>
+                        <button type="submit" class="pull-left send-button button">Login</button>
+                    </form>
                 </div>
-                <!--./portfolio-gallery-->
+                <!-- END CONTACT FORM -->
             </div>
         </div>
-        <!--/.container-->
     </section>
-    <!-- END PORTFOLIO -->
+    <!-- END FACULTY LOGIN -->
 
-    <!-- NEWSLETTER -->
-    <section id="newsletter" class="section text-center">
+
+    <!-- Mentor Login -->
+    <section id="mentor-login" class="section text-center">
         <div class="container">
+            <h2 class="section-title">Mentor Login</h2>
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="newsletter-content wow fadeInDown" data-wow-duration="1s">
-                        <h2>Like our Work? Stay Connected</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, optio.</p>
-                    </div>
-                    <div class="form-group wow fadeInUp" data-wow-duration="1s">
-                        <input type="email" class="form-control" placeholder="Your Email Address">
-                        <input type="submit" class="pull-right button newsletter">
-                    </div>
+
+                <!-- CONTACT FORM -->
+                <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
+                    <form action="#" method="post" class="contact-form  wow fadeInLeft">
+                        <div class="form-group">
+                            <label for="registration">Registration ID</label>
+                            <input type="email" name="registration" id="registration" required class="form-control" placeholder="Registration ID">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" required class="form-control" placeholder="Password">
+                        </div>
+                        <button type="submit" class="pull-left send-button button">Login</button>
+                    </form>
                 </div>
+                <!-- END CONTACT FORM -->
             </div>
         </div>
     </section>
-    <!-- END NEWSLETTER -->
+    <!-- END MENTOR LOGIN -->
 
-    <!-- TESTIMONIAL -->
-    <section id="testimonial" class="section text-center">
-        <h2 class="section-title">Testimonial</h2>
-        <div class="container">
-
-            <!-- TESTIMONIAL SLIDER -->
-            <div id="owl-demo" class="owl-carousel owl-theme">
-
-                <!-- SINGLE TESTIMONIAL -->
-                <div class="item">
-                    <div class="single-testimonial">
-                        <img class="center-block wow fadeInDown" data-wow-duration="1s" src="<?php echo base_url();?>assets/img/client.png" alt="Testimoinial">
-                        <p class="wow fadeInDown" data-wow-duration="1s">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui velit modi quasi ut placeat, id cum architecto cumque consequatur rem.
-                        </p>
-                        <div class="social-networks wow fadeInDown" data-wow-duration="1s">
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE TESTIMONIAL -->
-
-                <!-- SINGLE TESTIMONIAL -->
-                <div class="item">
-                    <div class="single-testimonial">
-                        <img class="center-block wow fadeInDown" data-wow-duration="1s" src="<?php echo base_url();?>assets/img/client2.png" alt="Testimoinial">
-                        <p class="wow fadeInDown" data-wow-duration="1s">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui velit modi quasi ut placeat, id cum architecto cumque consequatur rem.
-                        </p>
-                        <div class="social-networks wow fadeInDown" data-wow-duration="1s">
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE TESTIMONIAL -->
-
-                <!-- SINGLE TESTIMONIAL -->
-                <div class="item">
-                    <div class="single-testimonial">
-                        <img class="center-block wow fadeInDown" data-wow-duration="1s" src="<?php echo base_url();?>assets/img/client3.png" alt="Testimoinial">
-                        <p class="wow fadeInDown" data-wow-duration="1s">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui velit modi quasi ut placeat, id cum architecto cumque consequatur rem.
-                        </p>
-                        <div class="social-networks wow fadeInDown" data-wow-duration="1s">
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE TESTIMONIAL -->
-
-            </div>
-            <!-- END TESTIMONIAL SLIDER -->
-
-            <div class="testimonial-action wow fadeInUp" data-wow-duration="1s">
-                <a class="button testimonial" href="#">Read More</a>
-            </div>
-
-        </div>
-        <!--/.container -->
-    </section>
-    <!-- END TESTIMONIAL -->
-
-    <!-- GET TRIAL -->
-    <section id="get-trial" class="section text-center">
-        <div class="container">
-            <h4 class="wow fadeInLeft" data-wow-duration="1s">If you like our product features and our portfolio then you can get trial for FREE</h4>
-            <a class="button get-trial wow fadeInRight" data-wow-duration="1s" data-wow-delay=".5s" href="#">Get a Trial</a>
-        </div>
-    </section>
-    <!-- END GET TRIAL -->
 
     <!-- CONTACT US -->
     <section id="contact" class="section text-center">
@@ -426,15 +224,14 @@
                 <div class="col-md-3">
                     <div class="contact-info text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">
                         <h3>Get In Touch</h3>
-                        <p><span><i class="fa fa-map-marker"></i></span> Little Lonsdale St, Talay</p>
-                        <p><span><i class="fa fa-phone"></i></span> +123 456 789</p>
-                        <p><span><i class="fa fa-envelope-o"></i></span> info@email.com</p>
+                        <p><span><i class="fa fa-map-marker"></i></span> P.O. Box 32,Bhadson Road, Patiala</p>
+                        <p><span><i class="fa fa-phone"></i></span> +91-175-2393021</p>
+                        <p><span><i class="fa fa-envelope-o"></i></span> info_iap@email.com</p>
                     </div>
                     <div class="business-hours text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay=".6s">
-                        <h3>Business Hours</h3>
-                        <p>Monday - Friday: 9 am to 20 pm</p>
-                        <p>Saturday: 9 am to 17 pm</p>
-                        <p>Sunday: day off</p>
+                        <h3>IAP Coordinator</h3>
+                        <p>iap_coordinator@gmail.com</p>
+                        
                     </div>
                 </div>
                 <!-- END CONTACT INFO -->
@@ -455,13 +252,13 @@
                         <ul class="list-inline">
                             <li><a href="#">Home</a>
                             </li>
-                            <li><a href="#">About</a>
+                            <li><a href="#">Student</a>
                             </li>
-                            <li><a href="#">Contact</a>
+                            <li><a href="#">Faculty</a>
                             </li>
-                            <li><a href="#">Portfolio</a>
+                            <li><a href="#">Mentor</a>
                             </li>
-                            <li><a href="#">Services</a>
+                            <li><a href="#contact">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -471,7 +268,7 @@
                 <!-- FOOTER CONTENT -->
                 <div class="col-md-6">
                     <div class="footer-content text-right">
-                        <p>&copy; 2014 All Rights Reserved, <a href="http://codeponsive.com/">CodePonsive</a>
+                        <p>&copy; <?php echo date('Y'); ?> All Rights Reserved, <a href="http://www.thapar.edu/">Thapar Institute of Engineering and Technological University</a>
                         </p>
                     </div>
                 </div>
@@ -483,17 +280,6 @@
         <!-- ./container -->
     </footer>
     <!-- END FOOTER -->
-
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-58035815-1', 'auto');
-      ga('send', 'pageview');
-    </script>
     <!-- js files -->
     <script src="<?php echo base_url();?>assets/js/vendor/jquery-1.10.2.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
