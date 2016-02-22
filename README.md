@@ -4,4 +4,4 @@ This will involve three types of users, the student, mentor and the faculty. It 
 
 
 
-A link to the User Guide will be added soon fro the convenience of all with all the necessary documentation.
+A link to the User Guide will be added soon for the convenience of audience with all the necessary documentation.
