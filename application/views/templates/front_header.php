@@ -7,7 +7,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title>IAP Training Portal | Thapar University</title>
+    <title>
+        <?php
+            if(isset($title)){
+                echo "$title";
+            }
+            else{
+                echo "IAP Training Portal | Thapar University";
+            }
+                ?>
+    </title>
     <meta name="description" content="industrial training portal of Thapar University">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

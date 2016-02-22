@@ -25,31 +25,35 @@ class Login extends CI_Controller {
 	}
 	public function index($page = 'student')
 	{
-		$this->load->view('templates/front_header');
+		$data['title']="Login | Student";
+		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/login/'.$page);
-		$this->load->view('templates/front_footer');
+		$this->load->view('templates/front_footer',$data);
 	}
 
 
 	public function student()
 	{
-		$this->load->view('templates/front_header');
-		$this->load->view('templates/login/student');
-		$this->load->view('templates/front_footer');
+		$data['title']="Login | Student";
+		$this->load->view('templates/front_header',$data);
+		$this->load->view('templates/login/student',$data);
+		$this->load->view('templates/front_footer',$data);
 	}
 
 	public function faculty()
 	{
-		$this->load->view('templates/front_header');
-		$this->load->view('templates/login/faculty');
-		$this->load->view('templates/front_footer');
+		$data['title']="Login | Faculty";
+		$this->load->view('templates/front_header',$data);
+		$this->load->view('templates/login/faculty',$data);
+		$this->load->view('templates/front_footer',$data);
 	}
 
 	public function mentor()
 	{
-		$this->load->view('templates/front_header');
-		$this->load->view('templates/login/mentor');
-		$this->load->view('templates/front_footer');
+		$data['title']="Login | Mentor";
+		$this->load->view('templates/front_header',$data);
+		$this->load->view('templates/login/mentor',$data);
+		$this->load->view('templates/front_footer',$data);
 	}
 
 
