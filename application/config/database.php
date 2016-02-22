@@ -117,7 +117,7 @@ $db['arush'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-$db['akshti'] = array(
+$db['akshit'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
