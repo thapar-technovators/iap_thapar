@@ -1,7 +1,8 @@
-    <!-- Faculty Login -->
-    <section id="faculty-login" class="section text-center">
+<!-- Student Login -->
+    <section id="student-login" class="section text-center">
         <div class="container">
-            <h2 class="section-title">Faculty Login</h2>
+            <div class="hidden-md hidden-lg"><hr></div>
+            <h2 class="section-title">Student Login</h2>
             <div class="row">
 
                 <!-- CONTACT FORM -->
@@ -17,8 +18,16 @@
                         <button type="submit" class="pull-left send-button button">Login</button>
                     </form>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
+                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Register</a>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 text-center wow col-xs-12 " data-wow-duration="1s">
+                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Forgot Password</a>
+                </div>
                 <!-- END CONTACT FORM -->
             </div>
         </div>
     </section>
-    <!-- END FACULTY LOGIN -->
+    <!-- END STUDENT LOGIN -->

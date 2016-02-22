@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 testing gitignore
 */
-$active_group = 'akshit';
+$active_group = 'arush';
 $query_builder = TRUE;
 
 $db['default'] = array(

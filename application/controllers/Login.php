@@ -26,7 +26,7 @@ class Login extends CI_Controller {
 	public function index($page = 'student')
 	{
 		$this->load->view('templates/front_header');
-		$this->load->view('templates/'.$page);
+		$this->load->view('templates/login/'.$page);
 		$this->load->view('templates/front_footer');
 	}
 
@@ -34,21 +34,21 @@ class Login extends CI_Controller {
 	public function student()
 	{
 		$this->load->view('templates/front_header');
-		$this->load->view('templates/student');
+		$this->load->view('templates/login/student');
 		$this->load->view('templates/front_footer');
 	}
 
 	public function faculty()
 	{
 		$this->load->view('templates/front_header');
-		$this->load->view('templates/faculty');
+		$this->load->view('templates/login/faculty');
 		$this->load->view('templates/front_footer');
 	}
 
 	public function mentor()
 	{
 		$this->load->view('templates/front_header');
-		$this->load->view('templates/mentor');
+		$this->load->view('templates/login/mentor');
 		$this->load->view('templates/front_footer');
 	}
 
