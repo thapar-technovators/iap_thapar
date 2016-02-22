@@ -1,6 +1,7 @@
     <!-- Faculty Login -->
     <section id="faculty-login" class="section text-center">
         <div class="container">
+            <div class="hidden-md hidden-lg"><hr></div>
             <h2 class="section-title">Faculty Login</h2>
             <div class="row">
 

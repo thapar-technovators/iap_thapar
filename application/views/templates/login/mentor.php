@@ -1,6 +1,7 @@
     <!-- Mentor Login -->
     <section id="mentor-login" class="section text-center">
         <div class="container">
+            <div class="hidden-md hidden-lg"><hr></div>
             <h2 class="section-title">Mentor Login</h2>
             <div class="row">
 
