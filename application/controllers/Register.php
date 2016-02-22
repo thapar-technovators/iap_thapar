@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Register extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -25,7 +25,7 @@ class Login extends CI_Controller {
 	}
 	public function index($page = 'student')
 	{
-		$data['title']="Login | Student";
+		$data['title']="Register | Student";
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/register/'.$page,$data);
 		$this->load->view('templates/front_footer',$data);
@@ -34,7 +34,7 @@ class Login extends CI_Controller {
 
 	public function student()
 	{
-		$data['title']="Login | Student";
+		$data['title']="Register | Student";
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/register/student',$data);
 		$this->load->view('templates/front_footer',$data);
@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 
 	public function faculty()
 	{
-		$data['title']="Login | Faculty";
+		$data['title']="Register | Faculty";
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/register/faculty',$data);
 		$this->load->view('templates/front_footer',$data);
@@ -50,7 +50,7 @@ class Login extends CI_Controller {
 
 	public function mentor()
 	{
-		$data['title']="Login | Mentor";
+		$data['title']="Register | Mentor";
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/register/mentor',$data);
 		$this->load->view('templates/front_footer',$data);

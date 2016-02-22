@@ -1,7 +1,7 @@
     <!-- Mentor Login -->
     <section id="mentor-login" class="section text-center">
         <div class="container">
-            <div class="hidden-md hidden-lg"><hr></div>
+            <div class="hidden-md hidden-lg"><hr></div>            
             <h2 class="section-title">Mentor Login</h2>
             <div class="row">
 
@@ -21,7 +21,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
-                        <a href="<?php echo base_url();?>index.php/register/mentor"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Register</a>
+                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Register</a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 text-center wow col-xs-12 " data-wow-duration="1s">
                         <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Forgot Password</a>
