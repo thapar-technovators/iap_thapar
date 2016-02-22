@@ -16,6 +16,9 @@
                         </div>
                         <button type="submit" class="pull-left send-button button">Login</button>
                     </form>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Register
+                    </button>
                 </div>
                 <!-- END CONTACT FORM -->
             </div>

@@ -62,11 +62,11 @@
                         </li>
                         <li><a class="page-scroll" href="<?php echo base_url();?>">Home</a>
                         </li>
-                        <li><a class="page-scroll" href="<?php echo base_url();?>login/student">Student Login</a>
+                        <li><a class="page-scroll" href="<?php echo base_url();?>index.php/login/student">Student Login</a>
                         </li>
-                        <li><a class="page-scroll" href="<?php echo base_url();?>login/faculty">Faculty Login</a>
+                        <li><a class="page-scroll" href="<?php echo base_url();?>index.php/login/faculty">Faculty Login</a>
                         </li>
-                        <li><a class="page-scroll" href="<?php echo base_url();?>login/mentor">Mentor Login</a>
+                        <li><a class="page-scroll" href="<?php echo base_url();?>index.php/login/mentor">Mentor Login</a>
                         </li>
                         <li><a class="page-scroll" href="<?php echo base_url();?>#contact">Contact</a>
                         </li>
