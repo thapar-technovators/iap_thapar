@@ -4,7 +4,6 @@
             <div class="hidden-md hidden-lg"><hr></div>
             <h2 class="section-title">Faculty Login</h2>
             <div class="row">
-
                 <!-- CONTACT FORM -->
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
                     <form action="#" method="post" class="contact-form  wow fadeInLeft">

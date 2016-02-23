@@ -57,7 +57,7 @@
 
                     <!-- LOGO -->
                     <a class="navbar-brand page-scroll" href="#page-top">
-                        <img src="<?php echo base_url();?>assets/img/logo.png" alt="">
+                        <img src="<?php echo base_url();?>assets/img/logo.png" title="Thapar University" style="position:absolute;top:0;z-index:1000" alt="">
                     </a>
                     <!-- END LOGO -->
 
