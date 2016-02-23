@@ -55,6 +55,12 @@ class Register extends CI_Controller {
 		$this->load->view('templates/register/mentor',$data);
 		$this->load->view('templates/front_footer',$data);
 	}
+	//Sample function to test PHP Mailer
 
+	public function sendmail()
+	{
+		$this->load->model('Default_model');
+		$this->Default_model->send_mail('arushngpl16@gmail.com','subject','body');
+	}
 
 }
