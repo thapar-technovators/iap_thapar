@@ -10,7 +10,10 @@
                     <form action="#" method="post" class="contact-form  wow fadeInLeft">
                         <div class="form-group">
                             <label for="registration">Registration ID</label>
-                            <input type="email" name="registration" id="registration" required class="form-control" placeholder="Registration ID">
+                            <div class="input-group">
+                            <input type="email" name="registration" id="registration" required class="form-control" placeholder="Registration ID" aria-describedby="addon">
+                            <span class="input-group-addon" id="addon">@thapar.edu</span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <input type="password" required class="form-control" placeholder="Password">
