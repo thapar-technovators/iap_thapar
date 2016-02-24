@@ -13,6 +13,28 @@
                             <input type="number" name="registration" id="registration" required class="form-control" placeholder="Your Roll Number (Eg. 101303034)">
                         </div>
                         <div class="form-group">
+                            <label for="branch">Branch</label>
+                            <select class="form-control" id="branch" name="branch">
+                                <?php
+                                 foreach ($branch as $br) {
+                                    echo "<option value='$br'>$br</option>";
+                                }?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="semester">Semester</label>
+                            <select class="form-control" id="semester" name="semester">
+                                <?php
+                                 for ($i=1;$i<=8;$i++) {
+                                    echo "<option value='$i'>$i</option>";
+                                }?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" required class="form-control" placeholder="Arush Nagpal">
+                        </div>
+                        <div class="form-group">
                             <input type="password" required class="form-control" placeholder="Password">
                         </div>
                         <button type="submit" class="pull-left send-button button">Register</button>

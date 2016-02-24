@@ -22,6 +22,7 @@ class Register extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Default_model');
 	}
 	public function index($page = 'student')
 	{
@@ -35,6 +36,7 @@ class Register extends CI_Controller {
 	public function student()
 	{
 		$data['title']="Register | Student";
+		$data['branch']=$this->Default_model->getBranches();
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/register/student',$data);
 		$this->load->view('templates/front_footer',$data);
@@ -59,7 +61,6 @@ class Register extends CI_Controller {
 
 	public function sendmail()
 	{
-		$this->load->model('Default_model');
 		$this->Default_model->send_mail('arushngpl16@gmail.com','subject','body');
 	}
 

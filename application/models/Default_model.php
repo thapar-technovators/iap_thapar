@@ -2,6 +2,17 @@
 
 class Default_model extends CI_Model {
 
+function getBranches()
+{
+	$query = $this->db->query("SELECT branch FROM branch");
+	$branch=array();
+	$result=$query->result_array();
+	foreach ($result as $res) {
+		array_push($branch, $res['branch']);
+	}
+	return $branch;
+}
+
 function send_mail($to,$subject,$body)
 {
 	require(APPPATH.'third_party/mailer/class.phpmailer.php');
