@@ -62,16 +62,14 @@
                         <h3>Get In Touch</h3>
                         <p><span><i class="fa fa-map-marker"></i></span> P.O. Box 32,Bhadson Road, Patiala</p>
                         <p><span><i class="fa fa-phone"></i></span> +91-175-2393021</p>
-                        <p><span><i class="fa fa-envelope-o"></i></span> info_iap@email.com</p>
+                        <p><span><i class="fa fa-envelope-o"></i></span> iapthapar@gmail.com</p>
                     </div>
                     <div class="business-hours text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay=".6s">
                         <h3>IAP Coordinator</h3>
-                        <p>iap_coordinator@gmail.com</p>
-                        
+                        <p>iapthapar_coordinator@gmail.com</p>
                     </div>
                 </div>
                 <!-- END CONTACT INFO -->
-
             </div>
         </div>
     </section>

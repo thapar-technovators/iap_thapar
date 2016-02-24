@@ -4,7 +4,7 @@
             <div class="row">
 
                 <!-- FOOTER MENU -->
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="footer-menu">
                         <ul class="list-inline">
                             <li><a href="#">Home</a>
@@ -23,14 +23,13 @@
                 <!-- END FOOTER MENU -->
 
                 <!-- FOOTER CONTENT -->
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="footer-content text-right">
-                        <p>&copy; <?php echo date('Y'); ?> All Rights Reserved, <a href="http://www.thapar.edu/">Thapar Institute of Engineering and Technological University</a>
+                        <p>&copy; <?php echo date('Y'); ?> All Rights Reserved, <a href="http://www.thapar.edu/">Thapar Institute of Engineering and Technology University</a>
                         </p>
                     </div>
                 </div>
                 <!-- END FOOTER CONTENT -->
-
             </div>
             <!-- /.row -->
         </div>
