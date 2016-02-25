@@ -25,7 +25,7 @@
                             <label for="semester">Semester</label>
                             <select class="form-control" id="semester" name="semester">
                                 <?php
-                                 for ($i=1;$i<=8;$i++) {
+                                 for ($i=4;$i<=8;$i++) {
                                     echo "<option value='$i'>$i</option>";
                                 }?>
                             </select>
@@ -35,8 +35,31 @@
                             <input type="text" name="name" id="name" required class="form-control" placeholder="Arush Nagpal">
                         </div>
                         <div class="form-group">
-                            <input type="password" required class="form-control" placeholder="Password">
+                            <label for="email">Email ID</label>
+                            <input type="email" name="email" id="email" required class="form-control" placeholder="arush@gmail.com">
                         </div>
+                        <div class="form-group">
+                            <label for="phone">Contact Number</label>
+                            <input type="number" autocomplete="off" name="phone" id="phone" required class="form-control" placeholder="9988776655 (10 digits. Please don't add country code)">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" name="company" id="company" required class="form-control" placeholder="Tata Motors">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" name="city" id="city" required class="form-control" placeholder="9988776655 (10 digits. Please don't add country code)">
+                        </div>
+                        <div class="form-group">
+                            <label for="doj">Date of Joining</label>
+                            <input type="date" name="doj" id="doj" required class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="timeoftraining">Training time Confirmation (in Days)</label>
+                            <input type="number" name="timeoftraining" id="timeoftraining" class="form-control" placeholder="The time recruiter has confirmed for training period">
+                        </div>
+
+                        
                         <button type="submit" class="pull-left send-button button">Register</button>
                     </form>
                 </div>
@@ -53,3 +76,19 @@
         </div>
     </section>
     <!-- END STUDENT LOGIN -->
+
+<!---------- DATE INPUT FIX NOT WORKING IN FIREFOX------>
+
+<!-- cdn for modernizr, if you haven't included it already -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+<!-- polyfiller file to detect and load polyfills -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+</script>
+<!---------- END OF DATE INPUT FIX------>
+
+
+    <!-------------------- JAVASCRIPT PHONE NUMBER VALIDATION CHECK PENDING  ------------------------>

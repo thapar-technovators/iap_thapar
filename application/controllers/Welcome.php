@@ -25,13 +25,9 @@ class Welcome extends CI_Controller {
 	}
 	public function index()
 	{
-		/*$this->load->view('templates/front_header');
+		$this->load->view('templates/front_header');
 		$this->load->view('templates/index');
 		$this->load->view('templates/front_footer');
-		*/
-		$this->load->view('admin/admin_header');
-		$this->load->view('admin/home');
-		$this->load->view('admin/admin_footer');
 	}
 
 }
