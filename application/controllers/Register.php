@@ -35,11 +35,19 @@ class Register extends CI_Controller {
 
 	public function student()
 	{
-		$data['title']="Register | Student";
-		$data['branch']=$this->Default_model->getBranches();
-		$this->load->view('templates/front_header',$data);
-		$this->load->view('templates/register/student',$data);
-		$this->load->view('templates/front_footer',$data);
+		if($this->input->server('REQUEST_METHOD')=='POST')
+		{
+			$data['help']=$this->input->post('name');
+			$this->load->view('templates/front_header',$data);
+		}
+		else
+		{
+			$data['title']="Register | Student";
+			$data['branch']=$this->Default_model->getBranches();
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/register/student',$data);
+			$this->load->view('templates/front_footer',$data);
+		}
 	}
 
 	public function faculty()

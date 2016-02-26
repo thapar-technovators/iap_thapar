@@ -74,3 +74,7 @@
         </div>
     </section>
     <!-- END CONTACT US -->
+    <div class="footer-content text-center">
+        <p>Your IP Address: <?php echo $ip_address; ?> accessing from <?php echo $user_agent; ?> is being monitored for Security Purposes.</p>
+                        
+    </div>

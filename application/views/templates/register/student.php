@@ -7,13 +7,13 @@
 
                 <!-- CONTACT FORM -->
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
-                    <form action="#" method="post" class="contact-form  wow fadeInLeft">
+                    <form action="<?php echo base_url().'index.php/register/student'?>" method="post" class="contact-form  wow fadeInLeft">
                         <div class="form-group">
-                            <label for="registration">Registration Number</label>
+                            <label for="registration">Registration Number<span style="color:red;">*</span></label>
                             <input type="number" name="registration" id="registration" required class="form-control" placeholder="Your Roll Number (Eg. 101303034)">
                         </div>
                         <div class="form-group">
-                            <label for="branch">Branch</label>
+                            <label for="branch">Branch<span style="color:red;">*</span></label>
                             <select class="form-control" id="branch" name="branch">
                                 <?php
                                  foreach ($branch as $br) {
@@ -22,7 +22,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="semester">Semester</label>
+                            <label for="semester">Semester<span style="color:red;">*</span></label>
                             <select class="form-control" id="semester" name="semester">
                                 <?php
                                  for ($i=4;$i<=8;$i++) {
@@ -31,23 +31,23 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="name">Full Name</label>
+                            <label for="name">Full Name<span style="color:red;">*</span></label>
                             <input type="text" name="name" id="name" required class="form-control" placeholder="Arush Nagpal">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email ID</label>
+                            <label for="email">Email ID<span style="color:red;">*</span></label>
                             <input type="email" name="email" id="email" required class="form-control" placeholder="arush@gmail.com">
                         </div>
                         <div class="form-group">
-                            <label for="phone">Contact Number</label>
+                            <label for="phone">Contact Number<span style="color:red;">*</span></label>
                             <input type="number" autocomplete="off" name="phone" id="phone" required class="form-control" placeholder="9988776655 (10 digits. Please don't add country code)">
                         </div>
                         <div class="form-group">
-                            <label for="company">Company Name</label>
+                            <label for="company">Company Name<span style="color:red;">*</span></label>
                             <input type="text" name="company" id="company" required class="form-control" placeholder="Tata Motors">
                         </div>
                         <div class="form-group">
-                            <label for="city">City</label>
+                            <label for="city">City<span style="color:red;">*</span></label>
                             <input type="text" name="city" id="city" required class="form-control" placeholder="9988776655 (10 digits. Please don't add country code)">
                         </div>
                         <div class="form-group">

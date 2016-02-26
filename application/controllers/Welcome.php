@@ -25,8 +25,10 @@ class Welcome extends CI_Controller {
 	}
 	public function index()
 	{
+		$data['ip_address']=$this->input->ip_address();
+		$data['user_agent']=$this->input->user_agent();
 		$this->load->view('templates/front_header');
-		$this->load->view('templates/index');
+		$this->load->view('templates/index',$data);
 		$this->load->view('templates/front_footer');
 	}
 
