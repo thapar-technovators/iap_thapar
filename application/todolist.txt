@@ -1,0 +1,2 @@
+1) in the student regisration, add javascript functions to convert the name to title case. We will avoid handling heavy load with PHP on the backend.
+2)

@@ -1,6 +1,6 @@
 <?php
 
-class Default_model extends CI_Model {
+class Student_model extends CI_Model {
 
 /* SOME RILES AND CONVENTIONS TO BE FOLLOWED:
  * For each function written, mention a comment above for what it will be used for
