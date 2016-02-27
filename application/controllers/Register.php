@@ -38,12 +38,11 @@ class Register extends CI_Controller {
 	public function student()
 	{
 		$this->load->model('Student_model');
+		$data['title']="Register | Student";
+		$data['branches']=$this->Student_model->getBranches();	
 		if($this->input->post())
 		{
 			//Need not apply TRUE tags to every post field since the global XSS has been set to true
-			$data['title']="Register | Student";
-			$data['branches']=$this->Student_model->getBranches();
-			
 			$data['name']=$this->input->post('name');
 			$data['registration']=$this->input->post('registration');
 			$data['branch']=$this->input->post('branch');
@@ -83,23 +82,18 @@ class Register extends CI_Controller {
 				if($this->Student_model->sendEmailAndRegister($data))
 				{
 					array_push($data['error'], 'Registration SUCCESS! Password has been sent to your email ID. Please check your mail and then login.');
-					$this->load->view('templates/front_header',$data);
-					$this->load->view('templates/register/student',$data);
-					$this->load->view('templates/front_footer',$data);
 				}
 				else
 				{
 					array_push($data['error'], 'Some Error Occurred. Please Try Again'); //Error handling on duplicate email left and has to be done later
-					$this->load->view('templates/front_header',$data);
-					$this->load->view('templates/register/student',$data);
-					$this->load->view('templates/front_footer',$data);
 				}
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/register/student',$data);
+				$this->load->view('templates/front_footer',$data);
 			}
 		}
 		else
 		{
-			$data['title']="Register | Student";
-			$data['branches']=$this->Student_model->getBranches();
 			$this->load->view('templates/front_header',$data);
 			$this->load->view('templates/register/student',$data);
 			$this->load->view('templates/front_footer',$data);
