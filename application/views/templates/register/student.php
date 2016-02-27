@@ -6,8 +6,23 @@
             <div class="row">
 
                 <!-- CONTACT FORM -->
+                
+                <?php 
+                if(isset($error))
+                {
+                foreach ($error as $error_item): ?>
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $error_item;?>
+                </div>
+                <?php endforeach;
+                } ?>
+
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
-                    <form action="<?php echo base_url().'index.php/register/student'?>" method="post" class="contact-form  wow fadeInLeft">
+                    
+                <?php $attributes = array('class' => 'contact-form  wow fadeInLeft');
+                echo form_open('register/student', $attributes);?>
+
                         <div class="form-group">
                             <label for="registration">Registration Number<span style="color:red;">*</span></label>
                             <input type="number" name="registration" id="registration" required class="form-control" placeholder="Your Roll Number (Eg. 101303034)">

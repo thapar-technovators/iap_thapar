@@ -37,9 +37,11 @@ class Register extends CI_Controller {
 /* Thus is the method that is called when the url: index.php/register/student is accessed*/
 	public function student()
 	{
-		if($this->input->server('REQUEST_METHOD')=='POST')
+		if($this->input->post())
 		{
 			//Need not apply TRUE tags to every post field since the global XSS has been set to true
+			$data['title']="Register | Student";
+			$data['branch']=$this->Default_model->getBranches();
 			$data['name']=$this->input->post('name');
 			$data['registration']=$this->input->post('registration');
 			$data['branch']=$this->input->post('branch');
@@ -56,17 +58,17 @@ class Register extends CI_Controller {
 			/*Convert the name into title case using javascript*/
 			if(!valid_email($data['email']))
 				array_push($data['error'], 'The email field cannot be empty!');
-			if(isEmpty($data['registration']))
+			if($this->Default_model->isEmpty($data['registration']))
 				array_push($data['error'], 'Please enter your Roll Number!');
-			if(isEmpty($data['branch']))
+			if($this->Default_model->isEmpty($data['branch']))
 				array_push($data['error'], 'The Branch field cannot be left empty!');
-			if(isEmpty($data['semester']))
+			if($this->Default_model->isEmpty($data['semester']))
 				array_push($data['error'], 'The Semester field cannot be left empty!');
-			if(isEmpty($data['phone']))
+			if($this->Default_model->isEmpty($data['phone']))
 				array_push($data['error'], 'The Phone field cannot be left empty!');
-			if(isEmpty($data['company']))
+			if($this->Default_model->isEmpty($data['company']))
 				array_push($data['error'], 'The Company field cannot be left empty!');
-			if(isEmpty($data['city']))
+			if($this->Default_model->isEmpty($data['city']))
 				array_push($data['error'], 'The City field cannot be left empty!');
 			if(isset($data['error'][0]))
 			{
@@ -77,6 +79,9 @@ class Register extends CI_Controller {
 			else
 			{
 				array_push($data['error'], 'Registration SUCCESS! Password has been sent to your email ID. Please check your mail and then login.');
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/register/student',$data);
+				$this->load->view('templates/front_footer',$data);
 			}
 			$this->load->view('templates/front_header',$data);
 		}
