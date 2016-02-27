@@ -99,9 +99,13 @@ function generatePassword()
 /*This function hashes the password using a secure cryptographic function BCRYPT and then returns the hash*/
     function passwordHash($password) 
     {
-    	$options = ['cost' => 12,
-    	'salt' => 'wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit'];
-		return password_hash($password, PASSWORD_BCRYPT, $options);
-    }
+		$password='arush';
+		$salt='wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit';
+		$password.=$salt;
+		echo password_hash($password, PASSWORD_BCRYPT);
+	}
+
+
+	
 }
 ?>
