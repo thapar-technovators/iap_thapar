@@ -37,11 +37,13 @@ class Register extends CI_Controller {
 /* Thus is the method that is called when the url: index.php/register/student is accessed*/
 	public function student()
 	{
+		$this->load->model('Student_model');
 		if($this->input->post())
 		{
 			//Need not apply TRUE tags to every post field since the global XSS has been set to true
 			$data['title']="Register | Student";
-			$data['branch']=$this->Default_model->getBranches();
+			$data['branches']=$this->Default_model->getBranches();
+			
 			$data['name']=$this->input->post('name');
 			$data['registration']=$this->input->post('registration');
 			$data['branch']=$this->input->post('branch');
@@ -88,7 +90,7 @@ class Register extends CI_Controller {
 		else
 		{
 			$data['title']="Register | Student";
-			$data['branch']=$this->Default_model->getBranches();
+			$data['branches']=$this->Default_model->getBranches();
 			$this->load->view('templates/front_header',$data);
 			$this->load->view('templates/register/student',$data);
 			$this->load->view('templates/front_footer',$data);

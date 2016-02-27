@@ -31,7 +31,7 @@
                             <label for="branch">Branch<span style="color:red;">*</span></label>
                             <select class="form-control" id="branch" name="branch">
                                 <?php
-                                 foreach ($branch as $br) {
+                                 foreach ($branches as $br) {
                                     echo "<option value='$br'>$br</option>";
                                 }?>
                             </select>

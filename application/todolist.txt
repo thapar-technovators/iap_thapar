@@ -1,2 +1,4 @@
-1) in the student regisration, add javascript functions to convert the name to title case. We will avoid handling heavy load with PHP on the backend.
-2)
+1) In the student regisration, add javascript functions to convert the name to title case. We will avoid handling heavy load with PHP on the backend.
+2) Correct the coloring scheme of errors in register backend validation page.
+3) Apply CSRF protection manually for all input fields/forms.
+4) 
