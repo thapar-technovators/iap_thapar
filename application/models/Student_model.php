@@ -13,7 +13,6 @@ class Student_model extends CI_Model {
  * For efficient search that corrects typos automatically find the appropriate way
  *
  */
-
 	
 	
 }

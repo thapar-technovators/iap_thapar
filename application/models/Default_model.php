@@ -14,6 +14,8 @@ class Default_model extends CI_Model {
  *
  */
 
+
+/*This function returns the branches that will be using the interface for scalability purpose*/
 function getBranches()
 {
 	$query = $this->db->query("SELECT branch FROM branch");
@@ -59,5 +61,47 @@ function send_mail($to,$subject,$body)
 	else
 		return true;
 }
+
+/*This function generates a random password of length 6 that will be sent through email*/
+function generatePassword() 
+	{
+        $alpha = "abcdefghijklmnopqrstuvwxyz";
+        $alpha_upper = strtoupper($alpha);
+        $numeric = "0123456789";
+        $special = ".-+=_,!@$#*%<>[]{}";
+        $chars = "";
+        $alpha_small = 'on';
+        $alpha_cap = 'on';
+        $num = 'on';
+        $special_char = 'off';
+        
+        if ($alpha_small == 'on')
+            $chars .= $alpha;
+
+        if ($alpha_cap == 'on')
+            $chars .= $alpha_upper;
+
+        if ($num == 'on')
+            $chars .= $numeric;
+
+        if ($special_char == 'on')
+            $chars .= $special;
+        $length = 6;
+        $len = strlen($chars);
+        $pw = '';
+        for ($i = 0; $i < $length; $i++)
+            $pw .= substr($chars, rand(0, $len - 1), 1);
+// the finished password
+        $pw = str_shuffle($pw);
+        return $pw;
+    }
+
+/*This function hashes the password using a secure cryptographic function BCRYPT and then returns the hash*/
+    function passwordHash($password) 
+    {
+    	$options = ['cost' => 12,
+    	'salt' => 'wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit'];
+		return password_hash($password, PASSWORD_BCRYPT, $options);
+    }
 }
 ?>
