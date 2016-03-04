@@ -58,8 +58,12 @@ class Register extends CI_Controller {
 			$data['error']=array();
 			$this->load->helper('email');
 			/*Convert the name into title case using javascript*/
+			if($this->Default_model->isEmpty($data['name']))
+				array_push($data['error'], 'Please enter your Name!');
+			if($this->Default_model->isEmpty($data['email']))
+				array_push($data['error'], 'Please enter your Email!');
 			if(!valid_email($data['email']))
-				array_push($data['error'], 'The email field cannot be empty!');
+				array_push($data['error'], 'The email is not in proper format!');
 			if($this->Default_model->isEmpty($data['registration']))
 				array_push($data['error'], 'Please enter your Roll Number!');
 			if($this->Default_model->isEmpty($data['branch']))
