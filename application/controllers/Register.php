@@ -38,7 +38,7 @@ class Register extends CI_Controller {
 	public function student()
 	{
 		$this->load->model('Student_model');
-		$data['title']="Register | Student";
+		$data['title']="Registration Form | Student";
 		$data['branches']=$this->Student_model->getBranches();	
 		if($this->input->post())
 		{
@@ -102,10 +102,60 @@ class Register extends CI_Controller {
 
 	public function faculty()
 	{
-		$data['title']="Register | Faculty";
-		$this->load->view('templates/front_header',$data);
-		$this->load->view('templates/register/faculty',$data);
-		$this->load->view('templates/front_footer',$data);
+		$this->load->model('Faculty_model');
+		$data['title']="Registration Form | Faculty";
+		if($this->input->post())
+		{
+			//Need not apply TRUE tags to every post field since the global XSS has been set to true
+			$data['registration_id']=$this->input->post('registration');
+			$data['initials']=$this->input->post('initials');
+			$data['name']=$this->input->post('name');
+			$data['designation']=$this->input->post('designation');
+			$data['phone']=$this->input->post('phone');
+			$data['email']=$this->input->post('email');
+			/*Now check for every error*/
+			$data['error']=array();
+			$this->load->helper('email');
+			/*Convert the name into title case using javascript*/
+			if(!valid_email($data['email']))
+				array_push($data['error'], 'The email field cannot be empty!');
+			if($this->Default_model->isEmpty($data['registration_id']))
+				array_push($data['error'], 'Please enter your registration id!');
+			if($this->Default_model->isEmpty($data['initials']))
+				array_push($data['error'], 'The initials cannot be left empty!');
+			if($this->Default_model->isEmpty($data['name']))
+				array_push($data['error'], 'The name field cannot be left empty!');
+			if($this->Default_model->isEmpty($data['designation']))
+				array_push($data['error'], 'The designation field cannot be left empty!');
+			if($this->Default_model->isEmpty($data['phone']))
+				array_push($data['error'], 'The Phone field cannot be left empty!');
+			if(isset($data['error'][0]))
+			{
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/register/faculty',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+			else
+			{
+				if($this->Faculty_model->sendEmailAndRegister($data))
+				{
+					array_push($data['error'], 'Registration SUCCESS! Password has been sent to your email ID. Please check your mail and then login.');
+				}
+				else
+				{
+					array_push($data['error'], 'Some Error Occurred. Please Try Again'); //Error handling on duplicate email left and has to be done later
+				}
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/register/faculty',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+		}
+		else
+		{
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/register/faculty',$data);
+			$this->load->view('templates/front_footer',$data);
+		}
 	}
 
 	public function mentor()

@@ -2,7 +2,7 @@
     <section id="student-login" class="section text-center">
         <div class="container">
             <div class="hidden-md hidden-lg"><hr></div>
-            <h2 class="section-title">Registration Form | Student</h2>
+            <h2 class="section-title"><?php echo $title ?></h2>
             <div class="row">
 
                 <!-- CONTACT FORM -->
@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <label for="city">City<span style="color:red;">*</span></label>
-                            <input type="text" name="city" id="city" required class="form-control" placeholder="9988776655 (10 digits. Please don't add country code)">
+                            <input type="text" name="city" id="city" required class="form-control" placeholder="Pune">
                         </div>
                         <div class="form-group">
                             <label for="doj">Date of Joining</label>
@@ -81,7 +81,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
-                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
+                        <a href="<?php echo base_url();?>index.php/login/faculty"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 text-center wow col-xs-12 " data-wow-duration="1s">
                         <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Forgot Password</a>

@@ -2,12 +2,29 @@
     <section id="faculty-login" class="section text-center">
         <div class="container">
             <div class="hidden-md hidden-lg"><hr></div>
-            <h2 class="section-title">Registration Form | Faculty</h2>
+            <h2 class="section-title"><?php echo $title ?></h2>
             <div class="row">
 
                 <!-- CONTACT FORM -->
+                <?php 
+                if(isset($error))
+                {
+                foreach ($error as $error_item): ?>
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $error_item;?>
+                </div>
+                <?php endforeach;
+                } ?>
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
-                    <form action="<?php echo base_url().'index.php/register/faculty'?>" method="post" class="contact-form  wow fadeInLeft">
+
+                <?php $attributes = array('class' => 'contact-form  wow fadeInLeft');
+                echo form_open('register/faculty', $attributes);?>
+
+                        <div class="form-group">
+                            <label for="registration">Registration ID<span style="color:red;">*</span></label>
+                            <input type="number" name="registration" id="registration" required class="form-control" placeholder="Your Registration id (Eg. 101303034)">
+                        </div>
                         <div class="form-group">
                             <label for="initials">Initials<span style="color:red;">*</span></label>
                             <select class="form-control" id="initials" name="initials">
@@ -44,7 +61,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
-                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
+                        <a href="<?php echo base_url();?>index.php/login/faculty"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 text-center wow col-xs-12 " data-wow-duration="1s">
                         <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Forgot Password</a>
