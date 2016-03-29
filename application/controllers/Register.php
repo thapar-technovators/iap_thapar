@@ -165,10 +165,57 @@ class Register extends CI_Controller {
 
 	public function mentor()
 	{
+		$this->load->model('Mentor_model');
 		$data['title']="Register | Mentor";
-		$this->load->view('templates/front_header',$data);
-		$this->load->view('templates/register/mentor',$data);
-		$this->load->view('templates/front_footer',$data);
+		if($this->input->post())
+		{
+			//Need not apply TRUE tags to every post field since the global XSS has been set to true
+			$data['initials']=$this->input->post('initials');
+			$data['name']=$this->input->post('name');
+			$data['phone']=$this->input->post('phone');
+			$data['email']=$this->input->post('email');
+			$data['company']=$this->input->post('company');
+			/*Now check for every error*/
+			$data['error']=array();
+			$this->load->helper('email');
+			/*Convert the name into title case using javascript*/
+			if(!valid_email($data['email']))
+				array_push($data['error'], 'The email field cannot be empty!');
+			if($this->Default_model->isEmpty($data['initials']))
+				array_push($data['error'], 'The initials cannot be left empty!');
+			if($this->Default_model->isEmpty($data['name']))
+				array_push($data['error'], 'The name field cannot be left empty!');
+			if($this->Default_model->isEmpty($data['company']))
+				array_push($data['error'], 'The company field cannot be left empty!');
+			if($this->Default_model->isEmpty($data['phone']))
+				array_push($data['error'], 'The Phone field cannot be left empty!');
+			if(isset($data['error'][0]))
+			{
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/register/mentor',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+			else
+			{
+				if($this->Mentor_model->sendEmailAndRegister($data))
+				{
+					array_push($data['error'], 'Registration SUCCESS! Password has been sent to your email ID. Please check your mail and then login.');
+				}
+				else
+				{
+					array_push($data['error'], 'Some Error Occurred. Please Try Again'); //Error handling on duplicate email left and has to be done later
+				}
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/register/mentor',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+		}
+		else
+		{
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/register/mentor',$data);
+			$this->load->view('templates/front_footer',$data);
+		}
 	}
 	//Sample function to test PHP Mailer
 

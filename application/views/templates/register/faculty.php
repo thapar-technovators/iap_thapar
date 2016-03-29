@@ -1,4 +1,4 @@
-<!-- Faculty Login -->
+<!-- Faculty registration -->
     <section id="faculty-login" class="section text-center">
         <div class="container">
             <div class="hidden-md hidden-lg"><hr></div>
