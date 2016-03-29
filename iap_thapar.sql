@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2016 at 01:14 AM
+-- Generation Time: Mar 30, 2016 at 01:24 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -74,9 +74,9 @@ INSERT INTO `faculty` (`registration_id`, `initials`, `name`, `password`, `phone
 CREATE TABLE IF NOT EXISTS `mentor` (
   `initials` varchar(10) NOT NULL,
   `name` varchar(250) NOT NULL,
-  `phone` int(20) NOT NULL,
+  `phone` bigint(20) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `company` int(100) NOT NULL,
+  `company` varchar(100) NOT NULL,
   `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -85,7 +85,9 @@ CREATE TABLE IF NOT EXISTS `mentor` (
 --
 
 INSERT INTO `mentor` (`initials`, `name`, `phone`, `email`, `company`, `password`) VALUES
-('Mr.', 'Abhinav Garg', 2147483647, 'abhinavgarg017@gmail.com', 0, '$2y$10$wanttocrackitokaythenOn8pJMiMInc6e/YOlGdfZz2aJbpqROoq');
+('Mr.', 'Abhinav Garg', 2147483647, 'abhinavgarg017@gmail.com', '0', '$2y$10$wanttocrackitokaythenOn8pJMiMInc6e/YOlGdfZz2aJbpqROoq'),
+('Mr.', 'adoo', 99999999999999, 'arushngpl.16@gmail.com', 'microsoft', '$2y$10$wanttocrackitokaythenOn8pJMiMInc6e/YOlGdfZz2aJbpqROoq'),
+('Mr.', 'aadoo', 2147483647, 'arushngpl16@gmail.com', 'microsoft', '$2y$10$wanttocrackitokaythenOn8pJMiMInc6e/YOlGdfZz2aJbpqROoq');
 
 -- --------------------------------------------------------
 
