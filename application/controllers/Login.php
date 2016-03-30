@@ -23,6 +23,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->output->enable_profiler(TRUE);
+		$this->load->model('Default_model');
 	}
 	public function index($page = 'student')
 	{
@@ -55,6 +56,54 @@ class Login extends CI_Controller {
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/login/mentor',$data);
 		$this->load->view('templates/front_footer',$data);
+	}
+
+	public function admin()
+	{
+		$data['title']="Login | Training Coordinator";
+		$this->load->model('Admin_model');
+		if($this->input->post())
+		{
+			//Need not apply TRUE tags to every post field since the global XSS has been set to true
+			$data['registration_id']=$this->input->post('registration');
+			$data['password']=$this->input->post('password');
+			/*Now check for every error*/
+			$data['error']=array();
+			/*Convert the name into title case using javascript*/
+			if($this->Default_model->isEmpty($data['registration_id']))
+				array_push($data['error'], 'Please enter your registration id!');
+			if($this->Default_model->isEmpty($data['password']))
+				array_push($data['error'], 'The password field cannot be left empty!');
+			if(isset($data['error'][0]))
+			{
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/login/admin',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+			else
+			{
+				$data['password']=$this->Admin_model->passwordHash($data['password']);
+				if($this->Admin_model->checkLogin($data['registration_id'],$data['password']))
+				{
+					$this->load->view('admin/admin_header',$data);
+					$this->load->view('admin/home',$data);
+					$this->load->view('admin/admin_footer',$data);
+				}
+				else
+				{
+					array_push($data['error'], 'Incorrect Email ID or Password!');
+					$this->load->view('templates/front_header',$data);
+					$this->load->view('templates/login/admin',$data);
+					$this->load->view('templates/front_footer',$data);
+				}
+			}
+		}
+		else
+		{
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/login/admin',$data);
+			$this->load->view('templates/front_footer',$data);
+		}
 	}
 
 

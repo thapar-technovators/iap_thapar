@@ -1,36 +1,7 @@
 <?php
 
-class Faculty_model extends CI_Model {
+class Admin_model extends CI_Model {
 
-
-	function sendEmailAndRegister($data1)
-	{
-		$password=$this->generatePassword();
-		$this->send_mail($data1['email'],"Successfully Registered","Hey I am Arush password: $password");
-		$data1['password']=$this->passwordHash($password);
-		if($this->registerUser($data1))
-			return true;
-		else
-			return false;
-	}
-
-	function registerUser($data1)
-	{
-		$data = array(
-        'registration_id' => $data1['registration_id'],
-        'initials' => $data1['initials'],
-        'password' => $data1['password'],
-        'name' => $data1['name'],
-        'designation' => $data1['designation'],
-        'phone' => $data1['phone'],
-        'email' => $data1['email']
-        );
-		if($this->db->insert('faculty', $data))
-			return true;
-		else
-			return false;
-
-	}
 
 	function send_mail($to,$subject,$body)
 	{
@@ -98,6 +69,19 @@ class Faculty_model extends CI_Model {
 		$options = ['salt' => 'wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit'];
 		$password.=$salt;
 		return password_hash($password, PASSWORD_BCRYPT,$options);
+	}
+
+
+	function checkLogin($reg_id,$password)
+	{
+		$len="SELECT * FROM `administrator` where registration_id='$reg_id' and password='$password'";
+		$query = $this->db->query($len);
+		$row = $query->row();
+		if (isset($row))
+       		return true;
+       	else
+       		return false;
+
 	}
 }
 
