@@ -16,7 +16,7 @@
                 <?php endforeach;
                 } ?>
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
-                    <form action="<?php echo base_url();?>index.php/login/faculty_auth" method="post" class="contact-form  wow fadeInLeft">
+                    <form action="<?php echo base_url();?>index.php/login/faculty" method="post" class="contact-form  wow fadeInLeft">
                         <div class="form-group">
                             <label for="registration">Registration ID</label>
                             <div class="input-group">
