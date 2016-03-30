@@ -116,14 +116,27 @@ class Student_model extends CI_Model {
     }
 
 /*This function hashes the password using a secure cryptographic function BCRYPT and then returns the hash*/
-    function passwordHash($password) 
+     function passwordHash($password) 
     {
-		$password='arush';
 		$salt='wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit';
+		$options = ['salt' => 'wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit'];
 		$password.=$salt;
-		return password_hash($password, PASSWORD_BCRYPT);
+		return password_hash($password, PASSWORD_BCRYPT,$options);
 	}
 
+	function authenticate_student($user){
+
+		$email = $user['email'];
+		$password = $user['password'];
+		$hashed_pass = $this->passwordHash($password);
+
+		$query = $this->db->query("SELECT email,password FROM student WHERE email='$email' AND password='$hashed_pass'");
+		if($query->num_rows()>0)
+				return true;
+		else
+			return false; 
+
+	}
 
 }
 ?>
