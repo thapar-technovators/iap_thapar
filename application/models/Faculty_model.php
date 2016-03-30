@@ -94,10 +94,32 @@ class Faculty_model extends CI_Model {
 /*This function hashes the password using a secure cryptographic function BCRYPT and then returns the hash*/
     function passwordHash($password) 
     {
-		$salt='wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit';
-		$options = ['salt' => 'wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit'];
+		$salt = "wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit";
+		$options = [
+    'salt' => 'wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit'
+];
 		$password.=$salt;
 		return password_hash($password, PASSWORD_BCRYPT,$options);
+		
+	}
+
+	/*login authentication*/
+	function auth($data2)
+	{
+		$password = $data2['password'];
+		$registration_id = $data2['registration_id'];
+		$password = $this->passwordHash($password);
+		$sql = "SELECT * from faculty WHERE email='$registration_id' and password = '$password'";
+		
+		$query = $this->db->query($sql);
+		if($query->num_rows() > 0) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 

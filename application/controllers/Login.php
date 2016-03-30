@@ -106,5 +106,53 @@ class Login extends CI_Controller {
 		}
 	}
 
+	public function faculty_auth()
+	{
+		$this->load->model('Faculty_model');
+		$this->load->model('Default_model');
+
+		$data['title']="Authentication | Faculty";
+		
+		if($this->input->post())
+		{
+			$data['registration_id']=$this->input->post('registration');
+			$data['password']=$this->input->post('pass');
+
+			/*Now check for every error*/
+			$data['error']=array();
+
+			if($this->Default_model->isEmpty($data['registration_id']))
+				array_push($data['error'], 'Please enter your registration id!');
+			if($this->Default_model->isEmpty($data['password']))
+				array_push($data['error'], 'Please enter your Password!');
+			if(isset($data['error'][0]))
+			{
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/login/faculty',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+			else 
+			{
+				if($this->Faculty_model->auth($data))
+				{
+					$this->load->view('templates/dashboard/faculty');
+				}
+				else
+				{
+					array_push($data['error'], 'Some Error Occurred. Please Try Again'); 
+					$this->load->view('templates/front_header',$data);
+					$this->load->view('templates/login/faculty',$data);
+					$this->load->view('templates/front_footer',$data);
+				}
+			}
+		}
+		else
+		{
+			array_push($data['error'], 'Please Try Again'); 
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/login/faculty',$data);
+			$this->load->view('templates/front_footer',$data);
+		}
+	}
 
 }

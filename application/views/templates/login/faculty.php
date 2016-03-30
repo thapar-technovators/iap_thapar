@@ -5,8 +5,18 @@
             <h2 class="section-title">Faculty Login</h2>
             <div class="row">
                 <!-- CONTACT FORM -->
+                <?php 
+                if(isset($error))
+                {
+                foreach ($error as $error_item): ?>
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $error_item;?>
+                </div>
+                <?php endforeach;
+                } ?>
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
-                    <form action="#" method="post" class="contact-form  wow fadeInLeft">
+                    <form action="<?php echo base_url();?>index.php/login/faculty_auth" method="post" class="contact-form  wow fadeInLeft">
                         <div class="form-group">
                             <label for="registration">Registration ID</label>
                             <div class="input-group">
@@ -15,7 +25,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="password" required class="form-control" placeholder="Password">
+                            <input type="password" name="pass" required class="form-control" placeholder="Password">
                         </div>
                         <button type="submit" class="pull-left send-button button">Login</button>
                     </form>
