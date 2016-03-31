@@ -138,5 +138,22 @@ class Student_model extends CI_Model {
 
 	}
 
+	function details($email){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from student WHERE email='$email'");
+		
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->row();
+			//$data = array('true',$data_fetch);
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
 ?>

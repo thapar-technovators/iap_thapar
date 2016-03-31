@@ -59,23 +59,23 @@ class Register extends CI_Controller {
 			$this->load->helper('email');
 			/*Convert the name into title case using javascript*/
 			if($this->Default_model->isEmpty($data['name']))
-				array_push($data['error'], 'Please enter your Name!');
+				array_push($data['error'], array('Please enter your Name!',0));
 			if($this->Default_model->isEmpty($data['email']))
-				array_push($data['error'], 'Please enter your Email!');
+				array_push($data['error'], array('Please enter your Email!',0));
 			if(!valid_email($data['email']))
-				array_push($data['error'], 'The email is not in proper format!');
+				array_push($data['error'], array('The email is not in proper format!',0));
 			if($this->Default_model->isEmpty($data['registration']))
-				array_push($data['error'], 'Please enter your Roll Number!');
+				array_push($data['error'], array('Please enter your Roll Number!',0));
 			if($this->Default_model->isEmpty($data['branch']))
-				array_push($data['error'], 'The Branch field cannot be left empty!');
+				array_push($data['error'], array('The Branch field cannot be left empty!',0));
 			if($this->Default_model->isEmpty($data['semester']))
-				array_push($data['error'], 'The Semester field cannot be left empty!');
+				array_push($data['error'], array('The Semester field cannot be left empty!',0));
 			if($this->Default_model->isEmpty($data['phone']))
-				array_push($data['error'], 'The Phone field cannot be left empty!');
+				array_push($data['error'], array('The Phone field cannot be left empty!',0));
 			if($this->Default_model->isEmpty($data['company']))
-				array_push($data['error'], 'The Company field cannot be left empty!');
+				array_push($data['error'], array('The Company field cannot be left empty!',0));
 			if($this->Default_model->isEmpty($data['city']))
-				array_push($data['error'], 'The City field cannot be left empty!');
+				array_push($data['error'], array('The City field cannot be left empty!',0));
 			if(isset($data['error'][0]))
 			{
 				$this->load->view('templates/front_header',$data);
@@ -86,11 +86,11 @@ class Register extends CI_Controller {
 			{
 				if($this->Student_model->sendEmailAndRegister($data))
 				{
-					array_push($data['error'], 'Registration SUCCESS! Password has been sent to your email ID. Please check your mail and then login.');
+					array_push($data['error'], array('Registration SUCCESS! Password has been sent to your email ID. Please check your mail and then login.',1));
 				}
 				else
 				{
-					array_push($data['error'], 'Some Error Occurred. Please Try Again'); //Error handling on duplicate email left and has to be done later
+					array_push($data['error'], array('Some Error Occurred. Please Try Again',0)); //Error handling on duplicate email left and has to be done later
 				}
 				$this->load->view('templates/front_header',$data);
 				$this->load->view('templates/register/student',$data);

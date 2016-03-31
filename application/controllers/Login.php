@@ -64,12 +64,24 @@ class Login extends CI_Controller {
 			{
 				if($this->Student_model->authenticate_student($data))
 				{
-					$this->load->view('student/index',$data);
+
+					$this->load->library('session');
+					$this->session->set_userdata('user_type', 'Student');	//tol = type of login
+					$this->session->set_userdata('uid', $data['email']);
+					
+
+					$data_fetch = array();
+					$data_fetch = $this->Student_model->details($data['email']);
+					$fname= $data_fetch->name; //fname = full name (initials + name)
+					$this->session->set_userdata('full_name', $fname);
+					$this->load->view('student/student_header');
+					$this->load->view('student/home');
+					$this->load->view('student/student_footer');
 					
 				}
 				else
 				{
-					array_push($data['error'], 'Incorrect username or password!'); //Error handling on duplicate email left and has to be done later
+					array_push($data['error'], array('Incorrect username or password!',0));  //Error handling on duplicate email left and has to be done later
 				$this->load->view('templates/front_header',$data);
 				$this->load->view('templates/login/student',$data);
 				$this->load->view('templates/front_footer',$data);
@@ -117,12 +129,12 @@ class Login extends CI_Controller {
 				if($this->Faculty_model->auth($data))
 				{
 					$this->load->library('session');
-					$this->session->set_userdata('tol', 'Faculty');	//tol = type of login
+					$this->session->set_userdata('user_type', 'Faculty');	//tol = type of login
 					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique Identification IDs are emails only
 					$data_fetch = array();
 					$data_fetch = $this->Faculty_model->details($data);
 					$fname= $data_fetch['initials']." ".$data_fetch['fname']; //fname = full name (initials + name)
-					$this->session->set_userdata('fname', $fname);
+					$this->session->set_userdata('full_name', $fname);
 					$this->load->view('faculty/faculty_header');
 					$this->load->view('faculty/home');
 					$this->load->view('faculty/faculty_footer');

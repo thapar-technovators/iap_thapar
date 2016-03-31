@@ -8,13 +8,17 @@
             <?php 
                 if(isset($error))
                 {
-                foreach ($error as $error_item): ?>
-                <div class="alert alert-info alert-dismissible" role="alert">
+                foreach ($error as $error_item):
+                ?>
+                <div class=<?php if($error_item[1]==0) echo "'alert alert-info alert-danger'";
+                else echo "'alert alert-info alert-success'";?> role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <?php echo $error_item;?>
+                    <?php echo $error_item[0];?>
                 </div>
                 <?php endforeach;
-                } ?>
+                } 
+                ?>
+
 
                 <!-- CONTACT FORM -->
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
