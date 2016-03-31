@@ -19,7 +19,7 @@
                 <!-- CONTACT FORM -->
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
                 <?php $attributes = array('class' => 'contact-form  wow fadeInLeft');
-                echo form_open('profile/student', $attributes);?>
+                echo form_open('login/student', $attributes);?>
                         <div class="form-group">
                             <label for="registration">Registration ID</label>
                             <input type="email" name="registration" id="registration" required class="form-control" placeholder="Registration ID">

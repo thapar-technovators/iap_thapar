@@ -37,17 +37,61 @@ class Login extends CI_Controller {
 	public function student()
 	{
 		$data['title']="Login | Student";
-		$this->load->view('templates/front_header',$data);
-		$this->load->view('templates/login/student',$data);
-		$this->load->view('templates/front_footer',$data);
+		//$this->load->view('templates/front_header',$data);
+		//$this->load->view('templates/login/student',$data);
+		//$this->load->view('templates/front_footer',$data);
+		$this->load->model('Student_model');
+		$this->load->model('Default_model');
+		if($this->input->post())
+		{
+		$data['email'] = $this->input->post('registration');
+		$data['password'] = $this->input->post('password');
+		$this->load->helper('email');	
+		$data['error']=array();
+		if($this->Default_model->isEmpty($data['email']))
+				array_push($data['error'], 'Please enter your Email!');
+		if($this->Default_model->isEmpty($data['password']))
+				array_push($data['error'], 'Please enter your Password!');
+		if(!valid_email($data['email']))
+				array_push($data['error'], 'The email is not in proper format!');
+			if(isset($data['error'][0]))
+			{
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/login/student',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+			else
+			{
+				if($this->Student_model->authenticate_student($data))
+				{
+					$this->load->view('templates/dashboard/student',$data);
+					
+				}
+				else
+				{
+					array_push($data['error'], 'Incorrect username or password!'); //Error handling on duplicate email left and has to be done later
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/login/student',$data);
+				$this->load->view('templates/front_footer',$data);
+				}
+				
+			}
+		}
+		else
+		{
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/login/student',$data);
+			$this->load->view('templates/front_footer',$data);
+		}
+
 	}
 
 	public function faculty()
 	{
 		$data['title']="Login | Faculty";
-		$this->load->view('templates/front_header',$data);
-		$this->load->view('templates/login/faculty',$data);
-		$this->load->view('templates/front_footer',$data);
+		
+		$this->load->model('Faculty_model');
+		$this->load->model('Default_model');
 
 		if($this->input->post())
 		{
@@ -84,12 +128,14 @@ class Login extends CI_Controller {
 		}
 		else
 		{
-			array_push($data['error'], 'Please Try Again'); 
+			//array_push($data['error'], 'Please Try Again'); 
 			$this->load->view('templates/front_header',$data);
 			$this->load->view('templates/login/faculty',$data);
 			$this->load->view('templates/front_footer',$data);
 		}
 	}
+
+
 
 	public function mentor()
 	{

@@ -1,4 +1,4 @@
-    <!-- Mentor Login -->
+    <!-- Student Success -->
     <section id="mentor-login" class="section text-center">
         <div class="container">
             <div class="hidden-md hidden-lg"><hr></div>
