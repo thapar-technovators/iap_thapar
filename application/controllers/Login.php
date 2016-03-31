@@ -66,7 +66,7 @@ class Login extends CI_Controller {
 				{
 
 					$this->load->library('session');
-					$this->session->set_userdata('user_type', 'Student');	//tol = type of login
+					$this->session->set_userdata('user_type', 'Student');	
 					$this->session->set_userdata('uid', $data['email']);
 					
 
@@ -112,11 +112,13 @@ class Login extends CI_Controller {
 
 			/*Now check for every error*/
 			$data['error']=array();
-
+			$this->load->helper('email');	
 			if($this->Default_model->isEmpty($data['registration_id']))
 				array_push($data['error'], 'Please enter your registration id!');
 			if($this->Default_model->isEmpty($data['password']))
 				array_push($data['error'], 'Please enter your Password!');
+			if(!valid_email($data['registration_id']))
+				array_push($data['error'], 'The email is not in proper format!');
 			if(isset($data['error'][0]))
 			{
 				$this->load->view('templates/front_header',$data);
@@ -129,8 +131,8 @@ class Login extends CI_Controller {
 				if($this->Faculty_model->auth($data))
 				{
 					$this->load->library('session');
-					$this->session->set_userdata('user_type', 'Faculty');	//tol = type of login
-					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique Identification IDs are emails only
+					$this->session->set_userdata('user_type', 'Faculty');	
+					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique IDentification are emails only
 					$data_fetch = array();
 					$data_fetch = $this->Faculty_model->details($data);
 					$fname= $data_fetch['initials']." ".$data_fetch['fname']; //fname = full name (initials + name)

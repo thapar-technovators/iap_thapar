@@ -75,6 +75,7 @@
     </section>
     <!-- END CONTACT US -->
     <div class="footer-content text-center">
-        <p>Your IP Address: <?php echo $ip_address; ?> accessing from <?php echo $user_agent; ?> is being monitored for Security Purposes.</p>
+        <p>Your IP Address: <?php echo $ip_address; //$ip_address and $user_agent not working after faculty log out function
+        ?> accessing from <?php echo $user_agent; ?> is being monitored for Security Purposes.</p>
                         
     </div>

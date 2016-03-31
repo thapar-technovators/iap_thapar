@@ -132,10 +132,9 @@ class Faculty_model extends CI_Model {
 		$query = $this->db->query($sql);
 		if($query->num_rows() > 0) 
 		{
-			foreach ($query->result() as $row) {
-				$data_fetch['fname'] = $row->name;
-				$data_fetch['initials'] = $row->initials;
-			}
+			$row = $query->row();
+			$data_fetch['fname'] = $row->name;
+			$data_fetch['initials'] = $row->initials;
 			return $data_fetch;
 		}
 		else
@@ -143,6 +142,26 @@ class Faculty_model extends CI_Model {
 			return false;
 		}
 	}
+
+	function cityfetch()
+	{
+		$sql = "SELECT DISTINCT city from training_data WHERE admin_approve=1";
+		$city_fetched = array();
+	
+	$query = $this->db->query($sql);
+	if($query->num_rows() > 0) 
+	{
+		foreach ($query->result() as $row)
+		{
+   			array_push($city_fetched,$row->city);
+		}
+		return $city_fetched;
+	}
+	else
+	{
+		return false;
+	}
+}
 }
 
 ?>

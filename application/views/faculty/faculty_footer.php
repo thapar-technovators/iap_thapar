@@ -1,7 +1,7 @@
                 <!--BEGIN FOOTER-->
                 <div id="footer">
                     <div class="copyright">
-                        <a href="http://www.thapar.edu">2014 © KAdmin Responsive Multi-Purpose Template</a></div>
+                        <a href="http://www.thapar.edu">2016 © Thapar University</a></div>
                 </div>
                 <!--END FOOTER-->
             </div>
