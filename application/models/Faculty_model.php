@@ -110,11 +110,33 @@ class Faculty_model extends CI_Model {
 		$registration_id = $data2['registration_id'];
 		$password = $this->passwordHash($password);
 		$sql = "SELECT * from faculty WHERE email='$registration_id' and password = '$password'";
-		
+		$dfetch = array();
 		$query = $this->db->query($sql);
 		if($query->num_rows() > 0) 
 		{
 			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function details($data3)
+	{
+		$password = $data3['password'];
+		$registration_id = $data3['registration_id'];
+		$password = $this->passwordHash($password);
+		$sql = "SELECT * from faculty WHERE email='$registration_id' and password = '$password'";
+		$data_fetch =array();
+		$query = $this->db->query($sql);
+		if($query->num_rows() > 0) 
+		{
+			foreach ($query->result() as $row) {
+				$data_fetch['fname'] = $row->name;
+				$data_fetch['initials'] = $row->initials;
+			}
+			return $data_fetch;
 		}
 		else
 		{

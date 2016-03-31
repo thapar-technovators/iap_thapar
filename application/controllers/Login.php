@@ -64,7 +64,7 @@ class Login extends CI_Controller {
 			{
 				if($this->Student_model->authenticate_student($data))
 				{
-					$this->load->view('templates/dashboard/student',$data);
+					$this->load->view('student/index',$data);
 					
 				}
 				else
@@ -113,9 +113,19 @@ class Login extends CI_Controller {
 			}
 			else 
 			{
+				
 				if($this->Faculty_model->auth($data))
 				{
-					$this->load->view('templates/dashboard/faculty');
+					$this->load->library('session');
+					$this->session->set_userdata('tol', 'Faculty');	//tol = type of login
+					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique Identification IDs are emails only
+					$data_fetch = array();
+					$data_fetch = $this->Faculty_model->details($data);
+					$fname= $data_fetch['initials']." ".$data_fetch['fname']; //fname = full name (initials + name)
+					$this->session->set_userdata('fname', $fname);
+					$this->load->view('faculty/faculty_header');
+					$this->load->view('faculty/home');
+					$this->load->view('faculty/faculty_footer');
 				}
 				else
 				{
@@ -128,7 +138,7 @@ class Login extends CI_Controller {
 		}
 		else
 		{
-			//array_push($data['error'], 'Please Try Again'); 
+			
 			$this->load->view('templates/front_header',$data);
 			$this->load->view('templates/login/faculty',$data);
 			$this->load->view('templates/front_footer',$data);
