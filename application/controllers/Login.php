@@ -24,6 +24,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
+		$this->load->helper('url');
 	}
 	public function index($page = 'student')
 	{
@@ -80,10 +81,10 @@ class Login extends CI_Controller {
 					//$company_data = array();
 					$data['company_data'] = $this->Student_model->company_details();
 					//$data1 = array('cities' => $cities);
-					$this->load->view('student/student_header');
-					$this->load->view('student/home',$data);
-					$this->load->view('student/student_footer');
-					
+					//$this->load->view('student/student_header');
+					//$this->load->view('student/home',$data);
+					//$this->load->view('student/student_footer');
+					redirect('student', 'refresh');
 					
 				}
 				else
@@ -144,9 +145,10 @@ class Login extends CI_Controller {
 					$data_fetch = $this->Faculty_model->details($data);
 					$fname= $data_fetch['initials']." ".$data_fetch['fname']; //fname = full name (initials + name)
 					$this->session->set_userdata('full_name', $fname);
-					$this->load->view('faculty/faculty_header');
-					$this->load->view('faculty/home');
-					$this->load->view('faculty/faculty_footer');
+					//$this->load->view('faculty/faculty_header');
+					//$this->load->view('faculty/home');
+					//$this->load->view('faculty/faculty_footer');
+					redirect('faculty', 'refresh');
 				}
 				else
 				{

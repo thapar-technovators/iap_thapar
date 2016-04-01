@@ -56,9 +56,10 @@ class faculty extends CI_Controller {
 		$this->session->unset_userdata('user_type');
 		$this->session->unset_userdata('uid');
 		$this->session->unset_userdata('full_name');
-		$this->load->view('templates/front_header');
-		$this->load->view('templates/index.php');
-		$this->load->view('templates/front_footer');
+		//$this->load->view('templates/front_header');
+		//$this->load->view('templates/index.php');
+		//$this->load->view('templates/front_footer');
+		redirect('login/faculty', 'refresh');
 	}
 
 	public function city_preferences()
