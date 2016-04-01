@@ -67,11 +67,27 @@ class faculty extends CI_Controller {
 		$cities = array();
 		$cities = $this->Faculty_model->cityfetch();
 		$data1 = array('cities' => $cities);
+		
+		if($this->input->post())
+		{
+			$data['pref1'] = $this->input->post('pref1');
+			$data['pref2'] = $this->input->post('pref2');
+			$data['pref3'] = $this->input->post('pref3');
+			$data['email'] = $_SESSION["uid"];
+			if($this->Faculty_model->city_pref_insert($data)) {
+			$this->session->set_flashdata('data', $data);
+			$this->session->set_flashdata('success', 1);
+			redirect('faculty/city_preferences', 'refresh'); 
+			} else {
+			$this->session->set_flashdata('data', $data);
+			$this->session->set_flashdata('success', 0);
+			redirect('faculty/city_preferences', 'refresh'); 
+			}
+		}
+		$data1['data'] = $this->session->flashdata('data');
+		$data1['success'] = $this->session->flashdata('success');
 		$this->load->view('faculty/faculty_header');
 		$this->load->view('faculty/city',$data1);
 		$this->load->view('faculty/faculty_footer');
-		if($this->input->post())
-		{
-		}
 	}
 }

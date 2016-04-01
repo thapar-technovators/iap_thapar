@@ -158,10 +158,28 @@ class Faculty_model extends CI_Model {
 		return $city_fetched;
 	}
 	else
-	{
-		return false;
+		{
+			return false;
+		}
 	}
-}
+
+	function city_pref_insert($data)
+	{
+		$pref1 = $data['pref1'];
+		$pref2 = $data['pref2'];
+		$pref3 = $data['pref3'];
+		$email = $data['email'];
+		$sql = "UPDATE faculty set pref1='$pref1', pref2='$pref2', pref3='$pref3' WHERE email='$email';";
+		if($this->db->query($sql))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
 
 ?>

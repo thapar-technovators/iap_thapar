@@ -19,12 +19,21 @@
 <div class="page-content">
 	<div id="tab-general">
 		<div class="row mb1">
+    <?php
+    if(isset($success) && $success=1 && isset($data)) {
+      echo "<div class='alert alert-success'><strong>Preferences Saved!</strong><br>
+      Preference 1: ".$data['pref1']."<br>
+      Preference 2: ".$data['pref2']."<br> 
+      Preference 3: ".$data['pref3']."<br>
+      </div>";
+    }
+    ?>
 			<div class="col-lg-8">
 										<div class="panel panel-orange">
                                             <div class="panel-heading">
                                                 City form</div>
                                             <div class="panel-body pan">
-                                                <form action="#">
+                                                <form action="<?php echo base_url();?>index.php/faculty/city_preferences" method="post">
                                                 <div class="form-body pal">
                                                 <div class="form-group">
                                                 <?php

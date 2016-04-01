@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2016 at 10:47 AM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.5.30
+-- Generation Time: Apr 01, 2016 at 07:41 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `iap_thapar`
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrator`
 --
 
-CREATE TABLE `administrator` (
+CREATE TABLE IF NOT EXISTS `administrator` (
   `registration_id` varchar(100) NOT NULL,
   `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -44,10 +44,10 @@ INSERT INTO `administrator` (`registration_id`, `password`) VALUES
 -- Table structure for table `branch`
 --
 
-CREATE TABLE `branch` (
+CREATE TABLE IF NOT EXISTS `branch` (
   `id` bigint(20) NOT NULL,
   `branch` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `branch`
@@ -63,46 +63,49 @@ INSERT INTO `branch` (`id`, `branch`) VALUES
 -- Table structure for table `faculty`
 --
 
-CREATE TABLE `faculty` (
+CREATE TABLE IF NOT EXISTS `faculty` (
   `registration_id` bigint(20) NOT NULL,
   `initials` varchar(10) NOT NULL,
   `name` varchar(250) NOT NULL,
   `password` varchar(200) NOT NULL,
   `phone` bigint(20) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `designation` varchar(20) NOT NULL
+  `designation` varchar(20) NOT NULL,
+  `pref1` varchar(100) DEFAULT NULL,
+  `pref2` varchar(100) DEFAULT NULL,
+  `pref3` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `faculty`
 --
 
-INSERT INTO `faculty` (`registration_id`, `initials`, `name`, `password`, `phone`, `email`, `designation`) VALUES
-(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer'),
-(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer'),
-(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer'),
-(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer'),
-(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer'),
-(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer'),
-(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer'),
-(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer'),
-(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer'),
-(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer'),
-(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer'),
-(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer'),
-(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer'),
-(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer'),
-(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer'),
-(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer'),
-(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer'),
-(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer'),
-(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer'),
-(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer'),
-(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer'),
-(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer'),
-(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer'),
-(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer'),
-(101303012, 'Dr.', 'Akshit Arora', '$2y$10$wanttocrackitokaythenO.ywA1dLsskDI4pCII7Qrnvhseb67wtK', 9779022121, 'akshit.arora1995@gmail.com', 'Lecturer');
+INSERT INTO `faculty` (`registration_id`, `initials`, `name`, `password`, `phone`, `email`, `designation`, `pref1`, `pref2`, `pref3`) VALUES
+(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303041, 'Dr.', 'chahak', '$2y$10$k68Khi2TBbcehk9CvVu0YOXMOTtpjw.GCdfq5pp97am96O/uFQkmC', 9041114525, 'chahakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303042, 'Ms.', 'chkg', '$2y$10$tzhxzCDODzyElomshw188e6b5dbS9WJGABbPstdFtUobLZ6e3o7BC', 9041114525, 'chahak.gupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303046, 'Dr.', 'Chk', '$2y$10$uu5GyP0CLGlanjW0sI/WfuaPg8QOu7xdjPOmjnBlatElwTz.r1P/K', 9879605634, 'cha.hakgupta4@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(11111111111, 'Dr.', 'Abhinav Garg', '$2y$10$rQtm1wq.3gJMDP4BjilZxeiEKU2WthgSH6Thpc6ezidnoz.t3HUvq', 999999999999999, 'abhinavgarg017@gmail.com', 'Lecturer', NULL, NULL, NULL),
+(101303012, 'Dr.', 'Akshit Arora', '$2y$10$wanttocrackitokaythenO.ywA1dLsskDI4pCII7Qrnvhseb67wtK', 9779022121, 'akshit.arora1995@gmail.com', 'Lecturer', 'Bangalore', 'New Delhi', 'Pune');
 
 -- --------------------------------------------------------
 
@@ -110,7 +113,7 @@ INSERT INTO `faculty` (`registration_id`, `initials`, `name`, `password`, `phone
 -- Table structure for table `mentor`
 --
 
-CREATE TABLE `mentor` (
+CREATE TABLE IF NOT EXISTS `mentor` (
   `initials` varchar(10) NOT NULL,
   `name` varchar(250) NOT NULL,
   `phone` bigint(20) NOT NULL,
@@ -149,7 +152,7 @@ INSERT INTO `mentor` (`initials`, `name`, `phone`, `email`, `company`, `password
 -- Table structure for table `student`
 --
 
-CREATE TABLE `student` (
+CREATE TABLE IF NOT EXISTS `student` (
   `roll_number` bigint(20) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
@@ -175,7 +178,7 @@ INSERT INTO `student` (`roll_number`, `email`, `password`, `name`, `branch`, `se
 -- Table structure for table `training_data`
 --
 
-CREATE TABLE `training_data` (
+CREATE TABLE IF NOT EXISTS `training_data` (
   `roll_number` bigint(20) NOT NULL,
   `company` varchar(250) DEFAULT NULL,
   `city` varchar(200) DEFAULT NULL,
@@ -214,8 +217,7 @@ ALTER TABLE `branch`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`roll_number`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`roll_number`), ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -225,7 +227,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
