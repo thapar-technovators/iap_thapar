@@ -158,7 +158,7 @@ class Student_model extends CI_Model {
 	function company_details(){
 
 		$data_fetch =array();
-		$query = $this->db->query("SELECT * from training_data");
+		$query = $this->db->query("SELECT DISTINCT company from training_data");
 	//	$data_fetch = $query->result_array();
 		if($query->num_rows() > 0) 
 		{
@@ -170,6 +170,54 @@ class Student_model extends CI_Model {
 		{
 			return false;
 		}
+	}
+	function company_city_list(){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT DISTINCT city from training_data");
+	//	$data_fetch = $query->result_array();
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			//$data = array('true',$data_fetch);
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function set_company_details($document){
+
+		$data_user = $this->details($document['student_email']);
+		$var = $data_user->roll_number;
+			$data = array(
+        'roll_number' => $var,
+        'company' => $document['name'],
+        'city' => $document['city'],
+        'date_of_join' => $document['doj'],
+        'months' => $document['months'],
+        'phase' => '0',
+        'admin_approve' => '1'
+        );
+
+			$query1=$this->db->get_where('training_data', $data);
+
+			if( $query1->num_rows()>0){
+
+					return false;
+			}
+			else{
+				if($this->db->insert('training_data', $data))
+					return true;
+				else
+					return false;
+			}
+
+		
+
+
 	}
 
 }

@@ -34,7 +34,6 @@ class Login extends CI_Controller {
 		$this->load->view('templates/front_footer',$data);
 	}
 
-
 	public function student()
 	{
 		$data['title']="Login | Student";
@@ -79,7 +78,7 @@ class Login extends CI_Controller {
 				//	$this->student->company_details();
 
 					//$company_data = array();
-					$data['company_data'] = $this->Student_model->company_details();
+					
 					//$data1 = array('cities' => $cities);
 					//$this->load->view('student/student_header');
 					//$this->load->view('student/home',$data);
@@ -105,6 +104,7 @@ class Login extends CI_Controller {
 		}
 
 	}
+
 
 	public function faculty()
 	{
