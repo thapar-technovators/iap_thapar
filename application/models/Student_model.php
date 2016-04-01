@@ -155,5 +155,22 @@ class Student_model extends CI_Model {
 		}
 	}
 
+	function company_details(){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from training_data");
+	//	$data_fetch = $query->result_array();
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			//$data = array('true',$data_fetch);
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
 ?>

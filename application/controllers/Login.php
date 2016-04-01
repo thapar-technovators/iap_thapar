@@ -74,9 +74,16 @@ class Login extends CI_Controller {
 					$data_fetch = $this->Student_model->details($data['email']);
 					$fname= $data_fetch->name; //fname = full name (initials + name)
 					$this->session->set_userdata('full_name', $fname);
+				//	$this->load->library('../controllers/student');
+				//	$this->student->company_details();
+
+					//$company_data = array();
+					$data['company_data'] = $this->Student_model->company_details();
+					//$data1 = array('cities' => $cities);
 					$this->load->view('student/student_header');
-					$this->load->view('student/home');
+					$this->load->view('student/home',$data);
 					$this->load->view('student/student_footer');
+					
 					
 				}
 				else
