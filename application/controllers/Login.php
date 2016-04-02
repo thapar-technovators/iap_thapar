@@ -41,7 +41,7 @@ class Login extends CI_Controller {
 		//$this->load->view('templates/login/student',$data);
 		//$this->load->view('templates/front_footer',$data);
 		$this->load->model('Student_model');
-		$this->load->model('Default_model');
+//		$this->load->model('Default_model');
 		if($this->input->post())
 		{
 		$data['email'] = $this->input->post('registration');
@@ -111,7 +111,7 @@ class Login extends CI_Controller {
 		$data['title']="Login | Faculty";
 		
 		$this->load->model('Faculty_model');
-		$this->load->model('Default_model');
+//		$this->load->model('Default_model');
 
 		if($this->input->post())
 		{
@@ -206,8 +206,8 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique IDentification are emails only
 					$data_fetch = array();
 					$data_fetch = $this->Mentor_model->details($data);
-					$fname= $data_fetch['initials']." ".$data_fetch['fname']; //fname = full name (initials + name)
-					$this->session->set_userdata('full_name', $fname);
+					$name= $data_fetch['initials']." ".$data_fetch['name']; //fname = full name (initials + name)
+					$this->session->set_userdata('full_name', $name);
 					//$this->load->view('faculty/faculty_header');
 					//$this->load->view('faculty/home');
 					//$this->load->view('faculty/faculty_footer');

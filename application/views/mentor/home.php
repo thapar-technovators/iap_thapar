@@ -2,13 +2,14 @@
 <div id="page-wrapper">
 <!--BEGIN TITLE & BREADCRUMB PAGE-->
     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
-        <div class="page-header pull-left">
+         <div class="page-header pull-right">
             <div class="page-title">
                 Dashboard
             </div>
-        </div>
-        <ol class="breadcrumb page-breadcrumb pull-right">
-            <li class="active"><i class="fa fa-home"></i>&nbsp;<a href="<?php echo base_url(); ?>index.php/mentor">Home</a></li>
+        </div> 
+        <ol class="breadcrumb page-breadcrumb pull-left">
+            <li><i class="fa fa-home"></i>&nbsp;<a href="<?php echo base_url(); ?>index.php/mentor">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;</li>
+            <li class="active">Dashboard</li>
         </ol>
         <div class="clearfix">
         </div>

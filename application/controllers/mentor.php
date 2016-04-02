@@ -40,9 +40,9 @@ class mentor extends CI_Controller {
 	{
 		if(isset($_SESSION["user_type"]) && $_SESSION["user_type"] == "Mentor")
 		{
-			$this->load->view('faculty/faculty_header');
-			$this->load->view('faculty/home');
-			$this->load->view('faculty/faculty_footer');
+			$this->load->view('mentor/mentor_header');
+			$this->load->view('mentor/home');
+			$this->load->view('mentor/mentor_footer');
 		} else 
 		{
 			$this->load->view('templates/front_header');
