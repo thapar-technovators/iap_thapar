@@ -173,9 +173,63 @@ class Login extends CI_Controller {
 	public function mentor()
 	{
 		$data['title']="Login | Mentor";
-		$this->load->view('templates/front_header',$data);
-		$this->load->view('templates/login/mentor',$data);
-		$this->load->view('templates/front_footer',$data);
+		$this->load->model('Mentor_model');
+//		$this->load->model('Default_model');
+
+		if($this->input->post())
+		{
+			$data['registration_id']=$this->input->post('registration');
+			$data['password']=$this->input->post('password');
+
+			/*Now check for every error*/
+			$data['error']=array();
+			$this->load->helper('email');	
+			if($this->Default_model->isEmpty($data['registration_id']))
+				array_push($data['error'], 'Please enter your registration id!');
+			if($this->Default_model->isEmpty($data['password']))
+				array_push($data['error'], 'Please enter your Password!');
+			if(!valid_email($data['registration_id']))
+				array_push($data['error'], 'The email is not in proper format!');
+			if(isset($data['error'][0]))
+			{
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/login/mentor',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+			else 
+			{
+				
+				if($this->Mentor_model->auth($data))
+				{
+					$this->load->library('session');
+					$this->session->set_userdata('user_type', 'Mentor');	
+					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique IDentification are emails only
+					$data_fetch = array();
+					$data_fetch = $this->Mentor_model->details($data);
+					$fname= $data_fetch['initials']." ".$data_fetch['fname']; //fname = full name (initials + name)
+					$this->session->set_userdata('full_name', $fname);
+					//$this->load->view('faculty/faculty_header');
+					//$this->load->view('faculty/home');
+					//$this->load->view('faculty/faculty_footer');
+					redirect('mentor', 'refresh');
+				}
+				else
+				{
+					array_push($data['error'], 'Some Error Occurred. Please Try Again'); 
+					$this->load->view('templates/front_header',$data);
+					$this->load->view('templates/login/mentor',$data);
+					$this->load->view('templates/front_footer',$data);
+				}
+			}
+		}
+		else
+		{
+			
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/login/mentor',$data);
+			$this->load->view('templates/front_footer',$data);
+		}
+		
 	}
 
 	public function admin()

@@ -99,6 +99,45 @@ class Mentor_model extends CI_Model {
 		$password.=$salt;
 		return password_hash($password, PASSWORD_BCRYPT,$options);
 	}
+
+	function auth($data2)
+	{
+		$password = $data2['password'];
+		$registration_id = $data2['registration_id'];
+		$password = $this->passwordHash($password);
+		$sql = "SELECT * from mentor WHERE email='$registration_id' and password = '$password'";
+		$dfetch = array();
+		$query = $this->db->query($sql);
+		if($query->num_rows() > 0) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function details($data3)
+	{
+		$password = $data3['password'];
+		$registration_id = $data3['registration_id'];
+		$password = $this->passwordHash($password);
+		$sql = "SELECT * from mentor WHERE email='$registration_id' and password = '$password'";
+		$data_fetch =array();
+		$query = $this->db->query($sql);
+		if($query->num_rows() > 0) 
+		{
+			$row = $query->row();
+			$data_fetch['name'] = $row->name;
+			$data_fetch['initials'] = $row->initials;
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 
 ?>
