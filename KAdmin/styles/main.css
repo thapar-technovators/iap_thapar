@@ -44,7 +44,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   line-height: 1.42857143;
-  color: #999999;
+  color: #666666;
   background-color: #f0f2f5;
   height: 100%;
 }
@@ -1183,7 +1183,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f7', end
   min-height: 700px;
 }
 #footer {
-  position: fixed;
+/*  position: fixed;*/
   width: 100%;
   bottom: 0px;
   padding: 15px 20px;
@@ -4296,6 +4296,19 @@ a.list-group-item.active > .badge,
   color: #FFFFFF;
   background: #488c6c;
   border-color: #488c6c !important;
+}
+.panel.panel-arush {
+  border-color: #696969;
+}
+.panel.panel-arush > .panel-heading {
+  color: #FFFFFF;
+  background: #696969;
+  border-color: #696969 !important;
+}
+.panel.panel-arush > .panel-footer {
+  color: #FFFFFF;
+  background: #696969;
+  border-color: #696969 !important;
 }
 .panel.panel-yellow {
   border-color: #f2994b;

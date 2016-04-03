@@ -26,7 +26,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
-		$this->load->model('Student_model');
+		$this->load->model('Admin_model');
 		session_regenerate_id(true);
 	}
 
@@ -37,7 +37,7 @@ class Admin extends CI_Controller {
             show_404();
         }
         $this->checkSession();
-        $data['title'] = "Admin | Home";
+        $data['title'] = "Dashboard Home | Administrator";
         $this->load->view('admin/admin_header', $data);
         $this->load->view('admin/' . $page);
         $this->load->view('admin/admin_footer');
@@ -61,6 +61,15 @@ class Admin extends CI_Controller {
         }
 	}
 
+/*This function is used to view all the students by the admin*/
+	public function view_students($page='view_students')
+	{
+		$data['heading']="Registered Students";
+		$data['students']=$this->Admin_model->getStudents();
+		$this->load->view('admin/admin_header', $data);
+        $this->load->view('admin/' . $page , $data);
+        $this->load->view('admin/admin_footer');
+	}
 
 /*This function logs out the desired user and deletes all the session and user data*/
 	public function logout()

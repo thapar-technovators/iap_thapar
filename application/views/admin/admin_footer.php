@@ -1,7 +1,7 @@
                 <!--BEGIN FOOTER-->
                 <div id="footer">
                     <div class="copyright">
-                        <a href="http://www.thapar.edu">2014 © KAdmin Responsive Multi-Purpose Template</a></div>
+                        <a href="http://www.thapar.edu">&copy; <?php echo date('Y');?>  IAP (Industrial Training And Placement Portal), Thapar Institute of Engineering and Technology University</a></div>
                 </div>
                 <!--END FOOTER-->
             </div>
@@ -40,9 +40,6 @@
     <script src="<?php echo base_url();?>dashboard/script/data.js"></script>
     <script src="<?php echo base_url();?>dashboard/script/drilldown.js"></script>
     <script src="<?php echo base_url();?>dashboard/script/exporting.js"></script>
-    <script src="<?php echo base_url();?>dashboard/script/highcharts-more.js"></script>
-    <script src="<?php echo base_url();?>dashboard/script/charts-highchart-pie.js"></script>
-    <script src="<?php echo base_url();?>dashboard/script/charts-highchart-more.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="<?php echo base_url();?>dashboard/script/main.js"></script>
     <script>  
