@@ -44,15 +44,15 @@ class Login extends CI_Controller {
 //		$this->load->model('Default_model');
 		if($this->input->post())
 		{
-		$data['email'] = $this->input->post('registration');
-		$data['password'] = $this->input->post('password');
-		$this->load->helper('email');	
-		$data['error']=array();
-		if($this->Default_model->isEmpty($data['email']))
+			$data['email'] = $this->input->post('registration');
+			$data['password'] = $this->input->post('password');
+			$this->load->helper('email');	
+			$data['error']=array();
+			if($this->Default_model->isEmpty($data['email']))
 				array_push($data['error'], 'Please enter your Email!');
-		if($this->Default_model->isEmpty($data['password']))
+			if($this->Default_model->isEmpty($data['password']))
 				array_push($data['error'], 'Please enter your Password!');
-		if(!valid_email($data['email']))
+			if(!valid_email($data['email']))
 				array_push($data['error'], 'The email is not in proper format!');
 			if(isset($data['error'][0]))
 			{
@@ -66,7 +66,7 @@ class Login extends CI_Controller {
 				{
 
 					$this->load->library('session');
-					$this->session->set_userdata('user_type', 'Student');	
+					$this->session->set_userdata('user_type', 'Student');
 					$this->session->set_userdata('uid', $data['email']);
 					
 
@@ -89,9 +89,9 @@ class Login extends CI_Controller {
 				else
 				{
 					array_push($data['error'], array('Incorrect username or password!',0));  //Error handling on duplicate email left and has to be done later
-				$this->load->view('templates/front_header',$data);
-				$this->load->view('templates/login/student',$data);
-				$this->load->view('templates/front_footer',$data);
+					$this->load->view('templates/front_header',$data);
+					$this->load->view('templates/login/student',$data);
+					$this->load->view('templates/front_footer',$data);
 				}
 				
 			}
@@ -111,8 +111,6 @@ class Login extends CI_Controller {
 		$data['title']="Login | Faculty";
 		
 		$this->load->model('Faculty_model');
-//		$this->load->model('Default_model');
-
 		if($this->input->post())
 		{
 			$data['registration_id']=$this->input->post('registration');
@@ -138,7 +136,6 @@ class Login extends CI_Controller {
 				
 				if($this->Faculty_model->auth($data))
 				{
-					$this->load->library('session');
 					$this->session->set_userdata('user_type', 'Faculty');	
 					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique IDentification are emails only
 					$data_fetch = array();
@@ -174,7 +171,6 @@ class Login extends CI_Controller {
 	{
 		$data['title']="Login | Mentor";
 		$this->load->model('Mentor_model');
-//		$this->load->model('Default_model');
 
 		if($this->input->post())
 		{
@@ -201,16 +197,12 @@ class Login extends CI_Controller {
 				
 				if($this->Mentor_model->auth($data))
 				{
-					$this->load->library('session');
 					$this->session->set_userdata('user_type', 'Mentor');	
 					$this->session->set_userdata('uid', $data['registration_id']);	//currently all Unique IDentification are emails only
 					$data_fetch = array();
 					$data_fetch = $this->Mentor_model->details($data);
 					$name= $data_fetch['initials']." ".$data_fetch['name']; //fname = full name (initials + name)
 					$this->session->set_userdata('full_name', $name);
-					//$this->load->view('faculty/faculty_header');
-					//$this->load->view('faculty/home');
-					//$this->load->view('faculty/faculty_footer');
 					redirect('mentor', 'refresh');
 				}
 				else

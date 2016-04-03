@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class mentor extends CI_Controller {
+class Mentor extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -56,6 +56,7 @@ class mentor extends CI_Controller {
 		$this->session->unset_userdata('user_type');
 		$this->session->unset_userdata('uid');
 		$this->session->unset_userdata('full_name');
+		$this->session->sess_destroy();
 		//$this->load->view('templates/front_header');
 		//$this->load->view('templates/index.php');
 		//$this->load->view('templates/front_footer');
