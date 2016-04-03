@@ -97,7 +97,7 @@
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Dashboard</span></a></li>
 
-                    <li><a href="#"><i class="fa fa-desktop fa-fw">
+                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_document"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload</span></a>
                     </li>

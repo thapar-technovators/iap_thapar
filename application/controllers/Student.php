@@ -25,6 +25,7 @@ class Student extends CI_Controller {
 		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->model('Student_model');
+
 		if(!isset($_SESSION["user_type"]) || $_SESSION["user_type"] != "Student")
 		{
 			$this->session->unset_userdata('user_type');
@@ -137,6 +138,43 @@ class Student extends CI_Controller {
 		redirect('login/student', 'refresh');
 	}
 
+	public function upload_document()
+
+	{
+		$this->load->helper(array('form', 'url')); 
+
+		$this->load->view('student/student_header');
+		$this->load->view('student/upload_document',array('error' => ' ' ));
+		$this->load->view('student/student_footer');
+
+	}
+
+	public function submit_file()
+	{
+
+		$this->load->helper(array('form', 'url')); 
+		$config['upload_path']   = './uploads/joining_report/'; 
+         $config['allowed_types'] = 'pdf'; 
+         $config['max_size']      = 10000000;
+         $config['max_width']     = 4000; 
+         $config['max_height']    = 4000;  
+         $this->load->library('upload', $config);
+			
+         if ( ! $this->upload->do_upload('userfile')) {
+            $error = array('error' => $this->upload->display_errors()); 
+            $this->load->view('student/student_header');
+		$this->load->view('student/upload_document',array('error' => ' ' ));
+		$this->load->view('student/student_footer');
+            $this->load->view('upload_document', $error); 
+         }
+			
+         else { 
+            $data = array('upload_data' => $this->upload->data()); 
+            $this->load->view('student/student_header');
+            $this->load->view('student/upload_success', $data); 
+            $this->load->view('student/student_footer');
+         } 
+	}
 
 }
 ?>
