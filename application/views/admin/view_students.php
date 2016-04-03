@@ -1,6 +1,6 @@
 <div class="panel panel-violet">
 	<div class="panel-body">
-		<table class="table table-hover table-striped">
+		<table id="tabble" class="tablesorter table table-hover table-striped">
 			<thead>
 				<tr>
 					<th>S No.</th>

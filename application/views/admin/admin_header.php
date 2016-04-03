@@ -29,6 +29,11 @@
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/jquery.news-ticker.css">
+    
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url();?>dashboard/script/jquery-1.10.2.min.js"></script>
+    <script src="<?php echo base_url();?>dashboard/script/jquery.tablesorter.js"></script>
+    <script src="<?php echo base_url();?>dashboard/script/jquery.tablesorter.combined.js"></script>
 </head>
 <body>
     <div>

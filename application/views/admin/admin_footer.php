@@ -8,7 +8,11 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
-    <script src="<?php echo base_url();?>dashboard/script/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript"> $(document).ready(function() 
+    { 
+        $("#tabble").tablesorter({debug:true}); 
+    } 
+); </script>
     <script src="<?php echo base_url();?>dashboard/script/jquery-migrate-1.2.1.min.js"></script>
     <script src="<?php echo base_url();?>dashboard/script/jquery-ui.js"></script>
     <script src="<?php echo base_url();?>dashboard/script/bootstrap.min.js"></script>
