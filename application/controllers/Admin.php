@@ -19,21 +19,60 @@ class Admin extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+
+/*Default Constructor for the admin controller*/
 	function __construct()
 	{
 		parent::__construct();
 		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->model('Student_model');
-		if(!isset($_SESSION["user_type"]) || $_SESSION["user_type"] != "Student")
+		session_regenerate_id(true);
+	}
+
+/* This function is the default controller*/
+	public function index($page = 'home') {
+        if (!file_exists(APPPATH . '/views/admin/' . $page . '.php')) {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        $this->checkSession();
+        $data['title'] = "Admin | Home";
+        $this->load->view('admin/admin_header', $data);
+        $this->load->view('admin/' . $page);
+        $this->load->view('admin/admin_footer');
+    }
+
+
+/* This function checks whether the user is logged in and if he is a different type of user than the admin, it redirects to that controller*/
+	public function checkSession()
+	{
+		if ($this->session->has_userdata('uid')) 
 		{
-			$this->session->unset_userdata('user_type');
-			$this->session->unset_userdata('uid');
-			$this->session->unset_userdata('full_name');
-			$this->load->view('templates/front_header');
-			$this->load->view('templates/index');
-			$this->load->view('templates/front_footer');
-		}
+            if ($this->session->userdata('user_type')!= 'admin') 
+            {
+                redirect($this->session->userdata('user_type'),'refresh');
+                die();
+            }
+        }
+        else
+        {
+        	redirect('login','refresh');
+        }
+	}
+
+
+/*This function logs out the desired user and deletes all the session and user data*/
+	public function logout()
+	{
+		$this->session->unset_userdata('user_type');
+		$this->session->unset_userdata('uid');
+		$this->session->unset_userdata('full_name');
+		$this->session->sess_destroy();
+		//$this->load->view('templates/front_header');
+		//$this->load->view('templates/index.php');
+		//$this->load->view('templates/front_footer');
+		redirect('login/admin', 'refresh');
 	}
 
 

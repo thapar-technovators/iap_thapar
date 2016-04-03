@@ -25,6 +25,11 @@ class Login extends CI_Controller {
 		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->helper('url');
+		if($this->session->has_userdata('user_type'))
+		{
+			redirect($this->session->userdata('user_type'),'refresh');
+			die();
+		}
 	}
 	public function index($page = 'student')
 	{
@@ -251,9 +256,8 @@ class Login extends CI_Controller {
 				$data['password']=$this->Admin_model->passwordHash($data['password']);
 				if($this->Admin_model->checkLogin($data['registration_id'],$data['password']))
 				{
-					$this->load->view('admin/admin_header',$data);
-					$this->load->view('admin/home',$data);
-					$this->load->view('admin/admin_footer',$data);
+
+					redirect('admin', 'refresh');
 				}
 				else
 				{

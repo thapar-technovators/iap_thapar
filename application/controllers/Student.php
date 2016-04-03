@@ -134,7 +134,7 @@ class Student extends CI_Controller {
 		//$this->load->view('templates/front_header');
 		//$this->load->view('templates/index.php');
 		//$this->load->view('templates/front_footer');
-		redirect('login/faculty', 'refresh');
+		redirect('login/student', 'refresh');
 	}
 
 

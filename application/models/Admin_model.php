@@ -74,15 +74,20 @@ class Admin_model extends CI_Model {
 
 	function checkLogin($reg_id,$password)
 	{
-		$len="SELECT * FROM `administrator` where registration_id='$reg_id' and password='$password'";
+		$len="SELECT name FROM `administrator` where registration_id='$reg_id' and password='$password'";
 		$query = $this->db->query($len);
 		$row = $query->row();
 		if (isset($row))
+       	{
+       		$this->session->set_userdata('user_type', 'admin');
+			$this->session->set_userdata('uid', $reg_id);
+			$this->session->set_userdata('full_name',$row->name);
        		return true;
+       	}
        	else
        		return false;
-
 	}
+
 }
 
 ?>
