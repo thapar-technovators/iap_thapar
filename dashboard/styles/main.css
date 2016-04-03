@@ -7042,3 +7042,10 @@ ul.chats li.out .message {
   border-radius: 0px !important;
   border: 1px solid #e5e5e5;
 }
+
+table.tablesorter th.tablesorter-headerUnSorted {
+    background-image: url('http://tablesorter.com/themes/blue/bg.gif');
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}

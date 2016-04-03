@@ -24,6 +24,7 @@
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/animate.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/all.css">
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/theme.default.min.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/main.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/style-responsive.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/zabuto_calendar.min.css">

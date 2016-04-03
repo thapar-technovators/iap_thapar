@@ -10,7 +10,7 @@
     </div>
     <script type="text/javascript"> $(document).ready(function() 
     { 
-        $("#tabble").tablesorter({debug:true}); 
+        $("#tabble").tablesorter(); 
     } 
 ); </script>
     <script src="<?php echo base_url();?>dashboard/script/jquery-migrate-1.2.1.min.js"></script>

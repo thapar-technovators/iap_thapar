@@ -1,6 +1,5 @@
-<div class="panel panel-violet">
 	<div class="panel-body">
-		<table id="tabble" class="tablesorter table table-hover table-striped">
+		<table id="tabble" class="table table-hover table-striped tablesorter">
 			<thead>
 				<tr>
 					<th>S No.</th>
@@ -28,4 +27,3 @@
 			</tbody>
  		</table>
  	</div>
-</div>
