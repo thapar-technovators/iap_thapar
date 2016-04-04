@@ -30,25 +30,19 @@ class Faculty extends CI_Controller {
 			$this->session->unset_userdata('user_type');
 			$this->session->unset_userdata('uid');
 			$this->session->unset_userdata('full_name');
-			$this->load->view('templates/front_header');
-			$this->load->view('templates/index');
-			$this->load->view('templates/front_footer');
+			redirect('welcome', 'refresh');
 		}
 	}
 
 	public function index($page = 'faculty')
 	{
-		if(isset($_SESSION["user_type"]) && $_SESSION["user_type"] == "Faculty")
-		{
-			$this->load->view('faculty/faculty_header');
-			$this->load->view('faculty/home');
-			$this->load->view('faculty/faculty_footer');
-		} else 
-		{
-			$this->load->view('templates/front_header');
-			$this->load->view('templates/login/'.$page);
-			$this->load->view('templates/front_footer');
-		}
+		$data1 = array();
+		$data1['email'] = $this->session->userdata('uid');
+		$data['data'] = $this->Faculty_model->faculty_info_fetch($data1);
+		$data['data'] = $data['data'][0];
+		$this->load->view('faculty/faculty_header');
+		$this->load->view('faculty/home',$data);
+		$this->load->view('faculty/faculty_footer');
 	}
 
 	public function logout()
@@ -91,4 +85,52 @@ class Faculty extends CI_Controller {
 		$this->load->view('faculty/city',$data1);
 		$this->load->view('faculty/faculty_footer');
 	}
+
+	public function change_password()
+	{
+		$data1 = array();
+		if($this->input->post('email'))
+		{
+			$email = $this->input->post('email');
+			$actual_email = $this->session->userdata('uid');
+			if($email != $actual_email) {
+				$this->session->set_flashdata('success', 2);
+				$this->load->view('faculty/faculty_header');
+				$this->load->view('faculty/city',$data1);
+				$this->load->view('faculty/faculty_footer');
+			}
+
+			$data['email'] = $email;
+			if($this->Faculty_model->changepass($data)) {
+			
+			$this->session->set_flashdata('success', 3);
+			redirect('faculty/change_password', 'refresh'); 
+			}
+			else {
+			$this->session->set_flashdata('success', 0);
+			redirect('faculty/change_password', 'refresh'); 
+			}
+		}
+
+		if($this->input->post('otp'))
+		{
+			$email = $this->input->post('email');
+			$data['email'] = $email;
+			if($this->Faculty_model->changepass($data)) {
+			
+			$this->session->set_flashdata('success', 1);
+			redirect('faculty/change_password', 'refresh'); 
+			}
+			else {
+			$this->session->set_flashdata('success', 0);
+			redirect('faculty/change_password', 'refresh'); 
+			}
+		}
+
+		$data1['success'] = $this->session->flashdata('success');
+		$this->load->view('faculty/faculty_header');
+		$this->load->view('faculty/change_password',$data1);
+		$this->load->view('faculty/faculty_footer');
+	}
+
 }

@@ -121,6 +121,44 @@ class Faculty_model extends CI_Model {
 			return false;
 		}
 	}
+	/*Change Password*/
+	function changepass($data1)
+	{
+		$email = $data1['email'];
+		$token=$this->generatePassword();
+		$this->send_mail($data1['email'],"Password Change Request","Here is your access token: $token");
+		//$data1['password']=$this->passwordHash($password);
+		//if($this->registerUser($data1))
+		//	return true;
+		//else
+		//	return false;
+		$sql = "UPDATE faculty set access_token='$token' WHERE email='$email';";
+		if($this->db->query($sql))
+		{
+			return $token;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function changepass2($data)
+	{
+		$newpass = $data['newpassword'];
+		$email = $data['email'];
+		$token = $data['token'];
+		$hashpass = $this->passwordHash($newpass);
+		$sql = "UPDATE faculty set password='$hashpass' WHERE email='$email' AND access_token='$token'; UPDATE faculty set access_token=NULL WHERE email='$email'";
+		if($this->db->query($sql))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 	function details($data3)
 	{
@@ -173,6 +211,21 @@ class Faculty_model extends CI_Model {
 		if($this->db->query($sql))
 		{
 			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function faculty_info_fetch($data)
+	{
+		$email = $data['email'];
+		$sql = "SELECT registration_id as 'Registration ID', initials as 'Initials', name as 'Name', phone as 'Phone Number', email as 'E-mail ID', designation as 'Designation', pref1 as 'City Preference 1', pref2 as 'City Preference 2', pref3 as 'City Preference 3' from faculty WHERE email='$email'";
+		//$sql = "SELECT * from faculty where email='$email'";
+		if($query = $this->db->query($sql)){
+			$row = $query->result();
+			return $row;
 		}
 		else
 		{

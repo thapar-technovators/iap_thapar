@@ -41,7 +41,19 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <?php if(isset($data)) {?>
+                            <div class="col-lg-4">
+                                <h4 class="box-heading">Basic Information</h4>
+                                <ul class="list-group">
+                                    
+                                    <?php
+                                        foreach($data as $x=>$x_value){
+                                        echo "<li class='list-group-item'><b>".$x."</b> -> ".$x_value."</li>";
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                            <?php }; ?>
                         	</div>
                         </div>
                     </div>

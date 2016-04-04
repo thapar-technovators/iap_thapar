@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<?php echo base_url();?>dashboard/images/icons/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo base_url();?>dashboard/images/icons/tu_icon.ico">
     <link rel="apple-touch-icon" href="<?php echo base_url();?>dashboard/images/icons/favicon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url();?>dashboard/images/icons/favicon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url();?>dashboard/images/icons/favicon-114x114.png">
@@ -40,6 +40,7 @@
                 <ul class="nav navbar navbar-top-links navbar-right mbn">
                     <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="<?php echo base_url();?>dashboard/images/avatar/48.jpg" alt="" class="img-responsive img-circle"/>&nbsp;<span class="hidden-xs"><?php echo $_SESSION["full_name"];?></span>&nbsp;<span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-user pull-right">
+                            <li><a href="<?php echo base_url();?>index.php/faculty/change_password"><i class="fa fa-tasks"></i>Change Password</a></li>
                             <li><a href="<?php echo base_url();?>index.php/faculty/logout"><i class="fa fa-key"></i>Log Out</a></li>
                         </ul>
                     </li>
