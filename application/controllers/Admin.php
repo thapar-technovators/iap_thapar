@@ -91,6 +91,45 @@ class Admin extends CI_Controller {
         $this->load->view('admin/admin_footer');
 	}
 
+/*This function is used to send email to all mentors/students/faculty registered*/
+	public function send_email($page='send_email')
+	{
+		$data['heading']="Email Users";
+		if($this->input->post())
+		{
+			$data['usertype'] = $this->input->post('usertype');
+			$data['subject'] = $this->input->post('subject');
+			$data['message'] = $this->input->post('message');
+			$emails=$this->Admin_model->getEmail($data['usertype']);
+			$data['emails']=$emails;
+			$res=true;
+			$count=0;
+			foreach($emails as $em)
+			{
+				if(!$this->Admin_model->send_mail($em['email'],$data['subject'],$data['message']))
+					$res=false;
+				else
+					$count++;
+			}
+			$data['error']=array();
+			if($res)
+				array_push($data['error'], array("Email suscessfully sent",1));
+			else
+			{
+				array_push($data['error'], array("There was an error sending email. The email has been sent to $count candidates instead of count($emails) candidates",0));
+			}
+			$this->load->view('admin/admin_header', $data);
+	        $this->load->view('admin/' . $page , $data);
+	        $this->load->view('admin/admin_footer');	
+		}
+		else
+		{
+			$this->load->view('admin/admin_header', $data);
+        	$this->load->view('admin/' . $page , $data);
+        	$this->load->view('admin/admin_footer');
+		}
+	}
+
 /*This function logs out the desired user and deletes all the session and user data*/
 	public function logout()
 	{

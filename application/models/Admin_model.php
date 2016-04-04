@@ -5,7 +5,7 @@ class Admin_model extends CI_Model {
 
 	function send_mail($to,$subject,$body)
 	{
-		require(APPPATH.'third_party/mailer/class.phpmailer.php');
+		require_once(APPPATH.'third_party/mailer/class.phpmailer.php');
 		$from = "iapthapar@gmail.com";
 		$mail = new PHPMailer();
 		$mail->IsSMTP(true); // SMTP
@@ -122,6 +122,21 @@ class Admin_model extends CI_Model {
 	{
 		$data_fetch =array();
 		$query = $this->db->query("SELECT * from mentor");
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function getEmail($table)
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT DISTINCT email from $table");
 		if($query->num_rows() > 0) 
 		{
 			$data_fetch = $query->result_array();
