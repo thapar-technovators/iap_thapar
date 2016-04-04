@@ -71,6 +71,16 @@ class Admin extends CI_Controller {
         $this->load->view('admin/admin_footer');
 	}
 
+/*This function is used to view all the faculty members by the admin*/
+	public function view_faculty($page='view_faculty')
+	{
+		$data['heading']="Registered Faculty";
+		$data['faculty']=$this->Admin_model->getFaculty();
+		$this->load->view('admin/admin_header', $data);
+        $this->load->view('admin/' . $page , $data);
+        $this->load->view('admin/admin_footer');
+	}
+
 /*This function logs out the desired user and deletes all the session and user data*/
 	public function logout()
 	{

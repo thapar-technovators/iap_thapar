@@ -87,6 +87,7 @@ class Admin_model extends CI_Model {
        	else
        		return false;
 	}
+
 	function getStudents()
 	{
 		$data_fetch =array();
@@ -100,7 +101,21 @@ class Admin_model extends CI_Model {
 		{
 			return false;
 		}
+	}
 
+	function getFaculty()
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from faculty");
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }
