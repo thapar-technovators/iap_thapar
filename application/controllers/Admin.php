@@ -81,6 +81,16 @@ class Admin extends CI_Controller {
         $this->load->view('admin/admin_footer');
 	}
 
+/*This function is used to view all the industry mentors by the admin*/
+	public function view_mentors($page='view_mentors')
+	{
+		$data['heading']="Registered Industry Mentors";
+		$data['mentors']=$this->Admin_model->getMentors();
+		$this->load->view('admin/admin_header', $data);
+        $this->load->view('admin/' . $page , $data);
+        $this->load->view('admin/admin_footer');
+	}
+
 /*This function logs out the desired user and deletes all the session and user data*/
 	public function logout()
 	{

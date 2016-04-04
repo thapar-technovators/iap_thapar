@@ -118,6 +118,21 @@ class Admin_model extends CI_Model {
 		}
 	}
 
+	function getMentors()
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from mentor");
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
 
 ?>

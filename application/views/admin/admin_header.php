@@ -141,9 +141,14 @@
                     </i><span class="menu-title">Faculty</span></a>
                        
                     </li>
-                    <li><a href="Charts.html"><i class="fa fa-bar-chart-o fa-fw">
+                    <li><a href="<?php echo base_url();?>index.php/admin/view_mentors"><i class="fa fa-bar-chart-o fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Mentors</span></a>
+                       
+                    </li>
+                    <li><a href="<?php echo base_url();?>index.php/admin/send_email"><i class="fa fa-bar-chart-o fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Send Email</span></a>
                        
                     </li>
                 </ul>
