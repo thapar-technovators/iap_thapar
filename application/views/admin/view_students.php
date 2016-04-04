@@ -4,6 +4,7 @@
 				<tr>
 					<th>S No.</th>
 					<th>Roll Number</th>
+					<th>Name</th>
 					<th>Email</th>
 					<th>Phone</th>
 					<th>Branch</th>
@@ -17,6 +18,7 @@
 					echo "<tr>";
 					echo "<td>$num</td>";
 					echo "<td>".$st["roll_number"]."</td>";
+					echo "<td>".$st['name']."</td>";
 					echo "<td>".$st['email']."</td>";
 					echo "<td>".$st['phone']."</td>";
 					echo "<td>".$st['branch']."</td>";
