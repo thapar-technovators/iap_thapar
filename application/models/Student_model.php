@@ -214,9 +214,32 @@ class Student_model extends CI_Model {
 				else
 					return false;
 			}
+	}
 
-		
+	function change_password($pass){
 
+		//$hashed_pass = $this->passwordHash($pass['oldpass']);
+		$user = array();
+		$user['email'] = $pass['email'];
+		$user['password'] = $pass['old'];
+
+		//$query = $this->db->query("SELECT email,password from student WHERE email='".$pass['email']."' AND password='$hashed_pass'");
+		if($this->authenticate_student($user)) 
+		{
+			$newpass = $this->passwordHash($pass['new']);
+
+			$data = array('password' => $newpass );
+
+			$this->db->where('email', $pass['email']);
+			if($this->db->update('student', $data)) 
+				return true;
+			else
+				return false;
+		}
+		else
+		{
+			return false;
+		}
 
 	}
 

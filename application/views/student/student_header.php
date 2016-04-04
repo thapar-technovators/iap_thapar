@@ -72,7 +72,7 @@
                         <ul class="dropdown-menu dropdown-user pull-right">
                             <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
                             <li><a href="#"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
-                            <li><a href="#"><i class="fa fa-tasks"></i>My Tasks<span class="badge badge-success">7</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>index.php/student/change_password"><i class="fa fa-tasks"></i>Change Password<span class="badge badge-success">7</span></a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo base_url();?>index.php/student/logout"><i class="fa fa-key"></i>Log Out</a></li>
                         </ul>

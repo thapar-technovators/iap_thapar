@@ -176,5 +176,38 @@ class Student extends CI_Controller {
          } 
 	}
 
+	public function change_password(){
+
+
+		if($this->input->post()){
+
+		$pass['old'] = $this->input->post('oldpass');
+		$pass['new'] = $this->input->post('newpass');
+		$pass['confirm'] = $this->input->post('confirmpass');
+		$pass['email'] = $this->session->userdata('uid');
+		$data['error']=array();
+
+		if($pass['new']!=$pass['confirm'])
+			array_push($data['error'], array('Confirm Password does not match with the New Password',0));
+		else{
+
+		if($this->Student_model->change_password($pass))
+			array_push($data['error'], array('Password changed successfully!',1));
+		else
+			array_push($data['error'], array("Some error occurred!Please try again",0));
+		}
+
+		$this->load->view('student/student_header');
+        $this->load->view('student/change_password',$data); 
+        $this->load->view('student/student_footer');
+		}
+		else{
+			$this->load->view('student/student_header');
+        	$this->load->view('student/change_password'); 
+        	$this->load->view('student/student_footer');
+    	}
+	}
+
+
 }
 ?>
