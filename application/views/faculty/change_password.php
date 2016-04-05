@@ -19,19 +19,21 @@
 <div class="page-content">
 	<div id="tab-general">
 		<div class="row mb1">
-    <?php
-    if(isset($success) && $success=1) {
-      echo "<div class='alert alert-success'><strong>Password Changed!</strong></div>";
-    } elseif (isset($success) && $success=0 ) {
-      echo "<div class='alert alert-danger'><strong>Password not updated. Please contact administrator.</strong></div>";
-    }
-    elseif (isset($success) && $success=2) {
-      echo "<div class='alert alert-danger'><strong>Incorrect email.</strong></div>";
-    }
-    elseif (isset($success) && $success=3) {
-      echo "<div class='alert alert-success'><strong>Please check your email for the Access Token.</strong></div>";
-    }
-    ?>
+    <?php 
+            
+                if(isset($error))
+                {
+                foreach ($error as $error_item):
+                ?>
+                <div class=<?php if($error_item[1]==0) echo "'alert alert-info alert-danger'";
+                else echo "'alert alert-info alert-success'";?> role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $error_item[0];?>
+                </div>
+                <?php endforeach;
+                } 
+                unset($error);
+                ?>
 			<div class="col-lg-8">
 										<div class="panel panel-orange">
                                             <div class="panel-heading">
@@ -39,22 +41,22 @@
                                             <div class="panel-body pan">
                                             <form action="<?php echo base_url();?>index.php/faculty/change_password" method="post">
                                             <div class="form-body pal">
-                                            <?php if (!isset($success) || (isset($success) && $success!=3)) { ?>
                                             <div class="form-group">
-                                              <div class="input-icon right">
-                                                <input id="inputSubject" type="text" name="email" placeholder="Please type your registered E-mail ID to confirm" class="form-control" />
-                                              </div>
-                                            </div>
-                                            <?php } 
-                                            else { ?>
-                                            <div class="form-group">
-                                              <div class="input-icon right">
-                                                <input id="inputSubject" type="text" name="otp" placeholder="Please type the Access Token here" class="form-control" />
-                                              </div>
-                                            </div>
-                                            <?php }; ?>
+                                                        <label for="oldpass">Old Password</label>
+                                                        <input type="text" name="oldpass" id="oldpass" required class="form-control" placeholder="Old password">
+                                                    </div>
+                        
+                                                    <div class="form-group">
+                                                        <label for="newpass">New Password</label>
+                                                        <input type="text" name="newpass" id="newpass" required class="form-control" placeholder="New password">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="confirmpass">Confirm Password</label>
+                                                        <input type="text" name="confirmpass" id="confirmpass" required class="form-control" placeholder="Confirm password">
+                                                    </div>
                                             <div class="form-actions text-right pal">
-                                                <button type="submit" class="btn btn-primary">Send Email</button>
+                                                <button type="submit" class="btn btn-primary">Confirm</button>
                                             </div>
                                             </div>
                                             </form>

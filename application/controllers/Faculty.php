@@ -88,49 +88,34 @@ class Faculty extends CI_Controller {
 
 	public function change_password()
 	{
-		$data1 = array();
-		if($this->input->post('email'))
-		{
-			$email = $this->input->post('email');
-			$actual_email = $this->session->userdata('uid');
-			if($email != $actual_email) {
-				$this->session->set_flashdata('success', 2);
-				$this->load->view('faculty/faculty_header');
-				$this->load->view('faculty/city',$data1);
-				$this->load->view('faculty/faculty_footer');
-			}
+		if($this->input->post()){
+		$pass = array();
+		$pass['old'] = $this->input->post('oldpass');
+		$pass['new'] = $this->input->post('newpass');
+		$pass['confirm'] = $this->input->post('confirmpass');
+		$pass['email'] = $this->session->userdata('uid');
+		$data['error']=array();
 
-			$data['email'] = $email;
-			if($this->Faculty_model->changepass($data)) {
-			
-			$this->session->set_flashdata('success', 3);
-			redirect('faculty/change_password', 'refresh'); 
-			}
-			else {
-			$this->session->set_flashdata('success', 0);
-			redirect('faculty/change_password', 'refresh'); 
-			}
+		if($pass['new']!=$pass['confirm'])
+			array_push($data['error'], array('Confirm Password does not match with the New Password',0));
+		else{
+
+		if($this->Faculty_model->change_password($pass))
+			array_push($data['error'], array('Password changed successfully!',1));
+		else
+			array_push($data['error'], array('Some error occurred! Please try again',0));
 		}
 
-		if($this->input->post('otp'))
-		{
-			$email = $this->input->post('email');
-			$data['email'] = $email;
-			if($this->Faculty_model->changepass($data)) {
-			
-			$this->session->set_flashdata('success', 1);
-			redirect('faculty/change_password', 'refresh'); 
-			}
-			else {
-			$this->session->set_flashdata('success', 0);
-			redirect('faculty/change_password', 'refresh'); 
-			}
-		}
-
-		$data1['success'] = $this->session->flashdata('success');
 		$this->load->view('faculty/faculty_header');
-		$this->load->view('faculty/change_password',$data1);
-		$this->load->view('faculty/faculty_footer');
+        $this->load->view('faculty/change_password',$data); 
+        $this->load->view('faculty/faculty_footer');
+		}
+		else{
+			$this->load->view('faculty/faculty_header');
+        	$this->load->view('faculty/change_password'); 
+        	$this->load->view('faculty/faculty_footer');
+    	}
 	}
+
 
 }

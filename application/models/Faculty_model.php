@@ -110,7 +110,7 @@ class Faculty_model extends CI_Model {
 		$registration_id = $data2['registration_id'];
 		$password = $this->passwordHash($password);
 		$sql = "SELECT * from faculty WHERE email='$registration_id' and password = '$password'";
-		$dfetch = array();
+		//$dfetch = array();
 		$query = $this->db->query($sql);
 		if($query->num_rows() > 0) 
 		{
@@ -122,20 +122,22 @@ class Faculty_model extends CI_Model {
 		}
 	}
 	/*Change Password*/
-	function changepass($data1)
+	function change_password($pass)
 	{
-		$email = $data1['email'];
-		$token=$this->generatePassword();
-		$this->send_mail($data1['email'],"Password Change Request","Here is your access token: $token");
-		//$data1['password']=$this->passwordHash($password);
-		//if($this->registerUser($data1))
-		//	return true;
-		//else
-		//	return false;
-		$sql = "UPDATE faculty set access_token='$token' WHERE email='$email';";
-		if($this->db->query($sql))
+		$user = array();
+		$user['registration_id'] = $pass['email'];
+		$user['password'] = $pass['old'];
+		if($this->auth($user)) 
 		{
-			return $token;
+			$newpass = $this->passwordHash($pass['new']);
+
+			$data = array('password' => $newpass );
+
+			$this->db->where('email', $pass['email']);
+			if($this->db->update('faculty', $data)) 
+				return true;
+			else
+			return false;
 		}
 		else
 		{
@@ -143,22 +145,7 @@ class Faculty_model extends CI_Model {
 		}
 	}
 
-	function changepass2($data)
-	{
-		$newpass = $data['newpassword'];
-		$email = $data['email'];
-		$token = $data['token'];
-		$hashpass = $this->passwordHash($newpass);
-		$sql = "UPDATE faculty set password='$hashpass' WHERE email='$email' AND access_token='$token'; UPDATE faculty set access_token=NULL WHERE email='$email'";
-		if($this->db->query($sql))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	
 
 	function details($data3)
 	{
