@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<?php echo base_url();?>dashboard/images/icons/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo base_url();?>dashboard/images/icons/tu_icon.ico">
     <link rel="apple-touch-icon" href="<?php echo base_url();?>dashboard/images/icons/favicon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url();?>dashboard/images/icons/favicon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url();?>dashboard/images/icons/favicon-114x114.png">
@@ -72,7 +72,7 @@
                             <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
                             <li><a href="#"><i class="fa fa-calendar"></i>My Calendar</a></li>
                             <li><a href="#"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
-                            <li><a href="#"><i class="fa fa-tasks"></i>My Tasks<span class="badge badge-success">7</span></a></li>
+                            <li><a href="<?php echo base_url();?>index.php/admin/changePassword"><i class="fa fa-tasks"></i>Change Password<span class="badge badge-success">7</span></a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo base_url();?>index.php/admin/logout"><i class="fa fa-key"></i>Log Out</a></li>
                         </ul>

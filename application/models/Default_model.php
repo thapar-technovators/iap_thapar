@@ -25,6 +25,20 @@ class Default_model extends CI_Model {
 			return false;
 	}
 
+	function registerUser($document)
+	{
+		$data = array(
+        'from_user' => $document['email'],
+        'to_user' => "admin",
+        'subject' => $document['subject'],
+        'message' => $document['name'],
+        'ip_address' => $document['ip_address']
+        );
+		if($this->db->insert('admin_messages', $data))
+			return true;
+		else
+			return false;
 
+	}
 }
 ?>

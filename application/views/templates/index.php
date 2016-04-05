@@ -1,3 +1,14 @@
+<?php 
+                if(isset($message))
+                {
+                ?>
+                <div class="alert alert-info alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $message?>
+                </div>
+                <?php
+                } 
+                ?>
     <!-- HOME -->
     <div id="home-area">
         <div class="overlay">
@@ -38,18 +49,20 @@
 
                 <!-- CONTACT FORM -->
                 <div class="col-md-7 col-md-offset-1 text-left wow fadeInLeft" data-wow-duration="1s">
-                    <form action="#" method="post" class="contact-form  wow fadeInLeft">
+                    <form action="<?php echo base_url();?>index.php/welcome/message_admin" method="post">
+                                                
+                    <form action="" method="post" class="contact-form  wow fadeInLeft">
                         <div class="form-group">
-                            <input type="text" required class="form-control" placeholder="Name">
+                            <input type="text" name="name" required class="form-control" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <input type="email" required class="form-control" placeholder="Email">
+                            <input type="email" name="email" required class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <input type="text" required class="form-control" placeholder="Subject">
+                            <input type="text" name="subject" required class="form-control" placeholder="Subject">
                         </div>
                         <div class="form-group">
-                            <textarea required class="form-control" rows="5" placeholder="Message"></textarea>
+                            <textarea required name="message" class="form-control" rows="5" placeholder="Message"></textarea>
                         </div>
                         <button type="submit" class="pull-left send-button button">Send Message</button>
                     </form>
