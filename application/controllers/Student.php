@@ -142,7 +142,6 @@ class Student extends CI_Controller {
 
 	{
 		$this->load->helper(array('form', 'url')); 
-
 		$this->load->view('student/student_header');
 		$this->load->view('student/upload_document',array('error' => ' ' ));
 		$this->load->view('student/student_footer');
@@ -154,21 +153,19 @@ class Student extends CI_Controller {
 
 		$this->load->helper(array('form', 'url')); 
 		$config['upload_path']   = './uploads/joining_report/'; 
-         $config['allowed_types'] = 'pdf'; 
-         $config['max_size']      = 10000000;
-         $config['max_width']     = 4000; 
-         $config['max_height']    = 4000;  
-         $this->load->library('upload', $config);
-			
-         if ( ! $this->upload->do_upload('userfile')) {
-            $error = array('error' => $this->upload->display_errors()); 
+        $config['allowed_types'] = 'pdf'; 
+        $config['max_size']      = 10000000;
+        $config['max_width']     = 4000; 
+        $config['max_height']    = 4000;  
+        $this->load->library('upload', $config);	
+        if ( ! $this->upload->do_upload('userfile')) {
+        	$error = array('error' => $this->upload->display_errors()); 
             $this->load->view('student/student_header');
-		$this->load->view('student/upload_document',array('error' => ' ' ));
-		$this->load->view('student/student_footer');
+			$this->load->view('student/upload_document',array('error' => ' ' ));
+			$this->load->view('student/student_footer');
             $this->load->view('upload_document', $error); 
-         }
-			
-         else { 
+         }		
+        else { 
             $data = array('upload_data' => $this->upload->data()); 
             $this->load->view('student/student_header');
             $this->load->view('student/upload_success', $data); 
@@ -208,6 +205,7 @@ class Student extends CI_Controller {
     	}
 	}
 
+	
 
 }
 ?>

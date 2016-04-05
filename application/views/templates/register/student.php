@@ -86,9 +86,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
                         <a href="<?php echo base_url();?>index.php/login/student"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 text-center wow col-xs-12 " data-wow-duration="1s">
-                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Forgot Password</a>
-                </div>
+                
                 <!-- END CONTACT FORM -->
             </div>
         </div>

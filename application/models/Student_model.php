@@ -155,6 +155,21 @@ class Student_model extends CI_Model {
 		}
 	}
 
+
+	function student_exists($email){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from student WHERE email='$email'");
+		
+		if($query->num_rows() > 0) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	function company_details(){
 
 		$data_fetch =array();
@@ -241,6 +256,18 @@ class Student_model extends CI_Model {
 			return false;
 		}
 
+	}
+	function forgot_password($email){
+
+		$password=$this->generatePassword();
+		$this->send_mail($email,"Successfully Registered","Hey I am Arush password: $password");
+		$data = array('password' => $this->passwordHash($password) );
+		$this->db->where('email', $email);
+			if($this->db->update('student', $data)) 
+				return true;
+			else
+				return false;
+		
 	}
 
 }

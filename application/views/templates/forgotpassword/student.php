@@ -10,13 +10,16 @@
                 <?php 
                 if(isset($error))
                 {
-                foreach ($error as $error_item): ?>
-                <div class="alert alert-info alert-dismissible" role="alert">
+                foreach ($error as $error_item):
+                ?>
+                <div class=<?php if($error_item[1]==0) echo "'alert alert-info alert-danger'";
+                else echo "'alert alert-info alert-success'";?> role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <?php echo $error_item;?>
+                    <?php echo $error_item[0];?>
                 </div>
                 <?php endforeach;
-                } ?>
+                } 
+                ?>
 
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
                     
@@ -33,11 +36,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
-                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 text-center wow col-xs-12 " data-wow-duration="1s">
-                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Forgot Password</a>
+               <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
+                        <a href="<?php echo base_url();?>index.php/login/student"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
                 </div>
                 <!-- END CONTACT FORM -->
             </div>

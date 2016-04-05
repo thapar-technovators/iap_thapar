@@ -38,59 +38,50 @@ class Forgotpassword extends CI_Controller {
 /* Thus is the method that is called when the url: index.php/register/student is accessed*/
 	public function student()
 	{
+		$data['title']="Forgot Password | Student";
 		$this->load->model('Student_model');
 		if($this->input->post())
 		{
 			//Need not apply TRUE tags to every post field since the global XSS has been set to true
-			$data['title']="Register | Student";
-			$data['branches']=$this->Student_model->getBranches();
 			
-			$data['name']=$this->input->post('name');
-			$data['registration']=$this->input->post('registration');
-			$data['branch']=$this->input->post('branch');
-			$data['semester']=$this->input->post('semester');
+			
 			$data['email']=$this->input->post('email');
-			$data['phone']=$this->input->post('phone');
-			$data['company']=$this->input->post('company');
-			$data['city']=$this->input->post('city');
-			$data['doj']=$this->input->post('doj');
-			$data['timeoftraining']=$this->input->post('timeoftraining');
+			
 			/*Now check for every error*/
 			$data['error']=array();
 			$this->load->helper('email');
 			/*Convert the name into title case using javascript*/
 			if(!valid_email($data['email']))
-				array_push($data['error'], 'The email field cannot be empty!');
-			if($this->Default_model->isEmpty($data['registration']))
-				array_push($data['error'], 'Please enter your Roll Number!');
-			if($this->Default_model->isEmpty($data['branch']))
-				array_push($data['error'], 'The Branch field cannot be left empty!');
-			if($this->Default_model->isEmpty($data['semester']))
-				array_push($data['error'], 'The Semester field cannot be left empty!');
-			if($this->Default_model->isEmpty($data['phone']))
-				array_push($data['error'], 'The Phone field cannot be left empty!');
-			if($this->Default_model->isEmpty($data['company']))
-				array_push($data['error'], 'The Company field cannot be left empty!');
-			if($this->Default_model->isEmpty($data['city']))
-				array_push($data['error'], 'The City field cannot be left empty!');
-			if(isset($data['error'][0]))
+				array_push($data['error'], array('The email is not in proper format!',0));
+			
+			if(!isset($data['error'][0]))
 			{
-				$this->load->view('templates/front_header',$data);
-				$this->load->view('templates/register/student',$data);
-				$this->load->view('templates/front_footer',$data);
+				if($this->Student_model->student_exists($data['email'])){
+					if($this->Student_model->forgot_password($data['email']))
+					{
+						array_push($data['error'], array('New Password has been sent to your email ID. Please check your mail and then login.',1));
+					}
+					else
+					{
+						array_push($data['error'], array('Some Error Occurred. Please Try Again',0)); //Error handling on duplicate email left and has to be done later
+					}
+
+				}
+				else
+					{
+						array_push($data['error'], array('This email id is not registered yet!',0)); //Error handling on duplicate email left and has to be done later
+					}
+
+				
+				
 			}
-			else
-			{
-			}
+			
 		}
-		else
-		{
-			$data['title']="Register | Student";
-			$data['branches']=$this->Student_model->getBranches();
+		
+
 			$this->load->view('templates/front_header',$data);
-			$this->load->view('templates/register/student',$data);
+			$this->load->view('templates/forgotpassword/student',$data);
 			$this->load->view('templates/front_footer',$data);
-		}
 	}
 
 	public function faculty()
