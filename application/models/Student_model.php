@@ -257,7 +257,7 @@ class Student_model extends CI_Model {
 		}
 
 	}
-	function forgot_password($email){
+/*	function forgot_password($email){
 
 		$password=$this->generatePassword();
 		$this->send_mail($email,"Successfully Registered","Hey I am Arush password: $password");
@@ -268,7 +268,54 @@ class Student_model extends CI_Model {
 			else
 				return false;
 		
+	}*/
+
+	function forgot_password($email){
+		$this->load->library('encrypt');
+		$password=$this->generatePassword();
+		$hashed_pass = $this->passwordHash($password);
+		$encrypted_email= $this->encrypt->encode($email);
+		if($this->send_mail($email,"Password Reset","Activation Code: $password <br> <br> Click on this link and enter the above activation code to set your password: http://localhost/iap_thapar/index.php/forgotpassword/reset_student_password?email=$encrypted_email&code=$hashed_pass ")){
+
+			return true;
+		}
+		else 
+			return false;
+
 	}
+	function reset_password($email,$pass){
+
+
+		$this->load->library('encrypt');
+		$decrypted_email = $this->encrypt->decode($email);
+		$data = array('password' => $this->passwordHash($pass) );
+
+		$this->db->where('email', $decrypted_email);
+		if($this->db->update('student', $data)) 
+			return true;
+		else
+			return false;
+	}
+
+	function check_activation($original_code,$entered_code){
+		$sanitized_original = $this->sanitize($original_code);
+		$entered_original = $this->sanitize($entered_code);
+
+		if($sanitized_original== $this->passwordHash($entered_original))
+			return true;
+		else
+			return false;
+	}
+
+	function sanitize($string)
+{
+    $string = filter_var($string, FILTER_SANITIZE_STRING);
+    $string = trim($string);
+    $string = stripslashes($string);
+    $string = strip_tags($string);
+    return $string;
+}
+
 
 }
 ?>
