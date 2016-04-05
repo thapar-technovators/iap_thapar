@@ -1,35 +1,62 @@
-    <!-- Faculty Login -->
-    <section id="faculty-login" class="section text-center">
+<!-- Student Login -->
+    <section id="student-login" class="section text-center">
         <div class="container">
             <div class="hidden-md hidden-lg"><hr></div>
-            <h2 class="section-title">Faculty Login</h2>
+            <h2 class="section-title">Forgot Password | Faculty</h2>
             <div class="row">
+
                 <!-- CONTACT FORM -->
+                
+                <?php 
+                if(isset($error))
+                {
+                foreach ($error as $error_item):
+                ?>
+                <div class=<?php if($error_item[1]==0) echo "'alert alert-info alert-danger'";
+                else echo "'alert alert-info alert-success'";?> role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $error_item[0];?>
+                </div>
+                <?php endforeach;
+                } 
+                ?>
+
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
-                    <form action="#" method="post" class="contact-form  wow fadeInLeft">
+                    
+                <?php $attributes = array('class' => 'contact-form  wow fadeInLeft');
+                echo form_open('forgotpassword/faculty', $attributes);?>
+
                         <div class="form-group">
-                            <label for="registration">Registration ID</label>
-                            <div class="input-group">
-                            <input type="email" name="registration" id="registration" required class="form-control" placeholder="Registration ID" aria-describedby="addon">
-                            <span class="input-group-addon" id="addon">@thapar.edu</span>
-                            </div>
+                            <label for="email">Email ID<span style="color:red;">*</span></label>
+                            <input type="email" name="email" id="email" required class="form-control" placeholder="arush@gmail.com">
                         </div>
-                        <div class="form-group">
-                            <input type="password" required class="form-control" placeholder="Password">
-                        </div>
-                        <button type="submit" class="pull-left send-button button">Login</button>
+                        
+                        <button type="submit" class="pull-left send-button button">Retrieve Password</button>
                     </form>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
-                        <a href="<?php echo base_url();?>index.php/register/faculty"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Register</a>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 text-center wow col-xs-12 " data-wow-duration="1s">
-                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Forgot Password</a>
+               <div class="col-md-6 col-sm-6 col-xs-12 text-center wow" data-wow-duration="1s">
+                        <a href="<?php echo base_url();?>index.php/login/faculty"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Click here to Login</a>
                 </div>
                 <!-- END CONTACT FORM -->
             </div>
         </div>
     </section>
-    <!-- END FACULTY LOGIN -->
+    <!-- END STUDENT LOGIN -->
+
+<!---------- DATE INPUT FIX NOT WORKING IN FIREFOX------>
+
+<!-- cdn for modernizr, if you haven't included it already -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+<!-- polyfiller file to detect and load polyfills -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+</script>
+<!---------- END OF DATE INPUT FIX------>
+
+
+    <!-------------------- JAVASCRIPT PHONE NUMBER VALIDATION CHECK PENDING  ------------------------>

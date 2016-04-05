@@ -125,11 +125,11 @@ class Login extends CI_Controller {
 			$data['error']=array();
 			$this->load->helper('email');	
 			if($this->Default_model->isEmpty($data['registration_id']))
-				array_push($data['error'], 'Please enter your registration id!');
+				array_push($data['error'], array('Please enter your registered email address!',0));
 			if($this->Default_model->isEmpty($data['password']))
-				array_push($data['error'], 'Please enter your Password!');
+				array_push($data['error'], array('Please enter your password!',0));
 			if(!valid_email($data['registration_id']))
-				array_push($data['error'], 'The email is not in proper format!');
+				array_push($data['error'], array('Incorrect email!',0));
 			if(isset($data['error'][0]))
 			{
 				$this->load->view('templates/front_header',$data);
@@ -154,7 +154,7 @@ class Login extends CI_Controller {
 				}
 				else
 				{
-					array_push($data['error'], 'Some Error Occurred. Please Try Again'); 
+					array_push($data['error'], array('Incorrect username or password!',0)); 
 					$this->load->view('templates/front_header',$data);
 					$this->load->view('templates/login/faculty',$data);
 					$this->load->view('templates/front_footer',$data);

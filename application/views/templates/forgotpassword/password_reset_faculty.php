@@ -24,7 +24,7 @@
                 <!-- CONTACT FORM -->
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
                 <?php $attributes = array('class' => 'contact-form  wow fadeInLeft');
-                echo form_open('forgotpassword/reset_student_password', $attributes);?>
+                echo form_open('forgotpassword/reset_faculty_password', $attributes);?>
 
                     <?php if($this->input->post()){?>
 

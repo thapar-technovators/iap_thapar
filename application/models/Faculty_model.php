@@ -6,7 +6,7 @@ class Faculty_model extends CI_Model {
 	function sendEmailAndRegister($data1)
 	{
 		$password=$this->generatePassword();
-		$this->send_mail($data1['email'],"Successfully Registered","Hey I am Arush password: $password");
+		$this->send_mail($data1['email'],"Faculty Successfully Registered","Here is your password: $password");
 		$data1['password']=$this->passwordHash($password);
 		if($this->registerUser($data1))
 			return true;
@@ -44,7 +44,7 @@ class Faculty_model extends CI_Model {
 		$mail->Port       = 465;                    // set the SMTP port
 		$mail->Username   = "iapthapar@gmail.com";  // SES SMTP  username
 		$mail->Password   = "thaparmech";  // SES SMTP password
-		$mail->SetFrom($from, 'Team IAP TU');
+		$mail->SetFrom($from, 'Team IAP TU - Faculty');
 		$mail->AddReplyTo($from,'Arush Nagpal');
 		$mail->Subject = $subject;
 		$mail->MsgHTML($body);
@@ -218,6 +218,67 @@ class Faculty_model extends CI_Model {
 		{
 			return false;
 		}
+	}
+
+	function faculty_exists($email){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from faculty WHERE email='$email'");
+		
+		if($query->num_rows() > 0) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function forgot_password($email){
+		$this->load->library('encrypt');
+		$password=$this->generatePassword();
+		$hashed_pass = $this->passwordHash($password);
+		$encrypted_email= $this->encrypt->encode($email);
+		if($this->send_mail($email,"Password Reset","Activation Code: $password <br> <br> Click on this link and enter the above activation code to set your password: http://localhost/iap_thapar/index.php/forgotpassword/reset_faculty_password?email=$encrypted_email&code=$hashed_pass ")){
+
+			return true;
+		}
+		else 
+			return false;
+
+	}
+	function reset_password($email,$pass){
+
+
+		$this->load->library('encrypt');
+		$decrypted_email = $this->encrypt->decode($email);
+		$data = array('password' => $this->passwordHash($pass) );
+
+		$this->db->where('email', $decrypted_email);
+		if($this->db->update('faculty', $data)) 
+			return true;
+		else
+			return false;
+	}
+
+	function check_activation($original_code,$entered_code){
+		$sanitized_original = $this->sanitize($original_code);
+		$entered_original = $this->sanitize($entered_code);
+
+		if($sanitized_original== $this->passwordHash($entered_original))
+			return true;
+		else
+			return false;
+	}
+
+	function sanitize($string)
+	{
+    	$string = filter_var($string, FILTER_SANITIZE_STRING);
+    	$string = trim($string);
+    	$string = stripslashes($string);
+    	$string = strip_tags($string);
+    	return $string;
 	}
 
 }
