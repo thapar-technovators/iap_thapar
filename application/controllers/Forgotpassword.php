@@ -83,13 +83,20 @@ class Forgotpassword extends CI_Controller {
 	public function reset_student_password(){
 		$data['title']="Login | Student";
 		$this->load->model('Student_model');
+		if($this->input->get()){
+			$email = $this->input->get('email');
+		}
+		if($this->input->post()){
+			$email = $this->input->post('email');
+		}
+
+		if($this->Student_model->link_activated($email)){
 		if($this->input->post()){
 			$data['error']=array();
 			$original_code = $this->input->post('code_sent');
 			$entered_code = $this->input->post('activation');
 			$newpass = $this->input->post('newpass');
 			$confirmpass = $this->input->post('confirmpass');
-			$email = $this->input->post('email');
 			if($this->Student_model->check_activation($original_code,$entered_code)){
 				if($newpass==$confirmpass){
 					
@@ -126,6 +133,14 @@ class Forgotpassword extends CI_Controller {
 			}
 		}
 		else{
+		$this->load->view('templates/front_header',$data);
+		$this->load->view('templates/forgotpassword/password_reset',$data);
+		$this->load->view('templates/front_footer',$data);
+		}
+
+	}
+	else{
+		$data['activation'] = 0;
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/forgotpassword/password_reset',$data);
 		$this->load->view('templates/front_footer',$data);

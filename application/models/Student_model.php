@@ -275,8 +275,12 @@ class Student_model extends CI_Model {
 		$password=$this->generatePassword();
 		$hashed_pass = $this->passwordHash($password);
 		$encrypted_email= $this->encrypt->encode($email);
-		if($this->send_mail($email,"Password Reset","Activation Code: $password <br> <br> Click on this link and enter the above activation code to set your password: http://localhost/iap_thapar/index.php/forgotpassword/reset_student_password?email=$encrypted_email&code=$hashed_pass ")){
+		if($this->send_mail($email,"Password Reset","Activation Code: $password <br> <br> This Activtion Code will expire once you reset your password.Click on this link and enter the above activation code to set your password: http://localhost/iap_thapar/index.php/forgotpassword/reset_student_password?email=$encrypted_email&code=$hashed_pass ")){
 
+			$data = array('activation_link'=>1 );
+
+		$this->db->where('email', $email);
+		if($this->db->update('student', $data)) 
 			return true;
 		}
 		else 
@@ -288,7 +292,7 @@ class Student_model extends CI_Model {
 
 		$this->load->library('encrypt');
 		$decrypted_email = $this->encrypt->decode($email);
-		$data = array('password' => $this->passwordHash($pass) );
+		$data = array('password' => $this->passwordHash($pass), 'activation_link'=>0 );
 
 		$this->db->where('email', $decrypted_email);
 		if($this->db->update('student', $data)) 
@@ -305,6 +309,19 @@ class Student_model extends CI_Model {
 			return true;
 		else
 			return false;
+	}
+
+	function link_activated($email){
+		$this->load->library('encrypt');
+		$decrypted_email = $this->encrypt->decode($email);
+		$data = array('email'=> $decrypted_email, 'activation_link'=>1);
+		$query=$this->db->get_where('student',$data);
+			if( $query->num_rows()>0){
+
+					return true;
+			}
+			else
+				return false;
 	}
 
 	function sanitize($string)

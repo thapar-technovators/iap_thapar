@@ -3,6 +3,30 @@
         <div class="container">
             <div class="hidden-md hidden-lg"><hr></div>
             <h2 class="section-title">Password Reset</h2>
+
+<?php if(isset($activation)){?>
+<div class="alert alert-info alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo "The activation link has expired!";
+                    //echo $_POST['code_sent'];?>
+                </div>
+
+          <?php 
+                if(isset($error))
+                {
+                foreach ($error as $error_item):
+                ?>
+                <div class=<?php if($error_item[1]==0) echo "'alert alert-info alert-danger'";
+                else echo "'alert alert-info alert-success'";?> role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $error_item[0];
+                    //echo $_POST['code_sent'];?>
+                </div>
+                <?php endforeach;
+                } 
+                ?>      
+<?php }else{ ?>
+
             <div class="row">
 
             <?php 
@@ -74,6 +98,7 @@
                 </div>
                 <!-- END CONTACT FORM -->
             </div>
+            <?php } ?>
         </div>
     </section>
     <!-- END STUDENT LOGIN -->
