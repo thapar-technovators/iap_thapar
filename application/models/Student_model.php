@@ -47,7 +47,8 @@ class Student_model extends CI_Model {
         'name' => $document['name'],
         'branch' => $document['branch'],
         'semester' => $document['semester'],
-        'phone' => $document['phone']
+        'phone' => $document['phone'],
+        'activation_link' => 0
         );
 		if($this->db->insert('student', $data))
 			return true;
@@ -232,19 +233,13 @@ class Student_model extends CI_Model {
 	}
 
 	function change_password($pass){
-
-		//$hashed_pass = $this->passwordHash($pass['oldpass']);
 		$user = array();
 		$user['email'] = $pass['email'];
 		$user['password'] = $pass['old'];
-
-		//$query = $this->db->query("SELECT email,password from student WHERE email='".$pass['email']."' AND password='$hashed_pass'");
 		if($this->authenticate_student($user)) 
 		{
 			$newpass = $this->passwordHash($pass['new']);
-
 			$data = array('password' => $newpass );
-
 			$this->db->where('email', $pass['email']);
 			if($this->db->update('student', $data)) 
 				return true;
@@ -257,27 +252,15 @@ class Student_model extends CI_Model {
 		}
 
 	}
-/*	function forgot_password($email){
 
-		$password=$this->generatePassword();
-		$this->send_mail($email,"Successfully Registered","Hey I am Arush password: $password");
-		$data = array('password' => $this->passwordHash($password) );
-		$this->db->where('email', $email);
-			if($this->db->update('student', $data)) 
-				return true;
-			else
-				return false;
-		
-	}*/
-
-	function forgot_password($email){
+	function forgot_password($email){ 
 		$this->load->library('encrypt');
 		$password=$this->generatePassword();
 		$hashed_pass = $this->passwordHash($password);
 		$encrypted_email= $this->encrypt->encode($email);
 		if($this->send_mail($email,"Password Reset","Activation Code: $password <br> <br> This Activtion Code will expire once you reset your password.Click on this link and enter the above activation code to set your password: http://localhost/iap_thapar/index.php/forgotpassword/reset_student_password?email=$encrypted_email&code=$hashed_pass ")){
 
-			$data = array('activation_link'=>1 );
+			$data = array('activation_link'=>$hashed_pass);
 
 		$this->db->where('email', $email);
 		if($this->db->update('student', $data)) 
@@ -292,7 +275,7 @@ class Student_model extends CI_Model {
 
 		$this->load->library('encrypt');
 		$decrypted_email = $this->encrypt->decode($email);
-		$data = array('password' => $this->passwordHash($pass), 'activation_link'=>0 );
+		$data = array('password' => $this->passwordHash($pass), 'activation_link'=> '0' );
 
 		$this->db->where('email', $decrypted_email);
 		if($this->db->update('student', $data)) 
@@ -301,27 +284,30 @@ class Student_model extends CI_Model {
 			return false;
 	}
 
-	function check_activation($original_code,$entered_code){
+	
+	function check_activation($original_code,$entered_code){ // to check if the user has entered correct activation code or not
 		$sanitized_original = $this->sanitize($original_code);
 		$entered_original = $this->sanitize($entered_code);
+		if($sanitized_original== $this->passwordHash($entered_original)){
 
-		if($sanitized_original== $this->passwordHash($entered_original))
 			return true;
+		}
 		else
 			return false;
 	}
 
-	function link_activated($email){
+	function link_activated($email,$code){ //to check if the link is still active or not
 		$this->load->library('encrypt');
+		$sanitized_email = $this->sanitize($email);
+		$sanitized_code = $this->sanitize($code);
 		$decrypted_email = $this->encrypt->decode($email);
-		$data = array('email'=> $decrypted_email, 'activation_link'=>1);
+		$data = array('email'=> $decrypted_email , 'activation_link'=>$sanitized_code);
 		$query=$this->db->get_where('student',$data);
-			if( $query->num_rows()>0){
-
-					return true;
-			}
-			else
-				return false;
+			if( $query->num_rows()>0)
+						return true;
+					else 
+						return false;
+		
 	}
 
 	function sanitize($string)

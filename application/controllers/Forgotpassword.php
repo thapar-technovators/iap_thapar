@@ -44,40 +44,36 @@ class Forgotpassword extends CI_Controller {
 		{
 			//Need not apply TRUE tags to every post field since the global XSS has been set to true
 			
-			
 			$data['email']=$this->input->post('email');
 			
 			/*Now check for every error*/
 			$data['error']=array();
 			$this->load->helper('email');
-			/*Convert the name into title case using javascript*/
 			if(!valid_email($data['email']))
 				array_push($data['error'], array('The email is not in proper format!',0));
-			
 			if(!isset($data['error'][0]))
 			{
+
 				if($this->Student_model->student_exists($data['email'])){
+
 					if($this->Student_model->forgot_password($data['email']))
 					{
-						array_push($data['error'], array('The link and Activation code has been sent to your email ID to reset passowrd. Please check your mail.',1));
+						$this->session->set_flashdata('success', 1);
+						redirect('forgotpassword/student', 'refresh'); 	
 					}
 					else
-					{
-						array_push($data['error'], array('Some Error Occurred. Please Try Again',0)); //Error handling on duplicate email left and has to be done later
-					}
-
+						array_push($data['error'], array('Some Error Occurred. Please Try Again',0));
 				}
 				else
-					{
 						array_push($data['error'], array('This email id is not registered yet!',0)); //Error handling on duplicate email left and has to be done later
-					}		
 			}
 			
 		}
-		
+			$data['success'] = $this->session->flashdata('success');
 			$this->load->view('templates/front_header',$data);
 			$this->load->view('templates/forgotpassword/student',$data);
 		 	$this->load->view('templates/front_footer',$data);
+		
 	}
 
 	public function reset_student_password(){
@@ -85,15 +81,20 @@ class Forgotpassword extends CI_Controller {
 		$this->load->model('Student_model');
 		if($this->input->get()){
 			$email = $this->input->get('email');
+			$original_code = $this->input->get('code');
 		}
+		else{
 		if($this->input->post()){
 			$email = $this->input->post('email');
+			$original_code = $this->input->post('code_sent');
 		}
-
-		if($this->Student_model->link_activated($email)){
+	}
+		$data['error']=array();
+		//array_push($data['error'], array($this->Student_model->link_activated($email,$original_code),1));
+		if($this->Student_model->link_activated($email,$original_code)){
 		if($this->input->post()){
 			$data['error']=array();
-			$original_code = $this->input->post('code_sent');
+			
 			$entered_code = $this->input->post('activation');
 			$newpass = $this->input->post('newpass');
 			$confirmpass = $this->input->post('confirmpass');
@@ -133,6 +134,7 @@ class Forgotpassword extends CI_Controller {
 			}
 		}
 		else{
+			
 		$this->load->view('templates/front_header',$data);
 		$this->load->view('templates/forgotpassword/password_reset',$data);
 		$this->load->view('templates/front_footer',$data);

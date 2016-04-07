@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2016 at 08:43 PM
+-- Generation Time: Apr 07, 2016 at 05:23 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.5.30
 
@@ -116,7 +116,7 @@ CREATE TABLE `student` (
   `semester` int(2) NOT NULL,
   `phone` bigint(20) NOT NULL,
   `time_of_registration` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `activation_link` int(11) NOT NULL
+  `activation_link` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -124,9 +124,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`roll_number`, `email`, `password`, `name`, `branch`, `semester`, `phone`, `time_of_registration`, `activation_link`) VALUES
-(101303004, 'abhinavgarg017@gmail.com', '$2y$10$wanttocrackitokaythenOmTvjQXqEWBtXxizGg3Z14X/wXLFGH..', 'Abhinav Garg', 'Computer Engineering', 7, 99999999999, '2016-04-02 07:02:54', 0),
-(101303034, 'arushngpl16@gmail.com', '$2y$10$wanttocrackitokaythenOmTvjQXqEWBtXxizGg3Z14X/wXLFGH..', 'Arush Nagpal', 'Mechanical Engineering', 4, 9988090859, '2016-03-04 18:19:44', 0),
-(101303041, 'chahakgupta4@gmail.com', '$2y$10$wanttocrackitokaythenOmTvjQXqEWBtXxizGg3Z14X/wXLFGH..', 'Chahak', 'Computer Engineering', 6, 9041114525, '2016-04-05 10:45:39', 0);
+(101303004, 'abhinavgarg017@gmail.com', '$2y$10$wanttocrackitokaythenO56HCrYbRnQnNhOUcDUZBI1lSeSf2JaS', 'Abhinav Garg', 'Computer Engineering', 7, 99999999999, '2016-04-02 07:02:54', '0'),
+(101303034, 'arushngpl16@gmail.com', '$2y$10$wanttocrackitokaythenO56HCrYbRnQnNhOUcDUZBI1lSeSf2JaS', 'Arush Nagpal', 'Mechanical Engineering', 4, 9988090859, '2016-03-04 18:19:44', '0'),
+(101303041, 'chahakgupta4@gmail.com', '$2y$10$wanttocrackitokaythenOllYjFQbN858uRoI3Q8HktZ9i.zSHvSC', 'Chahak', 'Computer Engineering', 6, 9041114525, '2016-04-05 10:45:39', '0');
 
 -- --------------------------------------------------------
 

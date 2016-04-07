@@ -18,8 +18,13 @@
                     <?php echo $error_item[0];?>
                 </div>
                 <?php endforeach;
-                } 
-                ?>
+                }
+                if(isset($success)){ ?>
+                    <div class=  "alert alert-info alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo "The link and Activation code has been sent to your email ID to reset passowrd. Please check your mail.";?>
+                </div>
+             <?php   }?>
 
                 <div class="col-md-8 col-md-offset-2 text-left wow" data-wow-duration="1s">
                     
