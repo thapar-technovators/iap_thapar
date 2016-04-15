@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2016 at 05:23 PM
+-- Generation Time: Apr 15, 2016 at 11:03 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.5.30
 
@@ -141,6 +141,7 @@ CREATE TABLE `training_data` (
   `city` varchar(200) DEFAULT NULL,
   `date_of_join` date NOT NULL,
   `months` int(11) NOT NULL,
+  `mentor` varchar(200) NOT NULL,
   `phase` int(11) NOT NULL DEFAULT '0',
   `admin_approve` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -149,11 +150,11 @@ CREATE TABLE `training_data` (
 -- Dumping data for table `training_data`
 --
 
-INSERT INTO `training_data` (`td_id`, `roll_number`, `company`, `city`, `date_of_join`, `months`, `phase`, `admin_approve`) VALUES
-(1, 101303041, 'ABC', 'Bangalore', '0000-00-00', 0, 0, 1),
-(2, 101303042, 'BCD', 'Pune', '0000-00-00', 0, 0, 1),
-(3, 101303034, 'GHI', 'New Delhi', '0000-00-00', 0, 0, 1),
-(4, 101303041, 'BCD', 'Pune', '2016-04-13', 2, 0, 1);
+INSERT INTO `training_data` (`td_id`, `roll_number`, `company`, `city`, `date_of_join`, `months`, `mentor`, `phase`, `admin_approve`) VALUES
+(1, 101303041, 'ABC', 'Bangalore', '0000-00-00', 0, 'abhinavgarg017@gmail.com', 0, 1),
+(2, 101303042, 'BCD', 'Pune', '0000-00-00', 0, '', 0, 1),
+(3, 101303034, 'GHI', 'New Delhi', '0000-00-00', 0, '', 0, 1),
+(4, 101303041, 'BCD', 'Pune', '2016-04-13', 2, '', 0, 1);
 
 --
 -- Indexes for dumped tables

@@ -41,8 +41,8 @@
                 </form>
                 <div class="news-update-box hidden-xs"><span class="text-uppercase mrm pull-left text-white">News:</span>
                     <ul id="news-update" class="ticker list-unstyled">
-                        <li>Welcome to KAdmin - Responsive Multi-Style Admin Template</li>
-                        <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque.</li>
+                        <li>Welcome to IAP </li>
+                        <li>Kindly submit all details on time</li>
                     </ul>
                 </div>
                 <ul class="nav navbar navbar-top-links navbar-right mbn">
@@ -83,6 +83,9 @@
                     <li><a href="<?php echo base_url(); ?>index.php/student/company_details"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Training Details</span></a></li>
+                    <li><a href="<?php echo base_url(); ?>index.php/student/mentor"><i class="fa fa-tachometer fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Add Mentor</span></a></li>
 
                     <li><a href="<?php echo base_url(); ?>index.php/student/upload_joining"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>

@@ -138,6 +138,35 @@ class Student extends CI_Controller {
 		redirect('login/student', 'refresh');
 	}
 
+	public function mentor(){
+		$data['title']="Student|Company Details";
+		$student_id = $_SESSION["uid"];
+		$data['companies'] = $this->Student_model->get_companies_of_student($student_id);
+		if($this->input->post()){
+			$mentor_id = $this->input->post('mentorid');
+			$company = $this->input->post('company_name');
+			$data['error'] = array();
+			if($this->Student_model->mentor_exists($mentor_id)){
+				if($this->Student_model->add_mentor($student_id,$mentor_id,$company)){
+					array_push($data['error'], array("Mentor successfully added",1));
+				}
+				else{
+					array_push($data['error'], array("Some error occurred",0));
+
+				}	
+			}
+			else{
+				array_push($data['error'], array("This id is not registered yet. Kindly request your mentor to register himself with IAP.",0));
+			}
+			
+
+		}
+
+		$this->load->view('student/student_header');
+		$this->load->view('student/add_mentor',$data);
+		$this->load->view('student/student_footer');
+	}
+
 	public function upload_joining()
 
 	{

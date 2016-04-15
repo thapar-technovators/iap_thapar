@@ -159,7 +159,6 @@ class Student_model extends CI_Model {
 
 	function student_exists($email){
 
-		$data_fetch =array();
 		$query = $this->db->query("SELECT * from student WHERE email='$email'");
 		
 		if($query->num_rows() > 0) 
@@ -311,14 +310,43 @@ class Student_model extends CI_Model {
 	}
 
 	function sanitize($string)
-{
-    $string = filter_var($string, FILTER_SANITIZE_STRING);
-    $string = trim($string);
-    $string = stripslashes($string);
-    $string = strip_tags($string);
-    return $string;
-}
+	{
+    	$string = filter_var($string, FILTER_SANITIZE_STRING);
+    	$string = trim($string);
+    	$string = stripslashes($string);
+    	$string = strip_tags($string);
+    	return $string;
+	}
 
+	function add_mentor($student_id,$mentor_id,$company){
+		$data_user = $this->details($student_id);
+		$this->db->where('roll_number',$data_user->roll_number);
+		$this->db->where('company',$company);
+		if($this->db->update('training_data',array('mentor'=>$mentor_id)))
+			return true;
+		else
+			return false;
+
+	}
+
+	function mentor_exists($mentor_id){
+		$query = $this->db->query("SELECT * from mentor WHERE email='$mentor_id'");
+		if($query->num_rows() > 0) 
+			return true;
+		else
+			return false;
+	}
+	function get_companies_of_student($student_id){
+		$data_user = $this->details($student_id);
+		$roll = $data_user->roll_number;
+		$query = $this->db->query("SELECT company FROM training_data WHERE roll_number = '$roll' AND mentor = ''");
+		$company=array();
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			array_push($company, $res['company']);
+		}
+		return $company;
+	}
 
 }
 ?>
