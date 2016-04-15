@@ -40,7 +40,9 @@
                 <ul class="nav navbar navbar-top-links navbar-right mbn">
                     <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="<?php echo base_url();?>dashboard/images/avatar/48.jpg" alt="" class="img-responsive img-circle"/>&nbsp;<span class="hidden-xs"><?php echo $_SESSION["full_name"];?></span>&nbsp;<span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-user pull-right">
+                            <li><a href="<?php echo base_url(); ?>index.php/mentor/change_password"><i class="fa fa-tasks"></i>Change Password</a></li>
                             <li><a href="<?php echo base_url();?>index.php/mentor/logout"><i class="fa fa-key"></i>Log Out</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -59,13 +61,7 @@
                     <li><a href="<?php echo base_url(); ?>index.php/mentor"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Dashboard</span></a></li>
-
-                    <li><a href="<?php echo base_url(); ?>index.php/faculty/city_preferences"><i class="fa fa-desktop fa-fw">
-                        <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">City Preferences</span></a>
-                    </li>
                 </ul>
             </div>
         </nav>
             <!--END SIDEBAR MENU-->
-            

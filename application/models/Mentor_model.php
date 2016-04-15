@@ -138,6 +138,106 @@ class Mentor_model extends CI_Model {
 			return false;
 		}
 	}
-}
 
+	function change_password($pass){
+		$user = array();
+		$user['registration_id'] = $pass['email'];
+		$user['password'] = $pass['old'];
+		if($this->auth($user)) 
+		{
+			$newpass = $this->passwordHash($pass['new']);
+			$data = array('password' => $newpass );
+			$this->db->where('email', $pass['email']);
+			if($this->db->update('mentor', $data)) 
+				return true;
+			else
+				return false;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+	function forgot_password($email){ 
+		$this->load->library('encrypt');
+		$password=$this->generatePassword();
+		$hashed_pass = $this->passwordHash($password);
+		$encrypted_email= $this->encrypt->encode($email);
+		if($this->send_mail($email,"Password Reset","Activation Code: $password <br> <br> This Activtion Code will expire once you reset your password.Click on this link and enter the above activation code to set your password: http://localhost/iap_thapar/index.php/forgotpassword/reset_mentor_password?email=$encrypted_email&code=$hashed_pass ")){
+
+			$data = array('activation_link'=>$hashed_pass);
+
+		$this->db->where('email', $email);
+		if($this->db->update('mentor', $data)) 
+			return true;
+		}
+		else 
+			return false;
+
+	}
+
+	function link_activated($email,$code){ //to check if the link is still active or not
+		$this->load->library('encrypt');
+		$sanitized_email = $this->sanitize($email);
+		$sanitized_code = $this->sanitize($code);
+		$decrypted_email = $this->encrypt->decode($email);
+		$data = array('email'=> $decrypted_email , 'activation_link'=>$sanitized_code);
+		$query=$this->db->get_where('mentor',$data);
+			if( $query->num_rows()>0)
+						return true;
+					else 
+						return false;
+		
+	}
+
+	function check_activation($original_code,$entered_code){ // to check if the user has entered correct activation code or not
+		$sanitized_original = $this->sanitize($original_code);
+		$entered_original = $this->sanitize($entered_code);
+		if($sanitized_original== $this->passwordHash($entered_original)){
+
+			return true;
+		}
+		else
+			return false;
+	}
+
+	function reset_password($email,$pass){
+
+
+		$this->load->library('encrypt');
+		$decrypted_email = $this->encrypt->decode($email);
+		$data = array('password' => $this->passwordHash($pass), 'activation_link'=> '0' );
+
+		$this->db->where('email', $decrypted_email);
+		if($this->db->update('mentor', $data)) 
+			return true;
+		else
+			return false;
+	}
+
+	function sanitize($string)
+	{
+    	$string = filter_var($string, FILTER_SANITIZE_STRING);
+    	$string = trim($string);
+    	$string = stripslashes($string);
+    	$string = strip_tags($string);
+    	return $string;
+	}
+
+	function mentor_exists($email){
+
+		$query = $this->db->query("SELECT * from mentor WHERE email='$email'");
+		
+		if($query->num_rows() > 0) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+}
+}
 ?>

@@ -51,6 +51,38 @@ class Mentor extends CI_Controller {
 		}
 	}
 
+	public function change_password(){
+
+
+		if($this->input->post()){
+
+		$pass['old'] = $this->input->post('oldpass');
+		$pass['new'] = $this->input->post('newpass');
+		$pass['confirm'] = $this->input->post('confirmpass');
+		$pass['email'] = $this->session->userdata('uid');
+		$data['error']=array();
+
+		if($pass['new']!=$pass['confirm'])
+			array_push($data['error'], array('Confirm Password does not match with the New Password',0));
+		else{
+
+		if($this->Mentor_model->change_password($pass))
+			array_push($data['error'], array('Password changed successfully!',1));
+		else
+			array_push($data['error'], array("Some error occurred!Please try again",0));
+		}
+
+			$this->load->view('mentor/mentor_header');
+			$this->load->view('mentor/change_password',$data);
+			$this->load->view('mentor/mentor_footer');
+		}
+		else{
+			$this->load->view('mentor/mentor_header');
+			$this->load->view('mentor/change_password');
+			$this->load->view('mentor/mentor_footer');
+    	}
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('user_type');

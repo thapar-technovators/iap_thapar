@@ -248,10 +248,114 @@ class Forgotpassword extends CI_Controller {
 
 	public function mentor()
 	{
-		$data['title']="Register | Mentor";
+		$data['title']="Forgot Password | Mentor";
+		$this->load->model('Mentor_model');
+		if($this->input->post())
+		{
+			//Need not apply TRUE tags to every post field since the global XSS has been set to true
+			
+			$data['email']=$this->input->post('email');
+			
+			/*Now check for every error*/
+			$data['error']=array();
+			$this->load->helper('email');
+			if(!valid_email($data['email']))
+				array_push($data['error'], array('The email is not in proper format!',0));
+			if(!isset($data['error'][0]))
+			{
+
+				if($this->Mentor_model->mentor_exists($data['email'])){
+
+					if($this->Mentor_model->forgot_password($data['email']))
+					{
+						$this->session->set_flashdata('success', 1);
+						redirect('forgotpassword/mentor', 'refresh'); 	
+					}
+					else
+						array_push($data['error'], array('Some Error Occurred. Please Try Again',0));
+				}
+				else
+						array_push($data['error'], array('This email id is not registered yet!',0)); //Error handling on duplicate email left and has to be done later
+			}
+			
+		}
+			$data['success'] = $this->session->flashdata('success');
+			$this->load->view('templates/front_header',$data);
+			$this->load->view('templates/forgotpassword/mentor',$data);
+		 	$this->load->view('templates/front_footer',$data);
+	}
+
+	public function reset_mentor_password(){
+		$data['title']="Login | Mentor";
+		$this->load->model('Mentor_model');
+		if($this->input->get()){
+			$email = $this->input->get('email');
+			$original_code = $this->input->get('code');
+		}
+		else{
+		if($this->input->post()){
+			$email = $this->input->post('email');
+			$original_code = $this->input->post('code_sent');
+		}
+	}
+		$data['error']=array();
+		//array_push($data['error'], array($this->Student_model->link_activated($email,$original_code),1));
+		if($this->Mentor_model->link_activated($email,$original_code)){
+		if($this->input->post()){
+			$data['error']=array();
+			
+			$entered_code = $this->input->post('activation');
+			$newpass = $this->input->post('newpass');
+			$confirmpass = $this->input->post('confirmpass');
+			if($this->Mentor_model->check_activation($original_code,$entered_code)){
+				if($newpass==$confirmpass){
+					
+					if($this->Mentor_model->reset_password($email,$newpass)){
+						array_push($data['error'], array("Password successfully changed!",1));
+						$this->load->view('templates/front_header',$data);
+						$this->load->view('templates/login/mentor',$data);
+						$this->load->view('templates/front_footer',$data);
+
+
+					}
+					else{
+						array_push($data['error'], array('Some error occurred. Please try again!',0));
+						$this->load->view('templates/front_header',$data);
+						$this->load->view('templates/forgotpassword/password_reset_mentor',$data);
+						$this->load->view('templates/front_footer',$data);
+					}
+
+				}
+				else{
+
+					array_push($data['error'], array('Confirm Password does not match with the new password',0));
+					$this->load->view('templates/front_header',$data);
+					$this->load->view('templates/forgotpassword/password_reset_mentor',$data);
+					$this->load->view('templates/front_footer',$data);
+				}
+			}
+			else{
+				
+				array_push($data['error'], array("The entered activation code does not match with the sent code!",0));
+				$this->load->view('templates/front_header',$data);
+				$this->load->view('templates/forgotpassword/password_reset_mentor',$data);
+				$this->load->view('templates/front_footer',$data);
+			}
+		}
+		else{
+			
 		$this->load->view('templates/front_header',$data);
-		$this->load->view('templates/forgotpassword/mentor',$data);
+		$this->load->view('templates/forgotpassword/password_reset_mentor',$data);
 		$this->load->view('templates/front_footer',$data);
+		}
+
+	}
+	else{
+		$data['activation'] = 0;
+		$this->load->view('templates/front_header',$data);
+		$this->load->view('templates/forgotpassword/password_reset_mentor',$data);
+		$this->load->view('templates/front_footer',$data);
+	}
 	}
 	//Sample function to test PHP Mailer
 
