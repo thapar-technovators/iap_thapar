@@ -82,11 +82,19 @@
                      <div class="clearfix"></div>
                     <li><a href="<?php echo base_url(); ?>index.php/student/company_details"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Dashboard</span></a></li>
+                    </i><span class="menu-title">Training Details</span></a></li>
 
-                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_document"><i class="fa fa-desktop fa-fw">
+                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_joining"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
-                    </i><span class="menu-title">Upload</span></a>
+                    </i><span class="menu-title">Upload Joining Report</span></a>
+                    </li>
+                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_intermid"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">Upload Intermid Report</span></a>
+                    </li>
+                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_final"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">Upload Final Report</span></a>
                     </li>
                 </ul>
             </div>

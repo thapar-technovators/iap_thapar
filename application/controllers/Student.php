@@ -138,17 +138,35 @@ class Student extends CI_Controller {
 		redirect('login/student', 'refresh');
 	}
 
-	public function upload_document()
+	public function upload_joining()
 
 	{
 		$this->load->helper(array('form', 'url')); 
 		$this->load->view('student/student_header');
-		$this->load->view('student/upload_document',array('error' => ' ' ));
+		$this->load->view('student/upload_joining',array('error' => ' ' ));
+		$this->load->view('student/student_footer');
+
+	}
+	public function upload_intermid()
+
+	{
+		$data = array('error' => ' ' );
+		$this->load->helper(array('form', 'url')); 
+		$this->load->view('student/student_header');
+		$this->load->view('student/upload_intermid',$data);
+		$this->load->view('student/student_footer');
+
+	}public function upload_final()
+
+	{
+		$this->load->helper(array('form', 'url')); 
+		$this->load->view('student/student_header');
+		$this->load->view('student/upload_final',array('error' => ' ' ));
 		$this->load->view('student/student_footer');
 
 	}
 
-	public function submit_file()
+	public function submit_joining()
 	{
 
 		$this->load->helper(array('form', 'url')); 
@@ -161,14 +179,68 @@ class Student extends CI_Controller {
         if ( ! $this->upload->do_upload('userfile')) {
         	$error = array('error' => $this->upload->display_errors()); 
             $this->load->view('student/student_header');
-			$this->load->view('student/upload_document',array('error' => ' ' ));
+			$this->load->view('student/upload_joining',array('error' => ' ' ));
+			$this->load->view('student/student_footer');
+            $this->load->view('upload_document', $error); 
+         }		
+        else { 
+            $data = array('upload_data' => $this->upload->data()); 
+            $data['file1'] = 'success';
+            $this->load->view('student/student_header');
+            $this->load->view('student/upload_joining', $data); 
+            $this->load->view('student/student_footer');
+         } 
+	}
+
+	public function submit_intermid()
+	{
+
+		$this->load->helper(array('form', 'url')); 
+		$config['upload_path']   = './uploads/intermid_report/'; 
+        $config['allowed_types'] = 'pdf'; 
+        $config['max_size']      = 10000000;
+        $config['max_width']     = 4000; 
+        $config['max_height']    = 4000;  
+        //$data['error'] = array();
+        $this->load->library('upload', $config);	
+        if ( ! $this->upload->do_upload('userfile')) {
+        	$data = array('error' => $this->upload->display_errors()); 
+            $this->load->view('student/student_header');
+			$this->load->view('student/upload_intermid',$data);
+			$this->load->view('student/student_footer');
+            $this->load->view('upload_document', $error); 
+         }		
+        else { 
+            $data = array('upload_data' => $this->upload->data(),array('error' => ' ' )); 
+            $this->load->view('student/student_header');
+            $data['file1'] = 'success';
+            $this->load->view('student/upload_intermid', $data); 
+            $this->load->view('student/student_footer');
+         } 
+	}
+
+	public function submit_final()
+	{
+
+		$this->load->helper(array('form', 'url')); 
+		$config['upload_path']   = './uploads/final_report/'; 
+        $config['allowed_types'] = 'pdf'; 
+        $config['max_size']      = 10000000;
+        $config['max_width']     = 4000; 
+        $config['max_height']    = 4000;  
+        $this->load->library('upload', $config);	
+        if ( ! $this->upload->do_upload('userfile')) {
+        	$error = array('error' => $this->upload->display_errors()); 
+            $this->load->view('student/student_header');
+			$this->load->view('student/upload_final',array('error' => ' ' ));
 			$this->load->view('student/student_footer');
             $this->load->view('upload_document', $error); 
          }		
         else { 
             $data = array('upload_data' => $this->upload->data()); 
             $this->load->view('student/student_header');
-            $this->load->view('student/upload_success', $data); 
+            $data['file1'] = 'success';
+            $this->load->view('student/upload_final', $data); 
             $this->load->view('student/student_footer');
          } 
 	}
