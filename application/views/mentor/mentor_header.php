@@ -61,6 +61,9 @@
                     <li><a href="<?php echo base_url(); ?>index.php/mentor"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Dashboard</span></a></li>
+                    <li><a href="<?php echo base_url();?>index.php/mentor/view_students"><i class="fa fa-send-o fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">Students</span></a>
                 </ul>
             </div>
         </nav>

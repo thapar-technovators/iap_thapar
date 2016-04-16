@@ -20,7 +20,7 @@
                 <div class="panel panel-pink">
                                             <div class="panel-heading">
                                                 Change Password</div>
-                                            <div class="panel-body pan">
+                                        <div class="panel-body pan">
                                                 <?php echo form_open_multipart('mentor/change_password');?>
                                                 <div class="form-body pal">
                                                     
@@ -47,9 +47,9 @@
                                                         Submit a review</button>
                                                 </div>
                                                 </form>
-                                            </div>
                                         </div>
-                                        
+                                       
+                                   </div>     
                     
                 </div>
                 <!--END CONTENT-->

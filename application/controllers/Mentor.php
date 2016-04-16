@@ -83,6 +83,15 @@ class Mentor extends CI_Controller {
     	}
 	}
 
+	public function view_students($page='view_students')
+	{
+		$data['heading']="Registered Students";
+		$data['students']=$this->Mentor_model->getStudents();
+		$this->load->view('mentor/mentor_header', $data);
+        $this->load->view('mentor/' . $page , $data);
+        $this->load->view('mentor/mentor_footer');
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('user_type');
