@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2016 at 08:36 PM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Generation Time: Apr 16, 2016 at 06:06 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrator`
 --
 
-CREATE TABLE IF NOT EXISTS `administrator` (
+CREATE TABLE `administrator` (
   `registration_id` varchar(100) NOT NULL,
   `name` varchar(200) NOT NULL,
   `password` varchar(250) NOT NULL
@@ -45,10 +45,10 @@ INSERT INTO `administrator` (`registration_id`, `name`, `password`) VALUES
 -- Table structure for table `branch`
 --
 
-CREATE TABLE IF NOT EXISTS `branch` (
+CREATE TABLE `branch` (
   `id` bigint(20) NOT NULL,
   `branch` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `branch`
@@ -64,7 +64,7 @@ INSERT INTO `branch` (`id`, `branch`) VALUES
 -- Table structure for table `faculty`
 --
 
-CREATE TABLE IF NOT EXISTS `faculty` (
+CREATE TABLE `faculty` (
   `registration_id` bigint(20) NOT NULL,
   `initials` varchar(10) NOT NULL,
   `name` varchar(250) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 -- Table structure for table `mentor`
 --
 
-CREATE TABLE IF NOT EXISTS `mentor` (
+CREATE TABLE `mentor` (
   `initials` varchar(10) NOT NULL,
   `name` varchar(250) NOT NULL,
   `phone` bigint(20) NOT NULL,
@@ -108,7 +108,7 @@ INSERT INTO `mentor` (`initials`, `name`, `phone`, `email`, `company`, `password
 -- Table structure for table `student`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
+CREATE TABLE `student` (
   `roll_number` bigint(20) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
@@ -135,7 +135,7 @@ INSERT INTO `student` (`roll_number`, `email`, `password`, `name`, `branch`, `se
 -- Table structure for table `training_data`
 --
 
-CREATE TABLE IF NOT EXISTS `training_data` (
+CREATE TABLE `training_data` (
   `td_id` int(11) NOT NULL,
   `roll_number` bigint(20) NOT NULL,
   `company` varchar(250) DEFAULT NULL,
@@ -143,19 +143,23 @@ CREATE TABLE IF NOT EXISTS `training_data` (
   `date_of_join` date NOT NULL,
   `months` int(11) NOT NULL,
   `mentor` varchar(200) NOT NULL,
+  `joining_report` varchar(100) NOT NULL,
+  `intermid_report` varchar(100) NOT NULL,
+  `final_report` varchar(100) NOT NULL,
+  `training_num` varchar(10) NOT NULL,
   `phase` int(11) NOT NULL DEFAULT '0',
   `admin_approve` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `training_data`
 --
 
-INSERT INTO `training_data` (`td_id`, `roll_number`, `company`, `city`, `date_of_join`, `months`, `mentor`, `phase`, `admin_approve`) VALUES
-(1, 101303041, 'ABC', 'Bangalore', '0000-00-00', 0, 'abhinavgarg017@gmail.com', 0, 1),
-(2, 101303042, 'BCD', 'Pune', '0000-00-00', 0, '', 0, 1),
-(3, 101303034, 'GHI', 'New Delhi', '0000-00-00', 0, '', 0, 1),
-(4, 101303041, 'BCD', 'Pune', '2016-04-13', 2, 'arushngpl16@gmail.com', 0, 1);
+INSERT INTO `training_data` (`td_id`, `roll_number`, `company`, `city`, `date_of_join`, `months`, `mentor`, `joining_report`, `intermid_report`, `final_report`, `training_num`, `phase`, `admin_approve`) VALUES
+(1, 101303041, 'ABC', 'Bangalore', '0000-00-00', 4, 'abhinavgarg017@gmail.com', '', '', '', '1', 0, 1),
+(2, 101303042, 'BCD', 'Pune', '0000-00-00', 0, '', '', '', '', '', 0, 1),
+(3, 101303034, 'GHI', 'New Delhi', '0000-00-00', 4, '', '', '', '', '1', 0, 1),
+(5, 101303041, 'BCD', 'Pune', '2016-04-22', 2, '', '', '', '', '2', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -206,12 +210,12 @@ ALTER TABLE `training_data`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `training_data`
 --
 ALTER TABLE `training_data`
-  MODIFY `td_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `td_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
