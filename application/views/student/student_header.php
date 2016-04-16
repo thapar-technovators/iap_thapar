@@ -87,15 +87,15 @@
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Add Mentor</span></a></li>
 
-                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_joining"><i class="fa fa-desktop fa-fw">
+                    <li><a href="<?php echo base_url(); ?>index.php/student/submit_joining"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload Joining Report</span></a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_intermid"><i class="fa fa-desktop fa-fw">
+                    <li><a href="<?php echo base_url(); ?>index.php/student/submit_intermid"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload Intermid Report</span></a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/student/upload_final"><i class="fa fa-desktop fa-fw">
+                    <li><a href="<?php echo base_url(); ?>index.php/student/submit_final"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload Final Report</span></a>
                     </li>

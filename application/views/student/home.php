@@ -27,7 +27,7 @@
 
                 <div class="panel panel-blue">
                                             <div class="panel-heading">
-                                                Training 1</div>
+                                                Training</div>
                                             <div class="panel-body pan">
                                                 <form action="<?php echo base_url();?>index.php/student/company_details" method="post">
                                                 <div class="form-body pal">
@@ -74,7 +74,7 @@
                                                         <label for="timeoftraining">Training time Confirmation (in Months)<span style="color:red;">*</span></label>
                                                         <select class="form-control" id="timeoftraining" name="timeoftraining">
                                                         <?php
-                                                        for ($i=2;$i<=6;$i++) {
+                                                        for ($i=2;$i<=4;$i++) {
                                                             echo "<option value='$i'>$i</option>";}?>
                                                         </select>
                                                     </div>
@@ -82,7 +82,7 @@
                                                 </div>
                                                 <div class="form-actions text-right pal">
                                                     <button type="submit" class="btn btn-primary">
-                                                        Submit a review</button>
+                                                        Submit</button>
                                                 </div>
                                                 </form>
                                             </div>
@@ -91,70 +91,7 @@
                     
               <!--  </div>  -->
 
- 
-                <div class="panel panel-blue">
-                                            <div class="panel-heading">
-                                                Training 2</div>
-                                            <div class="panel-body pan">
-                                                <form action="<?php echo base_url();?>index.php/student/company_details" method="post">
-                                                <div class="form-body pal">
-                                                    <div class="form-group">
-                                                        <div class="input-icon right">
-                                                        <label for="doj">Company Name</label>
-                                                            <input list="companies" name="inputcompany" id="inputcompany" type="text" placeholder="eg. Tata Motors" class="form-control" />
-
-                                                            <datalist id="companies">
-
-                                                            <?php
-                                                            if(isset($company_data)){
-                                                            foreach ($company_data as $x)
-                                                                echo "<option value='".$x['company']."'></option>";
-                                                        
-                                                            }
-                                                            ?>
-                                                            </datalist>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="input-icon right">
-                                                        <label for="doj">City Name</label>
-                                                            <input list="cities" name="inputcity" id="inputcity" type="text" placeholder="eg. Pune" class="form-control" />
-                                                            <datalist id="cities">
-
-                                                            <?php
-                                                            if(isset($company_city_list)){
-                                                            foreach ($company_city_list as $x)
-                                                                echo "<option value='".$x['city']."'></option>";
-                                                        
-                                                            }
-                                                            ?>
-                                                            </datalist>
-                                                            </div>
-                                                    </div>
-
-                                                    <!-- DATE FROM AND TO-->
-                                                    <div class="form-group">
-                                                        <label for="doj">Date of Joining</label>
-                                                        <input type="date" name="doj" id="doj" required class="form-control" >
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="timeoftraining">Training time Confirmation (in Months)<span style="color:red;">*</span></label>
-                                                        <select class="form-control" id="timeoftraining" name="timeoftraining">
-                                                        <?php
-                                                        for ($i=2;$i<=6;$i++) {
-                                                            echo "<option value='$i'>$i</option>";}?>
-                                                        </select>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="form-actions text-right pal">
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Submit a review</button>
-                                                </div>
-                                                </form>
-                                            </div>
-                </div>
-                                        
+                 
                     
                 </div>
     

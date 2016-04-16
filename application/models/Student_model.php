@@ -204,7 +204,7 @@ class Student_model extends CI_Model {
 	}
 
 	function set_company_details($document){
-
+		$company = $this->get_companies($document['student_email']);
 		$data_user = $this->details($document['student_email']);
 		$var = $data_user->roll_number;
 			$data = array(
@@ -214,6 +214,7 @@ class Student_model extends CI_Model {
         'date_of_join' => $document['doj'],
         'months' => $document['months'],
         'phase' => '0',
+        'training_num'=>count($company)+1,
         'admin_approve' => '1'
         );
 
@@ -336,6 +337,7 @@ class Student_model extends CI_Model {
 		else
 			return false;
 	}
+
 	function get_companies_of_student($student_id){
 		$data_user = $this->details($student_id);
 		$roll = $data_user->roll_number;
@@ -346,6 +348,97 @@ class Student_model extends CI_Model {
 			array_push($company, $res['company']);
 		}
 		return $company;
+	}
+	function get_companies($student_id){
+		$data_user = $this->details($student_id);
+		$roll = $data_user->roll_number;
+		$query = $this->db->query("SELECT company FROM training_data WHERE roll_number = '$roll'");
+		$company=array();
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			array_push($company, $res['company']);
+		}
+		return $company;
+	}
+
+	function get_companies_joining_report($student_id){
+		$data_user = $this->details($student_id);
+		$roll = $data_user->roll_number;
+		$query = $this->db->query("SELECT company FROM training_data WHERE roll_number = '$roll' AND joining_report = ''");
+		$company=array();
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			array_push($company, $res['company']);
+		}
+		return $company;
+	}
+
+	function get_companies_intermid_report($student_id){
+		$data_user = $this->details($student_id);
+		$roll = $data_user->roll_number;
+		$query = $this->db->query("SELECT company FROM training_data WHERE roll_number = '$roll' AND intermid_report = ''");
+		$company=array();
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			array_push($company, $res['company']);
+		}
+		return $company;
+	}
+
+	function get_companies_final_report($student_id){
+		$data_user = $this->details($student_id);
+		$roll = $data_user->roll_number;
+		$query = $this->db->query("SELECT company FROM training_data WHERE roll_number = '$roll' AND final_report = ''");
+		$company=array();
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			array_push($company, $res['company']);
+		}
+		return $company;
+	}
+
+
+	function get_months($roll){
+		//$data_user = $this->details($student_id);
+		//$roll = $data_user->roll_number;
+		$this->db->select_sum('months','total');
+		$query = $this->db->get_where('training_data',array('roll_number'=>$roll));
+		$result = $query->row();
+		return $result->total;
+
+	}
+	function submit_intermid($roll,$company_name,$report){
+		$data2 = array('intermid_report'=>$report);
+		$this->db->where(array('roll_number'=>$roll,'company'=>$company_name));
+		if($this->db->update('training_data',$data2))
+			return true;
+		else
+			return false;
+	}
+
+	function submit_joining($roll,$company_name,$report){
+		$data2 = array('joining_report'=>$report);
+		$this->db->where(array('roll_number'=>$roll,'company'=>$company_name));
+		if($this->db->update('training_data',$data2))
+			return true;
+		else
+			return false;
+	}
+
+	function submit_final($roll,$company_name,$report){
+		$data2 = array('final_report'=>$report);
+		$this->db->where(array('roll_number'=>$roll,'company'=>$company_name));
+		if($this->db->update('training_data',$data2))
+			return true;
+		else
+			return false;
+	}
+
+	function get_company_num($roll,$company){
+		$query = $this->db->query(" SELECT training_num FROM training_data WHERE company='$company' AND roll_number='$roll'");
+		$result = $query->row();
+		return $result->training_num;
+
 	}
 
 }
