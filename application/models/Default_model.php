@@ -25,7 +25,7 @@ class Default_model extends CI_Model {
 			return false;
 	}
 
-	function registerUser($document)
+	function message_admin($document)
 	{
 		$data = array(
         'from_user' => $document['email'],

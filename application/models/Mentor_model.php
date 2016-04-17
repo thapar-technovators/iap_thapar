@@ -93,7 +93,6 @@ class Mentor_model extends CI_Model {
 /*This function hashes the password using a secure cryptographic function BCRYPT and then returns the hash*/
     function passwordHash($password) 
     {
-		$password='arush';
 		$salt='wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit';
 		$options = ['salt' => 'wanttocrackitokaythendoitbutthiswillincreasethelengthofpasswordandthenyouspendyearscrackingit'];
 		$password.=$salt;
