@@ -37,6 +37,17 @@
                                                         </i></a>
                                                 </div>
                                             </li>
+                                            <li class="clearfix"><span class="drag-drop"><i></i></span>
+                                                <div class="todo-check pull-left">
+                                                    <input type="checkbox" value="" /></div>
+                                                <div class="todo-title">
+                                                    Student Evaluation</div>
+                                                <div class="todo-actions pull-right clearfix">
+                                                    <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
+                                                        <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
+                                                        </i></a>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

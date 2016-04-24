@@ -17,11 +17,17 @@
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/animate.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/all.css">
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/theme.default.min.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/main.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/style-responsive.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>dashboard/styles/jquery.news-ticker.css">
+    
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url();?>dashboard/script/jquery-1.10.2.min.js"></script>
+    <script src="<?php echo base_url();?>dashboard/script/jquery.tablesorter.js"></script>
+    <script src="<?php echo base_url();?>dashboard/script/jquery.tablesorter.combined.js"></script>
 </head>
 <body>
     <div>
@@ -30,7 +36,7 @@
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
             <div class="navbar-header">
                 <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">IAP</span><span style="display: none" class="logo-text-icon">µ</span></a></div>
+                <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text"><?php echo $_SESSION["user_type"];?></span><span style="display: none" class="logo-text-icon">µ</span></a></div>
             <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
                 <div class="news-update-box hidden-xs"><span class="text-uppercase mrm pull-left text-white">News:</span>
                     <ul id="news-update" class="ticker list-unstyled">
@@ -64,6 +70,11 @@
                     <li><a href="<?php echo base_url(); ?>index.php/faculty/city_preferences"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">City Preferences</span></a>
+                    </li>
+                    
+                    <li><a href="<?php echo base_url(); ?>index.php/faculty/view_students"><i class="fa fa-bar-chart-o fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">View Students</span></a>
                     </li>
                 </ul>
             </div>

@@ -117,5 +117,25 @@ class Faculty extends CI_Controller {
     	}
 	}
 
+	public function view_students()
+	{
+		$email = $this->session->userdata('uid');
+		$data['student_alotted'] = 'false';
+		$data['heading']="View Students";
+
+		if($this->Faculty_model->student_fetch($email))
+		{
+			$data['student_alotted'] = 'true';
+			$data['students']=$this->Faculty_model->student_fetch($email);
+			
+		} else
+		{
+			$data['student_alotted'] = 'false';
+		}
+
+		$this->load->view('faculty/faculty_header');
+		$this->load->view('faculty/students',$data);
+		$this->load->view('faculty/faculty_footer');
+	}
 
 }

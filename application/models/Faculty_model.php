@@ -281,6 +281,21 @@ class Faculty_model extends CI_Model {
     	return $string;
 	}
 
+	function student_fetch($email)
+	{
+    	$data_fetch =array();
+		$query = $this->db->query("SELECT * from student, training_data WHERE faculty_alotted='$email' AND student.roll_number = training_data.roll_number;");
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
 
 ?>
