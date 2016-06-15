@@ -99,6 +99,10 @@
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload Final Report</span></a>
                     </li>
+                    <li><a href="<?php echo base_url(); ?>index.php/student/download_files"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">Download files</span></a>
+                    </li>
                 </ul>
             </div>
         </nav>

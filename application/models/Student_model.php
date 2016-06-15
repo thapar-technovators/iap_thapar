@@ -441,5 +441,28 @@ class Student_model extends CI_Model {
 
 	}
 
+	function getallreports($roll){
+		$reports=array();
+		$query = $this->db->query("SELECT joining_report FROM training_data WHERE roll_number=$roll AND joining_report <> '' ");
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			if($res!='')
+				array_push($reports, $res['joining_report']);
+		}
+		$query = $this->db->query("SELECT intermid_report FROM training_data WHERE roll_number=$roll AND intermid_report <> '' ");
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			if($res!='')
+				array_push($reports, $res['intermid_report']);
+		}
+		$query = $this->db->query("SELECT final_report FROM training_data WHERE roll_number=$roll AND final_report <> ''");
+		$result=$query->result_array();
+		foreach ($result as $res) {
+			if($res!='/0')
+				array_push($reports, $res['final_report']);
+		}
+		return $reports;
+	}
+
 }
 ?>
