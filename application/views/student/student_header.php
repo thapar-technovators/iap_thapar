@@ -103,6 +103,10 @@
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Download files</span></a>
                     </li>
+                    <li><a href="<?php echo base_url(); ?>index.php/student/emergency"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-blue"></div>
+                    </i><span class="menu-title">Emergency contact details</span></a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -25,12 +25,14 @@
                                             <div class="panel-heading">
                                                 Files</div>
                                             <div class="panel-body pan">
+                                            <?php echo "<br>" ?>
                                             <?php
+                                                
                                                 foreach ($filenames as $fn) {
                                                     ?>
-                                                    <a title="Click to download" href="<?php echo base_url(); ?>index.php/student/download_function/<?php echo $fn.'.pdf' ?>"  > <?php echo $fn."<br>" ?> </a>
+                                                    <div class="alert alert-info alert-dismissible"><h4><a title="Click to download" href="<?php echo base_url(); ?>index.php/student/download_function/<?php echo $fn[0].'.pdf' ?>" download="<?php echo $fn[1].'.pdf'?>" > <?php echo $fn[1] ?> </a> </h4></div>
                                                     <?php
-                                                }?>
+                                                 }?>
 
                                             
                                             </div>
