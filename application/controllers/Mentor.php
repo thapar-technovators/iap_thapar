@@ -103,4 +103,11 @@ class Mentor extends CI_Controller {
 		//$this->load->view('templates/front_footer');
 		redirect('login/mentor', 'refresh');
 	}
+
+	public function feedback(){
+		$data['heading']="Feedback Students";
+		$this->load->view('mentor/mentor_header', $data);
+        $this->load->view('mentor/feedback_form' , $data);
+        $this->load->view('mentor/mentor_footer');
+	}
 }

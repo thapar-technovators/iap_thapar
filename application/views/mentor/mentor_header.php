@@ -63,7 +63,10 @@
                     </i><span class="menu-title">Dashboard</span></a></li>
                     <li><a href="<?php echo base_url();?>index.php/mentor/view_students"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">Students</span></a>
+                    </i><span class="menu-title">Students</span></a></li>
+                    <li><a href="<?php echo base_url();?>index.php/mentor/feedback"><i class="fa fa-send-o fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">Feedback</span></a></li>
                 </ul>
             </div>
         </nav>

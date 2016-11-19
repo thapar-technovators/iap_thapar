@@ -75,7 +75,9 @@
                                                         <select class="form-control" id="timeoftraining" name="timeoftraining">
                                                         <?php
                                                         for ($i=2;$i<=4;$i++) {
-                                                            echo "<option value='$i'>$i</option>";}?>
+                                                            echo "<option value='$i'>$i</option>";
+                                                            }
+                                                        echo "<option value='6'>6</option>"; ?>
                                                         </select>
                                                     </div>
                                                     
