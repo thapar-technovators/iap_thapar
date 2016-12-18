@@ -127,7 +127,7 @@
                     </i><span class="menu-title">Dashboard</span></a></li>
                     <li><a href="<?php echo base_url();?>index.php/admin/allot_student"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">CHange System Status</span></a>
+                    </i><span class="menu-title">Change System Status</span></a>
                        
                     </li>
                     <li><a href="<?php echo base_url();?>index.php/admin/allot_student"><i class="fa fa-send-o fa-fw">

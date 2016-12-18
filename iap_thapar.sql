@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2016 at 12:18 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.5.30
+-- Generation Time: Dec 18, 2016 at 07:05 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -140,6 +140,7 @@ INSERT INTO `mentor` (`initials`, `name`, `phone`, `email`, `company`, `password
 --
 
 CREATE TABLE `mentor_feedback` (
+  `mentor` varchar(500) NOT NULL,
   `roll_number` int(11) NOT NULL,
   `email` varchar(200) NOT NULL,
   `q1` varchar(4) NOT NULL,
@@ -177,7 +178,8 @@ CREATE TABLE `previous_training` (
 
 INSERT INTO `previous_training` (`name`, `company`, `place`, `period`, `stayed_at`, `stay_review`, `company_review`, `contact`, `email`) VALUES
 ('Arush Nagpal', 'TCS', 'Vadodra', '6 months', 'Palm View', 'Good hygeinic place, a bit costly', 'Work on Web Development, Nice work culture', '9988090859', 'arushngpl16@gmail.com'),
-('Akshit Arora', 'Infosys', 'Mumbai', '4 months', 'JW Marriot', 'Very costly', 'Nice work culture', '7696061995', 'akshit.arora1995@gmail.com');
+('Akshit Arora', 'Infosys', 'Mumbai', '4 months', 'JW Marriot', 'Very costly', 'Nice work culture', '7696061995', 'akshit.arora1995@gmail.com'),
+('Akshit Goyal', 'Accenture', 'Noida', '6 months', 'JW Marriot', 'Very costly', 'Nice work culture', '7696061995', 'akshit.arora1995@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -194,18 +196,19 @@ CREATE TABLE `student` (
   `semester` int(2) NOT NULL,
   `phone` bigint(20) NOT NULL,
   `time_of_registration` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `activation_link` varchar(200) NOT NULL
+  `activation_link` varchar(200) NOT NULL,
+  `mentor_code` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`roll_number`, `email`, `password`, `name`, `branch`, `semester`, `phone`, `time_of_registration`, `activation_link`) VALUES
-(101303004, 'abhinavgarg017@gmail.com', '$2y$10$wanttocrackitokaythenO56HCrYbRnQnNhOUcDUZBI1lSeSf2JaS', 'Abhinav Garg', 'Computer Engineering', 7, 99999999999, '2016-04-02 07:02:54', '0'),
-(101303012, 'akshit.arora1995@gmail.com', '$2y$10$wanttocrackitokaythenO9j2D2UBqMan8uujjSFj6CU/jGNmgXqm', 'Akshit Arora', 'Computer Engineering', 6, 7696061995, '2016-04-24 18:50:32', '0'),
-(101303034, 'arushngpl16@gmail.com', '$2y$10$wanttocrackitokaythenOQlgZiefbu9OzjU873v9LbZOMZkARSIm', 'Arush Nagpal', 'Mechanical Engineering', 4, 9988090859, '2016-03-04 18:19:44', '0'),
-(101303041, 'chahakgupta4@gmail.com', '$2y$10$wanttocrackitokaythenOllYjFQbN858uRoI3Q8HktZ9i.zSHvSC', 'Chahak', 'Computer Engineering', 6, 9041114525, '2016-04-05 10:45:39', '0');
+INSERT INTO `student` (`roll_number`, `email`, `password`, `name`, `branch`, `semester`, `phone`, `time_of_registration`, `activation_link`, `mentor_code`) VALUES
+(101303004, 'abhinavgarg017@gmail.com', '$2y$10$wanttocrackitokaythenO56HCrYbRnQnNhOUcDUZBI1lSeSf2JaS', 'Abhinav Garg', 'Computer Engineering', 7, 99999999999, '2016-04-02 07:02:54', '0', 'jsbf'),
+(101303012, 'akshit.arora1995@gmail.com', '$2y$10$wanttocrackitokaythenO9j2D2UBqMan8uujjSFj6CU/jGNmgXqm', 'Akshit Arora', 'Computer Engineering', 6, 7696061995, '2016-04-24 18:50:32', '0', '0'),
+(101303034, 'arushngpl16@gmail.com', '$2y$10$wanttocrackitokaythenOQlgZiefbu9OzjU873v9LbZOMZkARSIm', 'Arush Nagpal', 'Mechanical Engineering', 4, 9988090859, '2016-03-04 18:19:44', '0', '0'),
+(101303041, 'chahakgupta4@gmail.com', '$2y$10$wanttocrackitokaythenOllYjFQbN858uRoI3Q8HktZ9i.zSHvSC', 'Chahak', 'Computer Engineering', 6, 9041114525, '2016-04-05 10:45:39', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -277,6 +280,12 @@ ALTER TABLE `faculty`
 --
 ALTER TABLE `mentor`
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `mentor_feedback`
+--
+ALTER TABLE `mentor_feedback`
+  ADD PRIMARY KEY (`mentor`);
 
 --
 -- Indexes for table `previous_training`

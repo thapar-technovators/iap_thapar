@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->output->enable_profiler(TRUE);
+		//$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->model('Admin_model');
 		session_regenerate_id(true);
