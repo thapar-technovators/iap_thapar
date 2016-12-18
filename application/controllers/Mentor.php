@@ -86,7 +86,8 @@ class Mentor extends CI_Controller {
 	public function view_students($page='view_students')
 	{
 		$data['heading']="Registered Students";
-		$data['students']=$this->Mentor_model->getStudents();
+
+		$data['students']=$this->Mentor_model->getStudents($_SESSION["uid"]);
 		$this->load->view('mentor/mentor_header', $data);
         $this->load->view('mentor/' . $page , $data);
         $this->load->view('mentor/mentor_footer');
@@ -106,8 +107,60 @@ class Mentor extends CI_Controller {
 
 	public function feedback(){
 		$this->load->helper(array('form', 'url')); 
-		$student_data = $this->Mentor_model->getStudents();
+		$data['students'] = $this->Mentor_model->getStudents_nofeedback($_SESSION["uid"]);
 
+		if($this->input->post())
+		{
+			$feedback['roll_number'] = $this->input->post('student');
+			$feedback['q1'] = $this->input->post('q1');
+			$feedback['q2'] = $this->input->post('q2');
+			$feedback['q3'] = $this->input->post('q3');
+			$feedback['q4'] = $this->input->post('q4');
+			$feedback['q5'] = $this->input->post('q5');
+			$feedback['q6'] = $this->input->post('q6');
+			$feedback['q7'] = $this->input->post('q7');
+			$feedback['q8'] = $this->input->post('q8');
+			$feedback['q9'] = $this->input->post('q9');
+			$feedback['email'] = $data['students']->email;
+
+			
+			$data['error']=array();
+			
+			if($this->Default_model->isEmpty($company['name']))
+				array_push($data['error'], array('Please enter company name',0));
+			if($this->Default_model->isEmpty($company['city']))
+				array_push($data['error'], array('Please enter city name',0));
+			if($this->Default_model->isEmpty($company['doj']))
+				array_push($data['error'], array('Please enter date of joining',0));
+			if($this->Default_model->isEmpty($company['months']))
+				array_push($data['error'], array('Please enter training time period in months',0));
+
+			if(isset($data['error'][0]))
+			{
+				
+			}
+			else 
+			{
+				if($this->Mentor_model->set_student_feedback($feedback)){
+
+				array_push($data['error'], array('Company details successfully entered',1));
+
+					
+					//$this->session->set_flashdata('q',array('Company details successfully entered',1));
+				//	$this->session->set_flashdata('item', array('0' => 'Company details successfully entered','1' => '1'));
+				//	redirect('student/company_details','refresh');
+				
+				}
+				else{
+
+
+				array_push($data['error'], array('Some error occurred',0));
+			
+					//$this->session->set_flashdata('q',array('Incorrect company details!',0));
+					//redirect('student/company_details','refresh');
+				}
+			}
+		}
 
 		$data['heading']="Feedback Students";
 		$this->load->view('mentor/mentor_header', $data);

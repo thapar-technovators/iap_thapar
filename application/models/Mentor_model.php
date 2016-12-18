@@ -239,10 +239,10 @@ class Mentor_model extends CI_Model {
 		}
 	}
 
-	function getStudents()
+	function getStudents($email)
 	{
 		$data_fetch =array();
-		$query = $this->db->query("SELECT * from student,training_data where training_data.roll_number=student.roll_number and training_data.mentor='".$_SESSION["uid"]."'");
+		$query = $this->db->query("SELECT * from student,training_data where training_data.roll_number=student.roll_number and training_data.mentor='".$email."'");
 		if($query->num_rows() > 0) 
 		{
 			$data_fetch = $query->result_array();
@@ -252,6 +252,40 @@ class Mentor_model extends CI_Model {
 		{
 			return false;
 		}
+	}
+
+	function getStudents_nofeedback($email)
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from training_data where mentor='$email' and feedback_done = 0");
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function set_student_feedback($feedback){
+		$data = array(
+        'roll_number' => $feedback['roll_number'],
+        'q1' => $feedback['q1'],
+        'q2' => $feedback['q2'],
+        'q3' => $feedback['q3'],
+        'q4' => $feedback['q4'],
+        'q5' => $feedback['q5'],
+        'q6' => $feedback['q6'],
+        'q7' => $feedback['q7'],
+        'q8' => $feedback['q8'],
+        'q9' => $feedback['q9']
+        );
+		if($this->db->insert('mentor_feedback', $data))
+			return true;
+		else
+			return false;
 	}
 }
 ?>

@@ -32,10 +32,10 @@ BEGIN PAGE WRAPPER-->
                                                     <div class="form-group">
                                                         <label for="company_name" class="col-sm-7 control-label">Student Roll number<span style="color:red;">*</span></label>
                                                         <div class="col-sm-5 controls">
-                                                        <select class="form-control" id="company_name" name="company_name">
+                                                        <select class="form-control" id="student_name" name="student_name">
                                                         <?php
-                                                            foreach ($companies as $company) {
-                                                                echo "<option value='$company'>$company</option>";
+                                                            foreach ($students as $student) {
+                                                                echo "<option name ='student' value='".$student["roll_number"]."'>".$student["roll_number"]."</option>";
                                                         }?>
                                                         </select>
                                                         </div>
@@ -62,11 +62,11 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 
-                                                                <input type="radio" name="q1" checked="checked"/>A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q1" checked="checked" value="Excellent"/>Excellent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 
-                                                                <input type="radio" name="q1"/>B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q1" value= "Good"/>Good&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 
-                                                                <input type="radio" name="q1"/>C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q1" value = "Fair"/>Fair&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>
                                                     </div>
@@ -82,9 +82,9 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                             
-                                                                <input type="radio" name="q2" checked="checked"/>Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q2" value="Yes"checked="checked"/>Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             
-                                                                <input type="radio" name="q2"/>No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q2" value="No"/>No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 
                                                             </div>
                                                         </div>
@@ -101,9 +101,9 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 Yes
-                                                                <input type="radio" name="q3" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q3" value="Yes"checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 No
-                                                                <input type="radio" name="q3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q3" value = "No"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 
                                                             </div>
                                                         </div>
@@ -120,11 +120,11 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 A
-                                                                <input type="radio" name="q4" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" value="Excellent" name="q4" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 B
-                                                                <input type="radio" name="q4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q4" value="Good"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 C
-                                                                <input type="radio" name="q4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q4" value = "Fair"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>
                                                     </div>
@@ -140,11 +140,11 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 A
-                                                                <input type="radio" name="q5" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q5" value="Excellent"checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 B
-                                                                <input type="radio" name="q5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q5" value="Good"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 C
-                                                                <input type="radio" name="q5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q5" value = "Fair"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>
                                                     </div>
@@ -160,9 +160,9 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 Yes
-                                                                <input type="radio" name="q6" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q6"value = "Yes" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 No
-                                                                <input type="radio" name="q6"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q6" value = "No"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 
                                                             </div>
                                                         </div>
@@ -179,11 +179,11 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 A
-                                                                <input type="radio" name="q7" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q7" value="Excellent" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 B
-                                                                <input type="radio" name="q7"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q7"value="Good"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 C
-                                                                <input type="radio" name="q7"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q7" value = "Fair"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>
                                                     </div>
@@ -199,9 +199,9 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 Yes
-                                                                <input type="radio" name="q8" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q8" value = "Yes"checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 No
-                                                                <input type="radio" name="q8"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q8" value = "No"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 
                                                             </div>
                                                         </div>
@@ -218,9 +218,9 @@ BEGIN PAGE WRAPPER-->
                                                         <div class="col-xs-9"> 
                                                             <div>
                                                                 Yes
-                                                                <input type="radio" name="q9" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" name="q9" value = "Yes"checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 No
-                                                                <input type="radio" name="q9"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" value = "No"name="q9"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 
                                                             </div>
                                                         </div>
