@@ -25,7 +25,7 @@ class Student extends CI_Controller {
 		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->model('Student_model');
-		
+
 		if(!isset($_SESSION["user_type"]) || $_SESSION["user_type"] != "Student")
 		{
 			$this->session->unset_userdata('user_type');
@@ -34,7 +34,9 @@ class Student extends CI_Controller {
 			$this->load->view('templates/front_header');
 			$this->load->view('templates/index');
 			$this->load->view('templates/front_footer');
+			return;
 		}
+		$_SESSION['phase']=$this->Student_model->getPhase();
 	}
 
 	public function index($page = 'student')
