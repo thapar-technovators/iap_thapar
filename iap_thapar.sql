@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2016 at 06:37 AM
+-- Generation Time: Dec 18, 2016 at 07:05 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -140,6 +140,7 @@ INSERT INTO `mentor` (`initials`, `name`, `phone`, `email`, `company`, `password
 --
 
 CREATE TABLE `mentor_feedback` (
+  `mentor` varchar(500) NOT NULL,
   `roll_number` int(11) NOT NULL,
   `email` varchar(200) NOT NULL,
   `q1` varchar(4) NOT NULL,
@@ -279,6 +280,12 @@ ALTER TABLE `faculty`
 --
 ALTER TABLE `mentor`
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `mentor_feedback`
+--
+ALTER TABLE `mentor_feedback`
+  ADD PRIMARY KEY (`mentor`);
 
 --
 -- Indexes for table `previous_training`
