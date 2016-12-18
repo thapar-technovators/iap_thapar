@@ -178,9 +178,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function abc()
+	public function reports()
 	{
-	        $this->load->view('admin/download');   
+		$data['heading']="Download all results in Excel Files";
+		$this->load->view('admin/admin_header', $data);
+	    $this->load->view('admin/download_reports' , $data);
+	    $this->load->view('admin/admin_footer');
+	}
+
+	public function download($page)
+	{
+	        $this->load->view('admin/download'.$page);   
  	}
 
 

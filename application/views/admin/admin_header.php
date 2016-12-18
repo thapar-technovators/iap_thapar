@@ -144,7 +144,7 @@
                     </i><span class="menu-title">View Statistics</span></a>
                        
                     </li>
-                    <li><a href="<?php echo base_url();?>index.php/admin/view_students"><i class="fa fa-send-o fa-fw">
+                    <li><a href="<?php echo base_url();?>index.php/admin/reports"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">Reports</span></a>
                        
