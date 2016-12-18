@@ -105,6 +105,10 @@ class Mentor extends CI_Controller {
 	}
 
 	public function feedback(){
+		$this->load->helper(array('form', 'url')); 
+		$student_data = $this->Mentor_model->getStudents();
+
+
 		$data['heading']="Feedback Students";
 		$this->load->view('mentor/mentor_header', $data);
         $this->load->view('mentor/feedback_form' , $data);
