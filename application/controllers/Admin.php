@@ -176,8 +176,13 @@ class Admin extends CI_Controller {
 	        $this->load->view('admin/view_faculty_city' , $data);
 	        $this->load->view('admin/admin_footer');
 		}
-	
 	}
+
+	public function abc()
+	{
+	        $this->load->view('admin/download');   
+ 	}
+
 
 }
 ?>
