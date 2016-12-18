@@ -32,10 +32,10 @@ BEGIN PAGE WRAPPER-->
                                                     <div class="form-group">
                                                         <label for="company_name" class="col-sm-7 control-label">Student Roll number<span style="color:red;">*</span></label>
                                                         <div class="col-sm-5 controls">
-                                                        <select class="form-control" id="student_name" name="student_name">
+                                                        <select class="form-control" id="student_name" name="roll_number">
                                                         <?php
                                                             foreach ($students as $student) {
-                                                                echo "<option name ='student' value='".$student["roll_number"]."'>".$student["roll_number"]."</option>";
+                                                                echo "<option  value='".$student["roll_number"]."'>".$student["roll_number"].$student["email"]."</option>";
                                                         }?>
                                                         </select>
                                                         </div>
@@ -119,11 +119,11 @@ BEGIN PAGE WRAPPER-->
                                                     
                                                         <div class="col-xs-9"> 
                                                             <div>
-                                                                A
+                                                                Excellent
                                                                 <input type="radio" value="Excellent" name="q4" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                B
+                                                                Good
                                                                 <input type="radio" name="q4" value="Good"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                C
+                                                                Fair
                                                                 <input type="radio" name="q4" value = "Fair"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>
@@ -139,11 +139,11 @@ BEGIN PAGE WRAPPER-->
                                                     
                                                         <div class="col-xs-9"> 
                                                             <div>
-                                                                A
+                                                                Excellent
                                                                 <input type="radio" name="q5" value="Excellent"checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                B
+                                                                Good
                                                                 <input type="radio" name="q5" value="Good"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                C
+                                                                Fair
                                                                 <input type="radio" name="q5" value = "Fair"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>
@@ -178,11 +178,11 @@ BEGIN PAGE WRAPPER-->
                                                     
                                                         <div class="col-xs-9"> 
                                                             <div>
-                                                                A
+                                                                Excellent
                                                                 <input type="radio" name="q7" value="Excellent" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                B
+                                                                Good
                                                                 <input type="radio" name="q7"value="Good"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                C
+                                                                Fair
                                                                 <input type="radio" name="q7" value = "Fair"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>

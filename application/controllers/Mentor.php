@@ -107,11 +107,15 @@ class Mentor extends CI_Controller {
 
 	public function feedback(){
 		$this->load->helper(array('form', 'url')); 
-		$data['students'] = $this->Mentor_model->getStudents_nofeedback($_SESSION["uid"]);
+		
+
+		$data['students'] = $this->Mentor_model->getStudents_nofeedback($_SESSION["uid"]);;
+		
 
 		if($this->input->post())
 		{
-			$feedback['roll_number'] = $this->input->post('student');
+			$feedback['roll_number'] = $this->input->post('roll_number');
+			$details = $this->Mentor_model->student_details($feedback['roll_number']);
 			$feedback['q1'] = $this->input->post('q1');
 			$feedback['q2'] = $this->input->post('q2');
 			$feedback['q3'] = $this->input->post('q3');
@@ -121,19 +125,12 @@ class Mentor extends CI_Controller {
 			$feedback['q7'] = $this->input->post('q7');
 			$feedback['q8'] = $this->input->post('q8');
 			$feedback['q9'] = $this->input->post('q9');
-			$feedback['email'] = $data['students']->email;
+			$feedback['email'] = $details->email;
 
 			
 			$data['error']=array();
 			
-			if($this->Default_model->isEmpty($company['name']))
-				array_push($data['error'], array('Please enter company name',0));
-			if($this->Default_model->isEmpty($company['city']))
-				array_push($data['error'], array('Please enter city name',0));
-			if($this->Default_model->isEmpty($company['doj']))
-				array_push($data['error'], array('Please enter date of joining',0));
-			if($this->Default_model->isEmpty($company['months']))
-				array_push($data['error'], array('Please enter training time period in months',0));
+			
 
 			if(isset($data['error'][0]))
 			{
@@ -143,7 +140,7 @@ class Mentor extends CI_Controller {
 			{
 				if($this->Mentor_model->set_student_feedback($feedback)){
 
-				array_push($data['error'], array('Company details successfully entered',1));
+				array_push($data['error'], array('Student feedback successfully entered',1));
 
 					
 					//$this->session->set_flashdata('q',array('Company details successfully entered',1));
@@ -160,6 +157,7 @@ class Mentor extends CI_Controller {
 					//redirect('student/company_details','refresh');
 				}
 			}
+			redirect('mentor/feedback','refresh');
 		}
 
 		$data['heading']="Feedback Students";
@@ -167,4 +165,5 @@ class Mentor extends CI_Controller {
         $this->load->view('mentor/feedback_form' , $data);
         $this->load->view('mentor/mentor_footer');
 	}
+	
 }
