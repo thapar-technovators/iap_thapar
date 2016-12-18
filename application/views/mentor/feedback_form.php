@@ -35,7 +35,7 @@ BEGIN PAGE WRAPPER-->
                                                         <select class="form-control" id="student_name" name="roll_number">
                                                         <?php
                                                             foreach ($students as $student) {
-                                                                echo "<option  value='".$student["roll_number"]."'>".$student["roll_number"].$student["email"]."</option>";
+                                                                echo "<option  value='".$student["roll_number"]."'>".$student["roll_number"]."&nbsp;".$student["email"]."</option>";
                                                         }?>
                                                         </select>
                                                         </div>
