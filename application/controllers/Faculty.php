@@ -138,4 +138,77 @@ class Faculty extends CI_Controller {
 		$this->load->view('faculty/faculty_footer');
 	}
 
+	public function evaluation(){
+
+
+		$this->load->helper(array('form', 'url')); 
+		$this->load->model('Mentor_model');
+		$data['students'] = $this->Faculty_model->getStudents_noevaluation();
+		$data['company_data'] = $this ->Faculty_model->company_details();
+
+		if($this->input->post())
+		{
+			$feedback['roll_number'] = $this->input->post('roll_number');
+			$details = $this->Mentor_model->student_details($feedback['roll_number']);
+			$feedback['q1'] = $this->input->post('q1');
+			$feedback['q2'] = $this->input->post('q2');
+			$feedback['q3'] = $this->input->post('q3');
+			$feedback['q4'] = $this->input->post('q4');
+			$feedback['q5'] = $this->input->post('q5');
+			$feedback['q6'] = $this->input->post('q6');
+			$feedback['q7'] = $this->input->post('q7');
+			$feedback['q8'] = $this->input->post('q8');
+			$feedback['q9'] = $this->input->post('q9');
+			$feedback['q10'] = $this->input->post('q10');
+			$feedback['q11'] = $this->input->post('q11');
+			$feedback['q12'] = $this->input->post('q12');
+			$feedback['q13'] = $this->input->post('q13');
+			$feedback['q14'] = $this->input->post('q14');
+			$feedback['q15'] = $this->input->post('q15');
+			$feedback['q16'] = $this->input->post('q16');
+			$feedback['q17'] = $this->input->post('q17');
+			$feedback['q18'] = $this->input->post('q18');
+			$feedback['q19'] = $this->input->post('q19');
+			$feedback['q20'] = $this->input->post('q20');
+			$feedback['email'] = $details->email;
+			$feedback['company'] = $this->input->post('company');
+			$data['error']=array();
+			if(isset($data['error'][0]))
+			{
+				
+			}
+			else 
+			{
+				if($this->Faculty_model->set_student_marks($feedback)){
+
+				array_push($data['error'], array('Student marks successfully entered',1));
+
+					
+					//$this->session->set_flashdata('q',array('Company details successfully entered',1));
+				//	$this->session->set_flashdata('item', array('0' => 'Company details successfully entered','1' => '1'));
+				//	redirect('student/company_details','refresh');
+				
+				}
+				else{
+
+
+				array_push($data['error'], array('Some error occurred',0));
+			
+					//$this->session->set_flashdata('q',array('Incorrect company details!',0));
+					//redirect('student/company_details','refresh');
+				}
+			}
+			redirect('faculty/evaluation','refresh');
+		}
+
+
+
+
+
+		$data['heading']="Evaluate Students";
+		$this->load->view('faculty/faculty_header');
+		$this->load->view('faculty/evaluation',$data);
+		$this->load->view('faculty/faculty_footer');
+	}
+
 }

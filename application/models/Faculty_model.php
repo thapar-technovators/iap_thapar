@@ -295,6 +295,56 @@ class Faculty_model extends CI_Model {
 			return false;
 		}
 	}
+function company_details(){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT DISTINCT company from training_data where marks=0");
+	//	$data_fetch = $query->result_array();
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			//$data = array('true',$data_fetch);
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function getStudents_noevaluation(){
+		$data_fetch =array();
+		$query = $this->db->query("SELECT DISTINCT roll_number,email from training_data where marks = 0");
+		if($query->num_rows() > 0)
+		{
+			$data_fetch = $query->result_array();
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function set_student_marks($feedback){
+		
+        $sum1 = $feedback['q1'] + $feedback['q2'] + $feedback['q3'] + $feedback['q4'] + $feedback['q5'] + $feedback['q6'] + $feedback['q7'] + $feedback['q8'] + $feedback['q9'] + $feedback['q10'];
+        $sum2 = $feedback['q11'] + $feedback['q12'] + $feedback['q13'] + $feedback['q14'] + $feedback['q15'] + $feedback['q16'] + $feedback['q17'];
+        $sum3 = $feedback['q18'] + $feedback['q19'] + $feedback['q20'];
+ 		$sum1 = $sum1/5;
+		$sum2 = $sum2*10/35;
+				$sum3 = $sum3/3;
+ 		$sum = $sum1+ $sum2 + $sum3;
+        //$sum = 10;
+			$data = array('marks' => $sum );
+			$this->db->where('roll_number', $feedback['roll_number']);
+			$this->db->where('company',$feedback['company']);
+			if($this->db->update('training_data', $data)) 
+				return true;
+			else
+				return false;
+			
+	}
 
 }
 

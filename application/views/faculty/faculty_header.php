@@ -76,6 +76,11 @@
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">View Students</span></a>
                     </li>
+
+                    <li><a href="<?php echo base_url(); ?>index.php/faculty/evaluation"><i class="fa fa-bar-chart-o fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">Evaluate Students</span></a>
+                    </li>
                 </ul>
             </div>
         </nav>

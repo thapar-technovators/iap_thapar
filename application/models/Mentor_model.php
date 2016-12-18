@@ -272,6 +272,8 @@ class Mentor_model extends CI_Model {
 	function set_student_feedback($feedback){
 		$data = array(
         'roll_number' => $feedback['roll_number'],
+        'mentor' => $_SESSION["uid"],
+        'email' => $feedback['email'],
         'q1' => $feedback['q1'],
         'q2' => $feedback['q2'],
         'q3' => $feedback['q3'],
@@ -283,9 +285,31 @@ class Mentor_model extends CI_Model {
         'q9' => $feedback['q9']
         );
 		if($this->db->insert('mentor_feedback', $data))
-			return true;
+
+			$data = array('feedback_done' => 1 );
+			$this->db->where('email', $feedback['email']);
+			$this->db->where('mentor', $_SESSION["uid"]);
+			if($this->db->update('training_data', $data)) 
+				return true;
+			else
+				return false;
+			
+	}
+	function student_details($roll){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from student WHERE roll_number='$roll'");
+		
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->row();
+			//$data = array('true',$data_fetch);
+			return $data_fetch;
+		}
 		else
+		{
 			return false;
+		}
 	}
 }
 ?>
