@@ -25,7 +25,7 @@ class Student extends CI_Controller {
 		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->model('Student_model');
-
+		
 		if(!isset($_SESSION["user_type"]) || $_SESSION["user_type"] != "Student")
 		{
 			$this->session->unset_userdata('user_type');

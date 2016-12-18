@@ -27,6 +27,13 @@ class Student_model extends CI_Model {
 		return $branch;
 	}
 
+	function getPhase()
+	{
+		$uid=$_SESSION["uid"];
+		$query = $this->db->query("SELECT phase FROM training_data where email='$uid'");
+		return $query[0];
+	}
+
 	function sendEmailAndRegister($document)
 	{
 		$password=$this->generatePassword();
@@ -209,6 +216,7 @@ class Student_model extends CI_Model {
 		$var = $data_user->roll_number;
 			$data = array(
         'roll_number' => $var,
+        'email' => $_SESSION['uid'],
         'company' => $document['name'],
         'city' => $document['city'],
         'date_of_join' => $document['doj'],
