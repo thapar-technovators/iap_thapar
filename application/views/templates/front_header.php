@@ -77,6 +77,8 @@
                         </li>
                         <li><a class="page-scroll" href="<?php echo base_url();?>index.php/login/mentor">Mentor Login</a>
                         </li>
+                        <li><a class="page-scroll" href="<?php echo base_url();?>index.php/welcome/trainingdata">Training Data</a>
+                        </li>
                         <li><a class="page-scroll" href="<?php echo base_url();?>#contact">Contact</a>
                         </li>
                     </ul>
