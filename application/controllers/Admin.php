@@ -130,6 +130,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+
+	public function edit_student($rollno)
+	{
+		$data['heading']="Change details for ".$rollno;
+		$data['student_detail']=$this->Admin_model->getStudentDetail($rollno);
+		$data['training_detail']=$this->Admin_model->getTrainingDetail($rollno);
+		$this->load->view('admin/admin_header', $data);
+        $this->load->view('admin/edit_student', $data);
+        $this->load->view('admin/admin_footer');
+	}
+
 /*This function logs out the desired user and deletes all the session and user data*/
 	public function logout()
 	{

@@ -15,9 +15,11 @@
 				$num=1;
 				foreach($students as $st)
 				{
+
+					$str="edit_student/";
 					echo "<tr>";
 					echo "<td>$num</td>";
-					echo "<td>".$st["roll_number"]."</td>";
+					echo "<td><a href=".$str.$st['roll_number'].">".$st["roll_number"]."</td>";
 					echo "<td>".$st['name']."</td>";
 					echo "<td>".$st['email']."</td>";
 					echo "<td>".$st['phone']."</td>";
