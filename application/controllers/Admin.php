@@ -154,6 +154,16 @@ class Admin extends CI_Controller {
 		redirect('login/admin', 'refresh');
 	}
 
+	public function allot_student()
+	{
+		$data['heading']="Allot Students";
+		$data['faculty']=$this->Admin_model->getFaculty();
+		$data['tagged']=$this->Admin_model->getTagged();
+		$data['untagged']=$this->Admin_model->getUntagged();
+		$this->load->view('admin/admin_header', $data);
+        $this->load->view('admin/allot_student' , $data);
+        $this->load->view('admin/admin_footer');
+	}
 
 }
 ?>
