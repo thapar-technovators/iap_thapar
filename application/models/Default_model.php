@@ -25,6 +25,17 @@ class Default_model extends CI_Model {
 			return false;
 	}
 
+	function getData()
+	{
+		$query = $this->db->query("SELECT * FROM previous_training");
+		$trainingdata=array();
+		$result=$query->result_array();
+		/*foreach ($result as $res) {
+			array_push($training_data, $res);
+		}*/
+		return $result;
+	}
+
 	function message_admin($document)
 	{
 		$data = array(

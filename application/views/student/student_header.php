@@ -130,4 +130,12 @@
                     <div class="clearfix">
                     </div>
                 </div>
+                <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                    <div class="page-header pull-left">
+                        <div class="page-title">
+                            <i>Information</i>: You are at phase: <?php echo $_SESSION['phase'];?>  </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                </div>
                 <!--END TITLE & BREADCRUMB PAGE-->

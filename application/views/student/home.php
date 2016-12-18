@@ -25,7 +25,7 @@
 
 
 
-                <div class="panel panel-blue">
+                <div class="panel panel-blue" style="background:#fff;">
                                             <div class="panel-heading">
                                                 Training</div>
                                             <div class="panel-body pan">

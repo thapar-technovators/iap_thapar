@@ -34,7 +34,9 @@ class Student extends CI_Controller {
 			$this->load->view('templates/front_header');
 			$this->load->view('templates/index');
 			$this->load->view('templates/front_footer');
+			return;
 		}
+		$_SESSION['phase']=$this->Student_model->getPhase();
 	}
 
 	public function index($page = 'student')

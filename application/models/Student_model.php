@@ -27,6 +27,30 @@ class Student_model extends CI_Model {
 		return $branch;
 	}
 
+	function getPhase()
+	{
+		$uid=$_SESSION["uid"];
+		$query = $this->db->query("SELECT phase FROM training_data where email='$uid'");
+		$result=$query->result_array();
+		if($result[0]['phase']=="0")
+		{
+			$result[0]['phase']= "0   ||  Enter your training Details";	
+		}
+		if($result[0]['phase']=="1")
+		{
+			$result[0]['phase']= "1   ||  Contact and Link your mentor";	
+		}
+		if($result[0]['phase']=="2")
+		{
+			$result[0]['phase']= "2   ||  Upload your Joining Report";	
+		}
+		if($result[0]['phase']=="3")
+		{
+			$result[0]['phase']= "3   ||  Upload your Intermediate Report";	
+		}
+		return $result[0]['phase'];
+	}
+
 	function sendEmailAndRegister($document)
 	{
 		$password=$this->generatePassword();
@@ -209,6 +233,7 @@ class Student_model extends CI_Model {
 		$var = $data_user->roll_number;
 			$data = array(
         'roll_number' => $var,
+        'email' => $_SESSION['uid'],
         'company' => $document['name'],
         'city' => $document['city'],
         'date_of_join' => $document['doj'],
