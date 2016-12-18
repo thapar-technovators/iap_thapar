@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2016 at 03:02 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: Dec 18, 2016 at 12:18 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -136,6 +136,26 @@ INSERT INTO `mentor` (`initials`, `name`, `phone`, `email`, `company`, `password
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mentor_feedback`
+--
+
+CREATE TABLE `mentor_feedback` (
+  `roll_number` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `q1` varchar(4) NOT NULL,
+  `q2` varchar(4) NOT NULL,
+  `q3` varchar(4) NOT NULL,
+  `q4` varchar(4) NOT NULL,
+  `q5` varchar(4) NOT NULL,
+  `q6` varchar(4) NOT NULL,
+  `q7` varchar(4) NOT NULL,
+  `q8` varchar(4) NOT NULL,
+  `q9` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `previous_training`
 --
 
@@ -208,20 +228,21 @@ CREATE TABLE `training_data` (
   `training_num` varchar(10) NOT NULL,
   `phase` int(11) NOT NULL DEFAULT '0',
   `admin_approve` tinyint(1) NOT NULL DEFAULT '0',
-  `faculty_alotted` varchar(100) DEFAULT NULL
+  `faculty_alotted` varchar(100) DEFAULT NULL,
+  `feedback_done` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `training_data`
 --
 
-INSERT INTO `training_data` (`td_id`, `roll_number`, `email`, `company`, `city`, `date_of_join`, `months`, `mentor`, `joining_report`, `intermid_report`, `final_report`, `training_num`, `phase`, `admin_approve`, `faculty_alotted`) VALUES
-(1, 101303041, 'chahakgupta4@gmail.com', 'ABC', 'Bangalore', '0000-00-00', 4, 'abhinavgarg017@gmail.com', '', '', '', '1', 0, 1, NULL),
-(2, 101303042, '', 'BCD', 'Pune', '0000-00-00', 0, '', '', '', '', '', 0, 1, NULL),
-(3, 101303034, 'arushngpl16@gmail.com', 'GHI', 'New Delhi', '0000-00-00', 4, '', '', '', '', '1', 2, 1, NULL),
-(5, 101303041, 'chahakgupta4@gmail.com', 'BCD', 'Pune', '2016-04-22', 2, '', '', '', '', '2', 0, 1, NULL),
-(6, 101303012, 'akshit.arora1995@gmail.com', 'PayTm', 'Bangalore', '2016-04-09', 3, '', '', '', '', '1', 0, 0, NULL),
-(7, 101303012, 'akshit.arora1995@gmail.com', 'Paytm23', 'Noida', '2016-04-16', 3, '', '', '', '', '2', 0, 1, 'akshit.arora1995@gmail.com');
+INSERT INTO `training_data` (`td_id`, `roll_number`, `email`, `company`, `city`, `date_of_join`, `months`, `mentor`, `joining_report`, `intermid_report`, `final_report`, `training_num`, `phase`, `admin_approve`, `faculty_alotted`, `feedback_done`) VALUES
+(1, 101303041, 'chahakgupta4@gmail.com', 'ABC', 'Bangalore', '0000-00-00', 4, 'abhinavgarg017@gmail.com', '', '', '', '1', 0, 1, NULL, 0),
+(2, 101303042, '', 'BCD', 'Pune', '0000-00-00', 0, '', '', '', '', '', 0, 1, NULL, 0),
+(3, 101303034, 'arushngpl16@gmail.com', 'GHI', 'New Delhi', '0000-00-00', 4, '', '', '', '', '1', 2, 1, NULL, 0),
+(5, 101303041, 'chahakgupta4@gmail.com', 'BCD', 'Pune', '2016-04-22', 2, 'arushngpl16@gmail.com', '', '', '', '2', 0, 1, NULL, 0),
+(6, 101303012, 'akshit.arora1995@gmail.com', 'PayTm', 'Bangalore', '2016-04-09', 3, '', '', '', '', '1', 0, 0, NULL, 0),
+(7, 101303012, 'akshit.arora1995@gmail.com', 'Paytm23', 'Noida', '2016-04-16', 3, '', '', '', '', '2', 0, 1, 'akshit.arora1995@gmail.com', 0);
 
 --
 -- Indexes for dumped tables
