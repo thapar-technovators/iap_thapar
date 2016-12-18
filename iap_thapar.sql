@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2016 at 01:47 AM
+-- Generation Time: Dec 18, 2016 at 03:02 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -143,14 +143,21 @@ CREATE TABLE `previous_training` (
   `name` varchar(100) NOT NULL,
   `company` varchar(100) NOT NULL,
   `place` varchar(100) NOT NULL,
-  `time_from` varchar(100) NOT NULL,
-  `time_upto` varchar(100) NOT NULL,
+  `period` varchar(500) NOT NULL,
   `stayed_at` varchar(100) NOT NULL,
   `stay_review` varchar(500) NOT NULL,
   `company_review` varchar(500) NOT NULL,
   `contact` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `previous_training`
+--
+
+INSERT INTO `previous_training` (`name`, `company`, `place`, `period`, `stayed_at`, `stay_review`, `company_review`, `contact`, `email`) VALUES
+('Arush Nagpal', 'TCS', 'Vadodra', '6 months', 'Palm View', 'Good hygeinic place, a bit costly', 'Work on Web Development, Nice work culture', '9988090859', 'arushngpl16@gmail.com'),
+('Akshit Arora', 'Infosys', 'Mumbai', '4 months', 'JW Marriot', 'Very costly', 'Nice work culture', '7696061995', 'akshit.arora1995@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -249,6 +256,12 @@ ALTER TABLE `faculty`
 --
 ALTER TABLE `mentor`
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `previous_training`
+--
+ALTER TABLE `previous_training`
+  ADD PRIMARY KEY (`name`,`company`,`place`,`contact`,`email`);
 
 --
 -- Indexes for table `student`
