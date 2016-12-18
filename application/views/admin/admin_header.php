@@ -125,9 +125,24 @@
                     <li class="active"><a href="<?php echo base_url();?>index.php/admin"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Dashboard</span></a></li>
-                    <li><a href="UIElements.html"><i class="fa fa-send-o fa-fw">
+                    <li><a href="<?php echo base_url();?>index.php/admin/allot_student"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
-                    </i><span class="menu-title">Approve Students</span></a>
+                    </i><span class="menu-title">CHange System Status</span></a>
+                       
+                    </li>
+                    <li><a href="<?php echo base_url();?>index.php/admin/allot_student"><i class="fa fa-send-o fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">Allot Students to Faculty</span></a>
+                       
+                    </li>
+                    <li><a href="<?php echo base_url();?>index.php/admin/view_students"><i class="fa fa-send-o fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">View Statistics</span></a>
+                       
+                    </li>
+                    <li><a href="<?php echo base_url();?>index.php/admin/view_students"><i class="fa fa-send-o fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">Reports</span></a>
                        
                     </li>
                     <li><a href="<?php echo base_url();?>index.php/admin/view_students"><i class="fa fa-send-o fa-fw">

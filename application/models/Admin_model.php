@@ -148,6 +148,22 @@ class Admin_model extends CI_Model {
 		}
 	}
 
+	function getStudentDetail($rollno)
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from student where roll_number= $rollno");
+		$data_fetch = $query->result_array();
+		return $data_fetch;		
+	}
+
+	function getTrainingDetail($rollno)
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from training_data where roll_number= $rollno");
+		$data_fetch = $query->result_array();
+		return $data_fetch;		
+	}
+
 }
 
 ?>
