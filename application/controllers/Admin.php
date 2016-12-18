@@ -165,5 +165,19 @@ class Admin extends CI_Controller {
         $this->load->view('admin/admin_footer');
 	}
 
+	public function allot_city($regid='')
+	{
+		$data['heading']="Assign city to Faculty";
+		if($regid=="")
+		{
+			$data['faculty']=$this->Admin_model->getFaculty();
+			$data['trainingdata']=$this->Admin_model->getTrainingAll();
+			$this->load->view('admin/admin_header', $data);
+	        $this->load->view('admin/view_faculty_city' , $data);
+	        $this->load->view('admin/admin_footer');
+		}
+	
+	}
+
 }
 ?>

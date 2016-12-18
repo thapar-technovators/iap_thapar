@@ -133,6 +133,10 @@
                     <li><a href="<?php echo base_url();?>index.php/admin/allot_student"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">Allot Students to Faculty</span></a>
+                    
+                    <li><a href="<?php echo base_url();?>index.php/admin/allot_city"><i class="fa fa-send-o fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">Assigned city List</span></a>
                        
                     </li>
                     <li><a href="<?php echo base_url();?>index.php/admin/view_students"><i class="fa fa-send-o fa-fw">

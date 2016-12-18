@@ -172,6 +172,13 @@ class Admin_model extends CI_Model {
 		return $data_fetch;		
 	}
 
+	function getTrainingAll()
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from training_data where faculty_alotted is not null");
+		$data_fetch = $query->result_array();
+		return $data_fetch;		
+	}
 	function getTrainingDetail($rollno)
 	{
 		$data_fetch =array();

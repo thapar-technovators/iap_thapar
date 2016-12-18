@@ -5,7 +5,7 @@
 		<h3>Student:</h3><select name="student" class="form-control">
 		<?php
 		foreach($untagged as $ut){
-			echo "<option value="."'".$ut['email']."'".">".$ut['email']."</option>";
+			echo "<option value="."'".$ut['email']."'".">".$ut['email']." - ".$ut['city']."</option>";
 		}
 		?>
 		</select>
