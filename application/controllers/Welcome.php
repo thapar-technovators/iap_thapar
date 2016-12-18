@@ -32,6 +32,16 @@ class Welcome extends CI_Controller {
 		$this->load->view('templates/index',$data);
 		$this->load->view('templates/front_footer');
 	}
+	public function trainingdata()
+	{
+		$data['ip_address']=$this->input->ip_address();
+		$data['user_agent']=$this->input->user_agent();
+		$data['trainingdata']=$this->Default_model->getData();
+		$_SESSION['dsfsf']=$this->Default_model->getData();
+		$this->load->view('templates/front_header');
+		$this->load->view('templates/tdata',$data);
+		$this->load->view('templates/front_footer');
+	}
 	public function message_admin()
 	{
 		$data['ip_address']=$this->input->ip_address();
