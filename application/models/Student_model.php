@@ -97,6 +97,7 @@ function getPhase_num()
         'branch' => $document['branch'],
         'semester' => $document['semester'],
         'phone' => $document['phone'],
+        'mentor_code' => $this->generatePassword(),
         'activation_link' => 0
         );
 		if($this->db->insert('student', $data))

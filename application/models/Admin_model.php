@@ -191,6 +191,14 @@ class Admin_model extends CI_Model {
 		return $data_fetch;		
 	}
 
+	function verify($rollno,$email,$company,$months,$city)
+	{
+		$query = $this->db->query("UPDATE  training_data SET phase=phase+1,email='$email', company='$company', city='$city', months=$months where roll_number= $rollno and old_record is null");
+		if($query)
+			return true;
+		else
+			return false;
+	}
 }
 
 ?>

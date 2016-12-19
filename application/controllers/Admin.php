@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->output->enable_profiler(TRUE);
+		//$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->model('Admin_model');
 		session_regenerate_id(true);
@@ -137,9 +137,27 @@ class Admin extends CI_Controller {
 		$data['heading']="Change details for ".$rollno;
 		$data['student_detail']=$this->Admin_model->getStudentDetail($rollno);
 		$data['training_detail']=$this->Admin_model->getTrainingDetail($rollno);
-		$this->load->view('admin/admin_header', $data);
-        $this->load->view('admin/edit_student', $data);
-        $this->load->view('admin/admin_footer');
+		if($this->input->post())
+		{
+
+			$email = $this->input->post('email');
+			$company = $this->input->post('company');
+			$months = $this->input->post('months');
+			$city = $this->input->post('city');
+			if($this->Admin_model->verify($rollno,$email,$company,$months,$city))
+			{
+				$data['message']="The details have been verified successfully";
+				$this->load->view('admin/admin_header', $data);
+	        	$this->load->view('admin/edit_student', $data);
+    	    	$this->load->view('admin/admin_footer');
+			}
+		}
+		else
+		{
+			$this->load->view('admin/admin_header', $data);
+        	$this->load->view('admin/edit_student', $data);
+        	$this->load->view('admin/admin_footer');
+		}
 	}
 
 /*This function logs out the desired user and deletes all the session and user data*/
