@@ -5,10 +5,10 @@ $DB_Username = "iapuser"; //MySQL Username
 $DB_Password = "password";             //MySQL Password     
 $DB_DBName = "iap_thapar";         //MySQL Database Name  
 $DB_TBLName = ""; //MySQL Table Name   
-$filename = "excelfilename";         //File Name
+$filename = "importantfile";         //File Name
 /*******YOU DO NOT NEED TO EDIT ANYTHING BELOW THIS LINE*******/    
 //create MySQL connection   
-$sql = "Select * from faculty";
+$sql = "Select  roll_number,email,company,city,mentor,faculty_alotted,feedback_done from training_data";
 $Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password) or die("Couldn't connect to MySQL:<br>" . mysql_error() . "<br>" . mysql_errno());
 //select database   
 $Db = @mysql_select_db($DB_DBName, $Connect) or die("Couldn't select database:<br>" . mysql_error(). "<br>" . mysql_errno());   
