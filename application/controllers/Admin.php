@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		//$this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
 		$this->load->model('Default_model');
 		$this->load->model('Admin_model');
 		session_regenerate_id(true);
@@ -111,13 +111,14 @@ class Admin extends CI_Controller {
 				else
 					$count++;
 			}
-			$data['error']=array();
+			
+			/*$data['error']=array();
 			if($res)
-				array_push($data['error'], array("Email suscessfully sent",1));
+				array_push($data['error'], array("Email successfully sent",1));
 			else
 			{
 				array_push($data['error'], array("There was an error sending email. The email has been sent to $count candidates instead of count($emails) candidates",0));
-			}
+			}*/
 			$this->load->view('admin/admin_header', $data);
 	        $this->load->view('admin/' . $page , $data);
 	        $this->load->view('admin/admin_footer');	
