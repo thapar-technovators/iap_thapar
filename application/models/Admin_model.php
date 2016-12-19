@@ -5,26 +5,30 @@ class Admin_model extends CI_Model {
 
 	function send_mail($to,$subject,$body)
 	{
-		require_once(APPPATH.'third_party/mailer/class.phpmailer.php');
+		require_once(APPPATH.'third_party/mailer/PHPMailerAutoload.php');
+		//require_once(APPPATH.'third_party/mailer/class.smtp.php');
 		$from = "iapthapar@gmail.com";
-		$mail = new PHPMailer();
-		$mail->IsSMTP(true); // SMTP
-		$mail->SMTPAuth   = true;  // SMTP authentication
-		$mail->Mailer = "smtp";
-		$mail->Host       = "tls://smtp.gmail.com"; // Amazon SES server, note "tls://" protocol
-		$mail->Port       = 465;                    // set the SMTP port
-		$mail->Username   = "iapthapar@gmail.com";  // SES SMTP  username
-		$mail->Password   = "thaparmech";  // SES SMTP password
-		$mail->SetFrom($from, 'Team IAP TU');
-		$mail->AddReplyTo($from,'Arush Nagpal');
+		$mail = new PHPMailer;
+		$mail->isSMTP();
+		$mail->SMTPDebug = 0;
+		$mail->Debugoutput = 'html';
+		$mail->Host = 'smtp.gmail.com';
+		$mail->Port = 587;
+		$mail->SMTPSecure = 'tls';
+		$mail->SMTPAuth = true;
+		$mail->Username = "iapthapar@gmail.com";
+		$mail->Password = "thaparmech@123";
+		$mail->setFrom('iapthapar@gmail.com', 'IAP Thapar');
+		$mail->addReplyTo('iapthapar@gmail.com', 'IAP Thapar');
 		$mail->Subject = $subject;
 		$mail->MsgHTML($body);
 		$address = $to;
 		$mail->AddAddress($address, $to);
 
 		if(!$mail->Send())
-			return false;
+		{return false;}	
 		else
+
 			return true;
 	}	
 
@@ -156,6 +160,29 @@ class Admin_model extends CI_Model {
 		return $data_fetch;		
 	}
 
+	function getUntagged()
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from training_data where faculty_alotted is NULL");
+		$data_fetch = $query->result_array();
+		return $data_fetch;		
+	}
+
+	function getTagged()
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from training_data where faculty_alotted is NOT NULL");
+		$data_fetch = $query->result_array();
+		return $data_fetch;		
+	}
+
+	function getTrainingAll()
+	{
+		$data_fetch =array();
+		$query = $this->db->query("SELECT * from training_data where faculty_alotted is not null");
+		$data_fetch = $query->result_array();
+		return $data_fetch;		
+	}
 	function getTrainingDetail($rollno)
 	{
 		$data_fetch =array();
