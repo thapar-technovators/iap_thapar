@@ -29,7 +29,7 @@
     }
     ?>
 			<div class="col-lg-8">
-										<div class="panel panel-orange">
+										<div class="panel panel-blue">
                                             <div class="panel-heading">
                                                 City form</div>
                                             <div class="panel-body pan">
