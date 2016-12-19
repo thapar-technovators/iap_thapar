@@ -496,7 +496,7 @@ function getPhase_num()
 
 	}
 	function submit_intermid($roll,$company_name,$report){
-		$data2 = array('intermid_report'=>$report);
+		$data2 = array('intermid_report'=>$report,'phase' =>6);
 		$this->db->where(array('roll_number'=>$roll,'company'=>$company_name));
 		if($this->db->update('training_data',$data2))
 			return true;
@@ -514,7 +514,7 @@ function getPhase_num()
 	}
 
 	function submit_final($roll,$company_name,$report){
-		$data2 = array('final_report'=>$report);
+		$data2 = array('final_report'=>$report,'phase' =>7);
 		$this->db->where(array('roll_number'=>$roll,'company'=>$company_name));
 		if($this->db->update('training_data',$data2))
 			return true;
