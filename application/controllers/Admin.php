@@ -222,6 +222,13 @@ class Admin extends CI_Controller {
 	    $this->load->view('admin/download_reports' , $data);
 	    $this->load->view('admin/admin_footer');
 	}
+	public function change_status()
+	{
+		$data['heading']="Disable or enable procedure start";
+		$this->load->view('admin/admin_header', $data);
+	    $this->load->view('admin/changestatus' , $data);
+	    $this->load->view('admin/admin_footer');
+	}
 
 	public function download($page)
 	{

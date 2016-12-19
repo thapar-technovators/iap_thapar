@@ -108,7 +108,7 @@ if(isset($message))
 	                    Approve</button>
 	            </div>
 	            </form>
-	            <?php } else echo "<h3>Student has not yet filled his training details</h3>"?>
+	            <?php } else echo "<h3>Student has not yet filled his training details or he is in the wrong phase</h3>"?>
 	        </div>
     	</div>
     </div>

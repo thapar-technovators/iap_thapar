@@ -125,7 +125,7 @@
                     <li class="active"><a href="<?php echo base_url();?>index.php/admin"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Dashboard</span></a></li>
-                    <li><a href="<?php echo base_url();?>index.php/admin/allot_student"><i class="fa fa-send-o fa-fw">
+                    <li><a href="<?php echo base_url();?>index.php/admin/change_status"><i class="fa fa-send-o fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">Change System Status</span></a>
                        
@@ -168,6 +168,11 @@
                     <li><a href="<?php echo base_url();?>index.php/admin/send_email"><i class="fa fa-bar-chart-o fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Send Email</span></a>
+                       
+                    </li>
+                    <li><a href="<?php echo base_url();?>index.php/admin/add_training"><i class="fa fa-bar-chart-o fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Add training for a student</span></a>
                        
                     </li>
                 </ul>
