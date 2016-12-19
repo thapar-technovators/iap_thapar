@@ -27,27 +27,52 @@ class Student_model extends CI_Model {
 		return $branch;
 	}
 
+function getPhase_num()
+	{
+		$uid=$_SESSION["uid"];
+		$query = $this->db->query("SELECT phase FROM training_data where email='$uid'");
+		$result=$query->result_array();
+		return $result[0]['phase'];
+	}
+
 	function getPhase()
 	{
 		$uid=$_SESSION["uid"];
 		$query = $this->db->query("SELECT phase FROM training_data where email='$uid'");
 		$result=$query->result_array();
-		if($result[0]['phase']=="0")
-		{
-			$result[0]['phase']= "0   ||  Enter your training Details";	
-		}
 		if($result[0]['phase']=="1")
 		{
-			$result[0]['phase']= "1   ||  Contact and Link your mentor";	
+			$result[0]['phase']= "1   ||  Enter your training Details";	
 		}
 		if($result[0]['phase']=="2")
 		{
-			$result[0]['phase']= "2   ||  Upload your Joining Report";	
+			$result[0]['phase']= "2   ||  Contact and Link your mentor";	
 		}
 		if($result[0]['phase']=="3")
 		{
-			$result[0]['phase']= "3   ||  Upload your Intermediate Report";	
+			$result[0]['phase']= "3   ||  Upload your Joining Report";	
 		}
+		if($result[0]['phase']=="4")
+		{
+			$result[0]['phase']= "4   ||  Faculty Allotment";	
+		}
+		if($result[0]['phase']=="5")
+		{
+			$result[0]['phase']= "5   ||  Upload your Intermediate Report";	
+		}
+		if($result[0]['phase']=="6")
+		{
+			$result[0]['phase']= "6   ||  Upload your Final Report";	
+		}
+		if($result[0]['phase']=="7")
+		{
+			$result[0]['phase']= "7   ||  Evaluation by faculty";	
+		}
+		if($result[0]['phase']=="8")
+		{
+			$result[0]['phase']= "8   ||  Final Marks";	
+		}
+		
 		return $result[0]['phase'];
 	}
 
@@ -227,6 +252,8 @@ class Student_model extends CI_Model {
 		}
 	}
 
+
+
 	function set_company_details($document){
 		$company = $this->get_companies($document['student_email']);
 		$data_user = $this->details($document['student_email']);
@@ -238,7 +265,7 @@ class Student_model extends CI_Model {
         'city' => $document['city'],
         'date_of_join' => $document['doj'],
         'months' => $document['months'],
-        'phase' => '0',
+        'phase' => '2',
         'training_num'=>count($company)+1,
         'admin_approve' => '1'
         );
@@ -348,7 +375,7 @@ class Student_model extends CI_Model {
 		$data_user = $this->details($student_id);
 		$this->db->where('roll_number',$data_user->roll_number);
 		$this->db->where('company',$company);
-		if($this->db->update('training_data',array('mentor'=>$mentor_id)))
+		if($this->db->update('training_data',array('mentor'=>$mentor_id,'phase'=>3)))
 			return true;
 		else
 			return false;
@@ -384,6 +411,38 @@ class Student_model extends CI_Model {
 			array_push($company, $res['company']);
 		}
 		return $company;
+	}
+
+	function get_faculty_email($email){
+
+		$data_fetch =array();
+		$query = $this->db->query("SELECT faculty_alotted from training_data where email = '$email' and phase=4");
+	//	$data_fetch = $query->result_array();
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			//$data = array('true',$data_fetch);
+			return $data_fetch[0];
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function get_faculty($student_id){
+		$email = $this->get_faculty_email($student_id);
+		$query = $this->db->query("SELECT name,email,phone FROM faculty WHERE  email = '".$email['faculty_alotted']."'");
+		if($query->num_rows() > 0) 
+		{
+			$data_fetch = $query->result_array();
+			//$data = array('true',$data_fetch);
+			return $data_fetch;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	function get_companies_joining_report($student_id){
@@ -442,7 +501,7 @@ class Student_model extends CI_Model {
 	}
 
 	function submit_joining($roll,$company_name,$report){
-		$data2 = array('joining_report'=>$report);
+		$data2 = array('joining_report'=>$report,'phase' =>4);
 		$this->db->where(array('roll_number'=>$roll,'company'=>$company_name));
 		if($this->db->update('training_data',$data2))
 			return true;

@@ -1,23 +1,10 @@
 
                 <!--BEGIN CONTENT-->
-                <div class="page-content">
-<?php /*
-            
-                if(isset($error))
-                {
-                foreach ($error as $error_item):
-                ?>
-                <div class=<?php if($error_item[1]==0) echo "'alert alert-info alert-danger'";
-                else echo "'alert alert-info alert-success'";?> role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <?php echo $error_item[0];?>
-                </div>
-                <?php endforeach;
-                } 
-                unset($error);
-                */
-                ?>
-
+                
+<?php if($_SESSION['phase_num'] == 3){
+    
+?>
+<div class="page-content">
 
 <?php if(isset($error)) echo $error;
         if($access){
@@ -90,7 +77,14 @@
             ?>
 
        
-                                        
-                    
-                </div>
+  </div>                                      
+<?php }
+else{?>
+            </br>
+           <div class="panel panel-blue" >
+           
+           <h4 style ="font-color:#000">You can upload joining report in phase 3 only.</h4>
+           </div>
+<?php }?>    
+                
                 <!--END CONTENT-->

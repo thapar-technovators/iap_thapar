@@ -1,5 +1,8 @@
 
                 <!--BEGIN CONTENT-->
+<?php if($_SESSION['phase_num'] == 5){
+    
+?>
                 <div class="page-content">
 <?php /*
             
@@ -93,4 +96,12 @@
                                         
                     
                 </div>
+            <?php }
+else{?>
+            </br>
+           <div class="panel panel-blue" >
+           
+           <h4 style ="font-color:#000">You can upload intermid report in phase 5 only.</h4>
+           </div>
+<?php }?>   
                 <!--END CONTENT-->

@@ -37,6 +37,7 @@ class Student extends CI_Controller {
 			return;
 		}
 		$_SESSION['phase']=$this->Student_model->getPhase();
+		$_SESSION['phase_num']= $this->Student_model->getPhase_num();
 	}
 
 	public function index($page = 'student')
@@ -234,6 +235,26 @@ class Student extends CI_Controller {
 	}
 //2300102
 //2215182
+
+
+	public function alotted_faculty(){
+
+		$this->load->helper(array('form', 'url')); 
+		
+		$data['faculty'] = $this->Student_model->get_faculty($_SESSION["uid"]);
+		$this->load->view('student/student_header');
+		$this->load->view('student/alotted_faculty',$data);
+		$this->load->view('student/student_footer');
+	}
+	public function faculty_evaluation(){
+
+		$this->load->helper(array('form', 'url')); 
+		
+		$data['faculty'] = $this->Student_model->get_faculty($_SESSION["uid"]);
+		$this->load->view('student/student_header');
+		$this->load->view('student/faculty_evaluation',$data);
+		$this->load->view('student/student_footer');
+	}
 	public function submit_intermid()
 	{
 		

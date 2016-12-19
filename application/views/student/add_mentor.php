@@ -1,5 +1,9 @@
 
                 <!--BEGIN CONTENT-->
+<?php if($_SESSION['phase_num'] == 2){
+    
+?>
+
 <div class="page-content">
   
         <?php       if(!isset($error)){ ?>
@@ -66,4 +70,13 @@
                                         
                     
                 </div>
+
+<?php }
+else{?>
+            </br>
+           <div class="panel panel-blue" >
+           
+           <h4 style ="font-color:#000">You can link mentor in phase 2 only.</h4>
+           </div>
                 <!--END CONTENT-->
+<?php }?>

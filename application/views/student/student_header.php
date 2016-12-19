@@ -80,17 +80,21 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li><a href="<?php echo base_url(); ?>index.php/student/company_details"><i class="fa fa-tachometer fa-fw">
+                    <li><a href="<?php echo base_url(); ?>index.php/student/company_details"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Training Details</span></a></li>
-                    <li><a href="<?php echo base_url(); ?>index.php/student/mentor"><i class="fa fa-tachometer fa-fw">
+                    
+                    <li><a href="<?php echo base_url(); ?>index.php/student/mentor"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Add Mentor</span></a></li>
-
+                    </i><span class="menu-title">Link Mentor</span></a></li>
                     <li><a href="<?php echo base_url(); ?>index.php/student/submit_joining"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload Joining Report</span></a>
                     </li>
+                    
+                    <li><a href="<?php echo base_url(); ?>index.php/student/alotted_faculty"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Faculty Allotted</span></a></li>
                     <li><a href="<?php echo base_url(); ?>index.php/student/submit_intermid"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload Intermid Report</span></a>
@@ -98,6 +102,10 @@
                     <li><a href="<?php echo base_url(); ?>index.php/student/submit_final"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Upload Final Report</span></a>
+                    </li>
+                    <li><a href="<?php echo base_url(); ?>index.php/student/faculty_evaluation"><i class="fa fa-desktop fa-fw">
+                        <div class="icon-bg bg-pink"></div>
+                    </i><span class="menu-title">Evaluation by faculty</span></a>
                     </li>
                     <li><a href="<?php echo base_url(); ?>index.php/student/download_files"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
@@ -130,6 +138,7 @@
                     <div class="clearfix">
                     </div>
                 </div>
+                <div class="page-content">
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
                         <div class="page-title">
@@ -138,4 +147,5 @@
                     <div class="clearfix">
                     </div>
                 </div>
+
                 <!--END TITLE & BREADCRUMB PAGE-->

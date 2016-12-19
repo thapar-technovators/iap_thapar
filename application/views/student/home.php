@@ -1,4 +1,8 @@
                 <!--BEGIN CONTENT-->
+
+<?php if($_SESSION['phase_num'] == 1){
+    
+?>
                 <div class="page-content">
 <?php 
             /*   unset($_POST['submit']);
@@ -97,6 +101,14 @@
                     
                 </div>
     
-
+<?php }
+else{?>
+            </br>
+           <div class="panel panel-blue" >
+           
+           <h4 style ="font-color:#000">You can enter training details in phase 1 only.In case you want to register with 2nd training, kindly send your details to iapthapar@gmail.com</h4>
+           </div>
+                <!--END CONTENT-->
+<?php }?>
 
                 <!--END CONTENT-->
