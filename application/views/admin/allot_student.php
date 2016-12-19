@@ -1,6 +1,14 @@
+<?php
+if(isset($message))
+{?>
+<div class="alert alert-info">
+<?php echo $message?>
+</div>
+<?php
+}?>
 <h2>Untagged Students</h2>
 <div class="row">
-	<form action="" method="post">
+	<form action="<?php echo base_url();?>index.php/admin/allot_student" method="post">
 	<div class="col-md-6">
 		<h3>Student:</h3><select name="student" class="form-control">
 		<?php

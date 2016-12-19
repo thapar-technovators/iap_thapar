@@ -199,6 +199,14 @@ class Admin_model extends CI_Model {
 		else
 			return false;
 	}
+	function linkts($student,$teacher)
+	{
+		$query = $this->db->query("UPDATE  training_data SET faculty_alotted='$teacher', phase=phase+1 where email= '$student' and old_record is null");
+		if($query)
+			return true;
+		else
+			return false;
+	}
 }
 
 ?>

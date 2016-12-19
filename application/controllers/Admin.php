@@ -179,9 +179,27 @@ class Admin extends CI_Controller {
 		$data['faculty']=$this->Admin_model->getFaculty();
 		$data['tagged']=$this->Admin_model->getTagged();
 		$data['untagged']=$this->Admin_model->getUntagged();
-		$this->load->view('admin/admin_header', $data);
-        $this->load->view('admin/allot_student' , $data);
-        $this->load->view('admin/admin_footer');
+		if($this->input->post())
+		{
+
+			$student = $this->input->post('student');
+			$teacher = $this->input->post('teacher');
+			if($this->Admin_model->linkts($student,$teacher))
+			{
+				$data['message']="The teacher has been assigned to the student";
+				$data['tagged']=$this->Admin_model->getTagged();
+				$data['untagged']=$this->Admin_model->getUntagged();
+				$this->load->view('admin/admin_header', $data);
+	        	$this->load->view('admin/allot_student' , $data);
+	        	$this->load->view('admin/admin_footer');
+			}
+		}
+		else
+		{
+			$this->load->view('admin/admin_header', $data);
+        	$this->load->view('admin/allot_student' , $data);
+        	$this->load->view('admin/admin_footer');
+		}
 	}
 
 	public function allot_city($regid='')
