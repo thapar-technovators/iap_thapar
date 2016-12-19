@@ -529,31 +529,7 @@ function getPhase_num()
 
 	}
 
-	function getallreports($roll){
-		$reports=array();
-		$query = $this->db->query("SELECT joining_report FROM training_data WHERE roll_number=$roll AND joining_report <> '' ");
-		$result=$query->result_array();
-		$i = 1;
-		foreach ($result as $res) {
-				array_push($reports, array($res['joining_report'],"Joining Report ".$i));
-				$i++;
-		}
-		$i=1;
-		$query = $this->db->query("SELECT intermid_report FROM training_data WHERE roll_number=$roll AND intermid_report <> '' ");
-		$result=$query->result_array();
-		foreach ($result as $res) {
-				array_push($reports, array($res['intermid_report'],"Intermid Report ".$i));
-				$i++;
-		}
-		$i=1;
-		$query = $this->db->query("SELECT final_report FROM training_data WHERE roll_number=$roll AND final_report <> ''");
-		$result=$query->result_array();
-		foreach ($result as $res) {
-				array_push($reports, array($res['final_report'],"Final Report ".$i));
-				$i++;
-		}
-		return $reports;
-	}
+	
 
 }
 ?>

@@ -416,25 +416,7 @@ class Student extends CI_Controller {
     	}
 	}
 
-	public function download_files(){
-		$student_data = $this->Student_model->details($_SESSION["uid"]);
-		$roll = $student_data->roll_number;
-		$data['filenames'] = $this->Student_model->getallreports($roll);
-		$this->load->view('student/student_header');
-        $this->load->view('student/download_files',$data); 
-        $this->load->view('student/student_footer');
-	}
-
-	function download_function(){
-    	$this->load->helper('download');
-    	//$name = preg_replace("/[^a-zA-Z0-9.]+/", "", $this->uri->segment(3));
-    	$data = file_get_contents('./uploads/joining_report/'.$this->uri->segment(3)); // Read the file's contents
-   		// $name = $this->uri->segment(3);
-   		//echo 'hello';
-
-    	//$name = "yoo.pdf";
-    	force_download($name, $data);
-	}
+	
 
 	function emergency(){
 		$this->load->view('student/student_header');
